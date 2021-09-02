@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ponyliga.Views.LandingPage" Title="Startseite">
+    
+    <NavigationPage.TitleView>
+        <StackLayout
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Orientation="Horizontal">
+            <Label
+                x:Name="Startseite"
+                Text="Startseite"
+                FontSize="25"
+                FontAttributes="Bold"
+                TextColor="#FFFF"
+                HorizontalOptions="Center" 
+                VerticalTextAlignment="Center"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to the BifiCup!" 
+                   FontSize="25" 
+                   HorizontalOptions="Center" />
+
+            <Button Text="Login" 
+                    Clicked="btn_LogIn_Clicked" />
+            <Button Text="Tabelle"
+                    Clicked="btn_Table_Clicked" />
+            <Button Text="QR-Code" />
+            <Button Text="Regeln" />
+            <Button Text="Impressum" />
+            <Button Text="Rechte" />
+           
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
