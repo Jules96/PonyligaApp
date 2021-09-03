@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ponyliga.Views.UserTablePage">
+
+
+
+    <ListView x:Name="listViewUser"
+            ItemsSource="{Binding Item}"
+            ItemTapped="Handle_ItemiTapped"
+            CachingStrategy="RecycleElement">
+        <!--Built in Cells-->
+
+        <ListView.Header>
+            <Grid BackgroundColor="Black">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+                <Label Text="Nr" HorizontalOptions="Fill"  Grid.Column="0"   FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                <Label Text="Vorname" HorizontalOptions="Fill"  Grid.Column="1"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                <Label Text="Nachname" HorizontalOptions="Fill"  Grid.Column="2"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                <Label Text="loginName" HorizontalOptions="Fill"  Grid.Column="3"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                <Label Text="userPrivileges" HorizontalOptions="Fill"  Grid.Column="4"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+            </Grid>
+        </ListView.Header>
+
+        <!--Custom View Cells-->
+
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid BackgroundColor="Black">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text ="{Binding id}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
+                        <Label Grid.Column="1" Text ="{Binding firstName }" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
+                        <Label Grid.Column="2" Text ="{Binding surName }" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
+                        <Label Grid.Column="3" Text ="{Binding loginName }" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
+                        <Label Grid.Column="4" Text ="{Binding userPrivileges }" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
+
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+    <ContentPage.Content>
+        <StackLayout Orientation="Horizontal" Grid.Row="1">
+            <Button Text="Updaten" 
+                    Clicked="btn_Update_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
