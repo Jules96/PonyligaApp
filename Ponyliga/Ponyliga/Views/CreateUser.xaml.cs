@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-//using Ponyliga.Models;
-using Ponyliga.ViewModels;
-using Ponyliga.Model;
-
+using Ponyliga.Models;
 namespace Ponyliga.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -25,7 +22,7 @@ namespace Ponyliga.Views
             userRightsPicker.Items.Add("Rechte 4");
         }
 
-        public void btn_newUser_Clicked(object sender, EventArgs e)
+        private void btn_newUser_Clicked(object sender, EventArgs e)
         {
             string firstName = userFirstName.Text;
             string lastName = userLastName.Text;
@@ -34,22 +31,15 @@ namespace Ponyliga.Views
             string password = userPassword.Text;
             string id = userId.Text;
 
+            //Liste
 
-            
-                
-            
-            List<User> user = new List<User>();
-            user.Add(new User()
-            {
-                firstName = firstName,
-                surName = lastName,
-                loginName = loginName,
-                passwordHash = password,
-                userPrivileges = Int16.Parse(rights)
-            });
-
-
-
+            User user = new User();
+            user.id = default;
+            user.firstName = firstName;
+            user.loginName = loginName;
+            user.surName = lastName;
+            user.passwordHash = password;
+            user.userPrivileges = Int16.Parse(rights);
 
             Navigation.PushAsync(new MainPageAfterLogin());
         }
