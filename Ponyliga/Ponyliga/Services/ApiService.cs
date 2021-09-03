@@ -108,7 +108,7 @@ namespace Ponyliga.Services
             return null;
         }
 
-        public async Task AddData(string ext, User user)
+        public async Task<bool> AddData(string ext, User user)
         {
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
@@ -121,21 +121,35 @@ namespace Ponyliga.Services
 
             string UserSerializer =
                 JsonSerializer.Serialize<User>(user, options);
-
-            var json = JsonConvert.SerializeObject(user);
+                        
             StringContent content = new StringContent(UserSerializer.ToString(), Encoding.UTF8, "application/json");
             var response = await httpClient.PostAsync(uri, content);
-            
-        }
+            Debug.WriteLine("Answer: " + response.StatusCode);
+
+            if (response.IsSuccessStatusCode)
+            {
+                bool bTask = response.IsSuccessStatusCode;
+                Debug.WriteLine("Answer: " + response.StatusCode);
+                Console.WriteLine("response.StatusCode");
+                return bTask;
+            }
+            else
+            {
+                Console.WriteLine("response.StatusCode");
+                Debug.WriteLine("Answer: " + response.StatusCode);
+            }
+            return false;
+
+
+
+
+            }
 
         public async Task UpdateData(string ext, string id, User user)
         {
-            List<User> users = new List<User>();
-            users.Add(new User { firstName = "Homer", surName = "Simpson", loginName = "HOSIM", passwordHash = "123123", userPrivileges = 1 });
-
-           
-
-
+            //List<User> users = new List<User>();
+            //users.Add(new User { firstName = "Homer", surName = "Simpson", loginName = "HOSIM", passwordHash = "123123", userPrivileges = 1 });
+            
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
             string uri = GetUrlID(ext, id);

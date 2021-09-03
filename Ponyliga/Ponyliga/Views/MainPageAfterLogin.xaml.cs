@@ -39,7 +39,7 @@ namespace Ponyliga.Views
 
         private void btn_Table_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ResultTablePage());
+            Navigation.PushAsync(new UserTablePage());
         }
     }
 }
