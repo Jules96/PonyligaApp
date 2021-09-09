@@ -1,27 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Ponyliga.Views.TeamsPage" Title="Teams bearbeiten">
+             x:Class="Ponyliga.Views.TeamsPage" Title="Teams">
     <ContentPage.Content>
         <StackLayout>
                     <!--<Label Text="Teams bearbeiten" FontSize="Title"/>-->
             
+            <Button Text="Team erstellen" 
+                    Clicked="btn_createTeam_Clicked" />
             
-            <Button Text="Neues Team" 
-                    Clicked="btn_newTeam_Clicked"/> <!--neue Seite oder kann hier Layout rein für zu Team hinzufügen?-->
-           
+            <Button Text="Mitglieder bzw. Ponies hinzufügen" 
+                    Clicked="btn_addMembers_Clicked"/> <!--neue Seite oder kann hier Layout rein für zu Team hinzufügen?-->
+                                                       <!-- neue Seite :)-->
 
-            <Label Text="Name: " />
-            <Entry Placeholder="Name" />
+            <Label Text="bestehende Teams:" 
+                   FontSize="25" 
+                   HorizontalOptions="Center" />
+
             
-            <Label Text="Pferd: " />
-            <Entry Placeholder="Pferd" />
+            <Button Text="Update"
+                    Clicked="btn_updateListOfTeams_Clicked"/>
             
-            <Label Text="Team: " />
-            <Entry Placeholder="Team" />
+            <Button Text="Team bearbeiten"
+                    Clicked="btn_editExistingTeam_Clicked"/>
 
-            <Button Text="Zu Team hinzufügen" />
+            <Button Text="Team löschen"
+                    Clicked="btn_deleteExistingTeam_Clicked"/>
 
+            <!--hier irgendwie Tabelle mit bereits bestehenden Teams rein-->
+            <!--wie soll die aussehen?-->
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

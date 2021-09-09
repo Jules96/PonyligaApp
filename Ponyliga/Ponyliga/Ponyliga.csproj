@@ -11,14 +11,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ViewModels\User.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.Text.Json" Version="5.0.2" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,6 +31,9 @@
     <Compile Update="MainPage_old.xaml.cs">
       <DependentUpon>MainPage_old.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\CreateUserPage.xaml.cs">
+      <DependentUpon>CreateUserPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\LandingPage.xaml.cs">
       <DependentUpon>LandingPage.xaml</DependentUpon>
     </Compile>
@@ -39,9 +42,6 @@
     </Compile>
     <Compile Update="Views\MainPageAfterLogin.xaml.cs">
       <DependentUpon>MainPageAfterLogin.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\TimeInputPage.xaml.cs">
-      <DependentUpon>TimeInputPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\TeamsPage.xaml.cs">
       <DependentUpon>TeamsPage.xaml</DependentUpon>
@@ -55,6 +55,9 @@
     <EmbeddedResource Update="MainPage - Kopieren.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\CreateUserPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\LandingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -64,11 +67,14 @@
     <EmbeddedResource Update="Views\MainPageAfterLogin.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\TimeInputPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\ResultTablePage.xaml">
       <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TeamAddingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TeamCreationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\TeamsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -77,6 +83,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\StopWatchPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\UserTablePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

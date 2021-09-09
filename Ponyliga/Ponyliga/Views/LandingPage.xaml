@@ -15,7 +15,7 @@
                 FontAttributes="Bold"
                 TextColor="#FFFF"
                 HorizontalOptions="Center" 
-                VerticalTextAlignment="Center"/>
+                VerticalTextAlignment="Center" />
         </StackLayout>
     </NavigationPage.TitleView>
     

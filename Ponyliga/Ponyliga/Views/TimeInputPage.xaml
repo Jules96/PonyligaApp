@@ -3,13 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ponyliga.Views.TimeInputPage" 
              xmlns:local="clr-namespace:Ponyliga.Views">
-    
+
     <NavigationPage.TitleView>
         <StackLayout
             HorizontalOptions="Center"
             VerticalOptions="Center"
             Orientation="Horizontal">
-            
+
             <Label
                 x:Name="label_manual_result_title"
                 Text="Manuelle Zeiteingabe"
@@ -20,17 +20,17 @@
                 HorizontalOptions="Center" 
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Center"/>
-            
+
         </StackLayout>
     </NavigationPage.TitleView>
 
     <ContentPage.Resources>
         <x:String x:Key="formatdecimalthreeplaces">{00:00:00.000}</x:String>
     </ContentPage.Resources>
-    
+
     <ContentPage.Content>
-      <StackLayout>
-          
+        <StackLayout>
+
             <!--manual result-->
             <Label
                 Text="Gemessene Zeit eingeben"
@@ -42,7 +42,7 @@
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"/>
 
-            <!--shows the measured result-->         
+            <!--shows the measured result-->
             <Label
                 x:Name="label_manual_result"
                 Text=""
@@ -132,14 +132,14 @@
                         <local:MaxMsecAmountEntryBehavior/>
                     </Entry.Behaviors>
                 </Entry>
-                    
-                    
+
+
 
 
 
                 <!--General TESTs for behaviors and masks-->
-                
-                
+
+
                 <!--<Entry
                     x:Name="entry_behavior"
                     Placeholder="Enter numbers"
@@ -149,8 +149,8 @@
                     </Entry.Behaviors>
                 </Entry>-->
 
-                
-                
+
+
                 <!--Test with one Entry + Format Mask-->
                 <!--<Entry
                     x:Name="TEST_entry_behavior"
@@ -162,9 +162,9 @@
                     </Entry.Behaviors>
                 </Entry>-->
 
-                
-                
-                
+
+
+
                 <!--Test - finally it works-->
                 <!--<Entry
                     x:Name="TEST_entry_behavior"
@@ -179,14 +179,13 @@
 
             </StackLayout>
 
-          <!--an DB schicken-->
             <Button
                 x:Name="acceptResult"
                 Text="Übernehmen"
                 Clicked="btn_AcceptResult_Clicked"
                 TextTransform="None">
             </Button>
-          
+
         </StackLayout>
-  </ContentPage.Content>
+    </ContentPage.Content>
 </ContentPage>

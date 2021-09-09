@@ -4,13 +4,13 @@
              xmlns:viewmodels="clr-namespace:Ponyliga.ViewModels" 
              x:DataType="viewmodels:StopWatch"
              x:Class="Ponyliga.Views.StopWatchPage" Title="Stoppuhr" >
-    
+
     <NavigationPage.TitleView>
         <StackLayout
             HorizontalOptions="Center"
             VerticalOptions="Center"
             Orientation="Horizontal">
-            
+
             <Label
                 x:Name="Stoppuhr"
                 Text="Stoppuhr"
@@ -20,24 +20,24 @@
                 Margin="0, 0, 50, 0"
                 HorizontalOptions="Center" 
                 VerticalTextAlignment="Center"/>
-            
+
             <Button 
                 Text="Logout"
                 TextTransform="None"
                 Clicked="btn_LogOut_Clicked"
                 HorizontalOptions="EndAndExpand" 
                 VerticalOptions="EndAndExpand"/>
-            
+
         </StackLayout>
     </NavigationPage.TitleView>
-    
+
     <ContentPage.Content>
         <StackLayout
             VerticalOptions="Start">
 
             <Label 
                 x:Name="label_Logged_as" />
-            
+
             <!--TeamsDB-->
             <Picker
                 x:Name="TeamPicker"
@@ -79,31 +79,31 @@
             <StackLayout 
                 Orientation="Horizontal"
                 VerticalOptions="CenterAndExpand">
-                
+
                 <Button 
                     x:Name="btn_Start"
                     Text="Start"
                     TextTransform="None"
                     Clicked="btn_Start_Clicked"/>
-                
+
                 <Button 
                     x:Name="btn_Continue"
                     Text="Weiter"
                     TextTransform="None"
                     Clicked="btn_Continue_Clicked" />
-                
+
                 <Button 
                     x:Name="btn_Stop"
                     Text="Stopp" 
                     TextTransform="None"
                     Clicked="btn_Stop_Clicked" />
-                
+
                 <Button 
                     x:Name="btn_Reset" 
                     Text="Reset"
                     TextTransform="None"
                     Clicked="btn_Reset_Clicked" />
-                
+
             </StackLayout>
 
             <Button 
@@ -115,7 +115,7 @@
                     Margin="0, 300, 0, 0"
                     VerticalOptions="End"
                     Clicked="btn_ManuelResult_Clicked"/>
-            
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

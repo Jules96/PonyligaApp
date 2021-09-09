@@ -38,8 +38,8 @@
                     Clicked="btn_LogOut_Clicked" />
             <Button Text="Tabelle"
                     Clicked="btn_Table_Clicked" />
-            <Button Text="Gruppen bearbeiten" />
-            <Button Text="Teams bearbeiten" 
+            <Button Text="Gruppen" />
+            <Button Text="Teams" 
                     Clicked="btn_EditTeams_Clicked"/>
             <Button Text="Tabelle bearbeiten" />
             <Button Text="Stoppuhr" 
