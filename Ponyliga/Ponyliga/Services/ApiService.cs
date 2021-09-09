@@ -116,6 +116,31 @@ namespace Ponyliga.Services
             return false;
         }
 
+        public async Task<bool> LogInUser(User user)
+        {
+            httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
+            string uri = GetUrl("userlogin");
+
+            JsonSerializerOptions options = new JsonSerializerOptions()
+            {
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault
+            };
+
+            string UserSerializer =
+                JsonSerializer.Serialize<User>(user, options);
+
+            StringContent content = new StringContent(UserSerializer.ToString(), Encoding.UTF8, "application/json");
+            var response = await httpClient.PostAsync(uri, content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public async Task UpdateUser(string id, User user)
         {
             //List<User> users = new List<User>();
