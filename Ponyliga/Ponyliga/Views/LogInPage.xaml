@@ -27,9 +27,12 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <Entry Placeholder="Benutzername"/>
+            <Entry 
+                Placeholder="Benutzername"
+                x:Name= "username"/>
             <Entry IsPassword="True"  
-                   Placeholder="Passwort"/>
+                   Placeholder="Passwort"
+                   x:Name= "password"/>
             <Button Text="Anmelden" 
                     Clicked="btn_LogIn_Clicked" />
             <Button Text="Registrieren" 
