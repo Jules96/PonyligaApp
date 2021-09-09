@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ponyliga.ViewModels;
+using Ponyliga.Models;
+using System.Collections.ObjectModel;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,9 +15,20 @@ namespace Ponyliga.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TeamsPage : ContentPage
     {
+
+        ObservableCollection<Team> MyItems = new ObservableCollection<Team>();
+        ObservableCollection<Team> Item { get { return MyItems; } }
+
         public TeamsPage()
         {
             InitializeComponent();
+
+            listViewn.ItemsSource = MyItems;
+
+            MyItems.Add(new Team() { name = "Herzlake II", teamSize = 5, consultor = "Harald" });
+            MyItems.Add(new Team() { name = "Herzlake I", teamSize = 5, consultor = "Achim" });
+            MyItems.Add(new Team() { name = "Haselünne", teamSize = 5, consultor = "Timon" });
+            MyItems.Add(new Team() { name = "Meppen", teamSize = 5, consultor = "Die Jungs von der Straße" });
         }
 
         private void btn_createTeam_Clicked(object sender, EventArgs e)
@@ -34,12 +48,13 @@ namespace Ponyliga.Views
 
         private void btn_editExistingTeam_Clicked(object sender, EventArgs e)
         {
-            //wahrscheinlich neue Page dafür?
+            Navigation.PushAsync(new TeamEditingPage());
         }
 
         private void btn_deleteExistingTeam_Clicked(object sender, EventArgs e)
         {
-            //auch neue Page; getrennt von edit-Page um versehentliches Löschen zu vermeiden?
+            Navigation.PushAsync(new TeamDeletionPage()); //getrennt von TeamEditingPage um versehentliches Löschen zu vermeiden
         }
     }
 }
+
