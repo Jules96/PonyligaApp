@@ -32,7 +32,6 @@ namespace Ponyliga.Views
             MyItems.Add(new Result() { Club = "Meppen", Placement = "4", Score = "6(2;2;2;)" });
 
 
-
         }
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
