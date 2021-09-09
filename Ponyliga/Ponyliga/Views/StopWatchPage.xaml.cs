@@ -1,6 +1,9 @@
-﻿using Ponyliga.Services;
+﻿using Newtonsoft.Json;
+using Ponyliga.Models;
+using Ponyliga.Services;
 using Ponyliga.ViewModels;
 using System;
+using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,8 +14,12 @@ namespace Ponyliga.Views
     {
         StopWatch stopWatch;
 
+        ObservableCollection<Team> Teams = new ObservableCollection<Team>();
+        ObservableCollection<Team> Team { get { return Teams; } }
+
         public StopWatchPage()
         {
+            FillTeamList();
             InitializeComponent();
 
             stopWatch = new StopWatch();
@@ -24,6 +31,7 @@ namespace Ponyliga.Views
             btn_Continue.IsEnabled = false;
             btn_Stop.IsEnabled = false;
             btn_Reset.IsEnabled = false;
+
         }
 
         private void btn_LogOut_Clicked(object sender, EventArgs e)
@@ -31,14 +39,25 @@ namespace Ponyliga.Views
             Navigation.PushAsync(new LogInPage());
         }
 
-        
-
         // wahl des Teams get all Teams
-        public void TeamPicker_OnSelectedIndexChanged(object sender, EventArgs e)
+
+        public async void FillTeamList()
         {
             ApiService apiService = new ApiService();
-            apiService.GetAllTeams();
-            
+            var taskTeam = await apiService.GetAllTeams();
+
+            TeamPicker.ItemsSource = Teams;
+      //      var response = JsonConvert.DeserializeObject<Team>(taskTeam);
+
+            foreach (var team in taskTeam)
+                Teams.Add(new Team() { name = team.name });
+                //TeamPicker.ItemsSource.Add(new Team() { name = team.firstName });
+        }
+
+        public void TeamPicker_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            //int teamID = TeamPicker.SelectedIndex;
             string team = TeamPicker.Items[TeamPicker.SelectedIndex];
             DisplayAlert(team, "wurde als Team ausgewählt", "OK");
         }
