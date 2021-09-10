@@ -33,7 +33,7 @@
 
         <ListView x:Name="listViewn"
             ItemsSource="{Binding Item}"
-            ItemTapped="Handle_ItemTapped"
+            ItemTapped="Handle_ItemTappedn"
             CachingStrategy="RecycleElement">
                 <!--Built in Cells-->
             
