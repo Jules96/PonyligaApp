@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Ponyliga.Views.CreateUserPage" Title="Benutzer erstellen"
+             x:Class="Ponyliga.Views.CreateUserPage" Title="Registrieren"
              xmlns:pages="clr-namespace:Ponyliga.Views">
 
     <ContentPage.Content>
@@ -37,7 +37,7 @@
             <Entry x:Name="userId"
                 Placeholder="ID" />
 
-            <Button Text="Benutzer hinzufügen" Clicked="btn_newUser_Clicked"/>
+            <Button Text="Registrierem" Clicked="btn_newUser_Clicked"/>
 
         </StackLayout>
 
