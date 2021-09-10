@@ -31,6 +31,19 @@ namespace Ponyliga.Views
             MyItems.Add(new Team() { name = "Meppen", teamSize = 5, consultor = "Die Jungs von der Straße" });
         }
 
+        async void Handle_ItemTappedn(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item == null)
+                return;
+
+            await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+
+            //Deselect Item
+            ((ListView)sender).SelectedItem = null;
+        }
+
+
+
         private void btn_createTeam_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new TeamCreationPage());
