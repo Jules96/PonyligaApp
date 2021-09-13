@@ -489,6 +489,28 @@ namespace Ponyliga.Services
             return null;
         }
 
+        public async Task<List<Result>> GetResultSummary()
+        {
+            httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
+
+            string uri = GetUrl("result/summary");
+            var data = await httpClient.GetAsync(uri);
+
+            if (data.IsSuccessStatusCode)
+            {
+                var respContent = await data.Content.ReadAsStringAsync();
+                var settings = new JsonSerializerSettings
+                {
+                    Formatting = Formatting.Indented
+                };
+
+                return await Task.Run(() => JsonConvert.DeserializeObject<List<Result>>(respContent, settings));
+
+            }
+            return null;
+        }
+
         public async Task<List<Result>> GetResultByID(string id)
         {
             httpClient = new HttpClient();
