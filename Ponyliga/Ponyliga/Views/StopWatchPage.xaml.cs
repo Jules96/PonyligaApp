@@ -1,9 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using Ponyliga.Services;
 using Ponyliga.Models;
-using Ponyliga.Services;
 using Ponyliga.ViewModels;
 using System;
-using System.Collections.ObjectModel;
+using System.Collections;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,9 +12,6 @@ namespace Ponyliga.Views
     public partial class StopWatchPage : ContentPage
     {
         StopWatch stopWatch;
-
-        ObservableCollection<Team> Teams = new ObservableCollection<Team>();
-        ObservableCollection<Team> Team { get { return Teams; } }
 
         public StopWatchPage()
         {
@@ -31,7 +27,6 @@ namespace Ponyliga.Views
             btn_Continue.IsEnabled = false;
             btn_Stop.IsEnabled = false;
             btn_Reset.IsEnabled = false;
-
         }
 
         private void btn_LogOut_Clicked(object sender, EventArgs e)
@@ -39,24 +34,22 @@ namespace Ponyliga.Views
             Navigation.PushAsync(new LogInPage());
         }
 
-        // wahl des Teams get all Teams
-
+        // fills the picker with the registered teams
         public async void FillTeamList()
         {
             ApiService apiService = new ApiService();
             var taskTeam = await apiService.GetAllTeams();
 
-            TeamPicker.ItemsSource = Teams;
-      //      var response = JsonConvert.DeserializeObject<Team>(taskTeam);
+            ArrayList teamList = new ArrayList();
 
             foreach (var team in taskTeam)
-                Teams.Add(new Team() { name = team.name });
-                //TeamPicker.ItemsSource.Add(new Team() { name = team.firstName });
+                teamList.Add(team.name);
+
+            TeamPicker.ItemsSource = teamList;
         }
 
         public void TeamPicker_OnSelectedIndexChanged(object sender, EventArgs e)
         {
-
             //int teamID = TeamPicker.SelectedIndex;
             string team = TeamPicker.Items[TeamPicker.SelectedIndex];
             DisplayAlert(team, "wurde als Team ausgewählt", "OK");
@@ -106,7 +99,31 @@ namespace Ponyliga.Views
             btn_Reset.IsEnabled = false;
         }
 
-        private void btn_ManuelResult_Clicked(object sender, EventArgs e)
+        private async void btn_TransmitResults_Clicked(object sender, EventArgs e)
+        {
+            var stoppedTime = stopWatch.Time;
+            // convert stoppedTime into a string => necessary?
+            string test = stoppedTime.ToString();
+
+            //string team = TeamPicker.Items[TeamPicker.SelectedIndex];
+
+            //if (team != "" && stoppedTime != "")
+            //{
+            //    Result result = new Result();
+            //    result.finishingTime = test;
+
+            //    ApiService apiService = new ApiService();
+            //    await apiService.AddResult(result);
+
+            //}
+
+            // label to make stopped time visible
+            label_getTime.Text = test;
+
+
+        }
+
+        private void btn_TimeInputPage_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new TimeInputPage());
         }

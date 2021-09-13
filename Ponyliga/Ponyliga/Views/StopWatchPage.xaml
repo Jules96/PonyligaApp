@@ -7,10 +7,7 @@
              Title="Stoppuhr" >
 
     <NavigationPage.TitleView>
-        <StackLayout
-            HorizontalOptions="Center"
-            VerticalOptions="Center"
-            Orientation="Horizontal">
+        <StackLayout>
 
             <Label
                 x:Name="Stoppuhr"
@@ -18,17 +15,9 @@
                 FontSize="25"
                 FontAttributes="Bold"
                 TextColor="#FFFF"
-                Margin="0, 0, 50, 0"
-                HorizontalOptions="Center" 
-                VerticalTextAlignment="Center"/>
-
-            <Button 
-                Text="Logout"
-                TextTransform="None"
-                Clicked="btn_LogOut_Clicked"
-                HorizontalOptions="EndAndExpand" 
-                VerticalOptions="EndAndExpand"/>
-
+                Margin="0, 0, 0, 0">
+            </Label>
+            
         </StackLayout>
     </NavigationPage.TitleView>
 
@@ -46,23 +35,8 @@
                 FontAttributes="Italic"
                 FontSize="20"
                 VerticalOptions="Start"
-                SelectedIndexChanged="TeamPicker_OnSelectedIndexChanged"
-                >
-                <!--ItemsSource="{Binding Teams}"-->
-
-                <!--<Picker.ItemDisplayBinding>
-                    <Binding 
-                        Path="">
-                    </Binding>
-                </Picker.ItemDisplayBinding>-->
-
-                <!--<Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Team A</x:String>
-                        <x:String>Team B</x:String>
-                        <x:String>Team C</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>-->
+                SelectedIndexChanged="TeamPicker_OnSelectedIndexChanged">
+                
             </Picker>
 
             <Label
@@ -110,15 +84,25 @@
 
             </StackLayout>
 
+            <Label 
+                x:Name="label_getTime"
+                Text="" />
+
             <Button 
-                    Text="Manuelle Zeiteingabe"
-                    TextTransform="None"
-                    FontSize="20"
-                    FontAttributes="Bold"
-                    Padding="20"
-                    Margin="0, 300, 0, 0"
-                    VerticalOptions="End"
-                    Clicked="btn_ManuelResult_Clicked"/>
+                x:Name="btn_TransmitResults"
+                Text="Übermitteln"
+                TextTransform="None"
+                Clicked="btn_TransmitResults_Clicked"/>
+
+            <Button 
+                Text="Manuelle Zeiteingabe"
+                TextTransform="None"
+                FontSize="20"
+                FontAttributes="Bold"
+                Padding="20"
+                Margin="0, 235, 0, 0"
+                VerticalOptions="End"
+                Clicked="btn_TimeInputPage_Clicked"/>
 
         </StackLayout>
     </ContentPage.Content>
