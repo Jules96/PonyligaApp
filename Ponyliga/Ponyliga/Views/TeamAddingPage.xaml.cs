@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,20 +9,39 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using Ponyliga.Models;
+using Ponyliga.Services;
 
 namespace Ponyliga.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TeamAddingPage : ContentPage
     {
+        public List<Team> taskTeam;
         public TeamAddingPage()
         {
             InitializeComponent();
 
-            TeamPicker.Items.Add("Die Bifis");
+            FillTeamList();
+            /*TeamPicker.Items.Add("Die Bifis");
             TeamPicker.Items.Add("Team 2: Electric Boogaloo");
             TeamPicker.Items.Add("Teamname 3");
-            TeamPicker.Items.Add("OMEGALUL");
+            TeamPicker.Items.Add("OMEGALUL");*/
+
+        }
+       
+        public async void FillTeamList()
+        {
+            ApiService apiService = new ApiService();
+            taskTeam = await apiService.GetAllTeams();
+
+            var listOfTeams = new ArrayList();
+
+            foreach (var team in taskTeam)
+            {
+                listOfTeams.Add(team.name);
+            }
+
+            TeamPicker.ItemsSource = listOfTeams;
         }
 
         public void TeamPicker_OnSelectedIndexChanged(object sender, EventArgs e)
@@ -33,43 +53,24 @@ namespace Ponyliga.Views
 
         private void btn_AddPerson_Clicked(object sender, EventArgs e)
         {
-
-            int team = TeamPicker.SelectedIndex;
-            string teamName = "";
-            if ((TeamPicker.SelectedIndex) >= 0) 
+            if (TeamPicker.SelectedIndex > -1 && TeamMemberFirstName.Text != null && TeamMemberLastName.Text != null) 
             {
-                teamName = TeamPicker.Items[TeamPicker.SelectedIndex];
-            }
-            
-            
-            string firstNameOfMember = TeamMemberFirstName.Text;
-            string lastNameOfMember = TeamMemberLastName.Text;
+                var teams = taskTeam;
+                string teamName = TeamPicker.Items[TeamPicker.SelectedIndex];
+                int teamId = teams.Find(t => t.name == teamName).id;
 
-            /*List<TeamMember> teammember = new List<TeamMember>();
-            teammember.Add(new TeamMember()
-            {
-                //id = default, nein
-                firstName = firstNameOfMember,
-                surName = lastNameOfMember,
-                //teamId = , ja
-                //team = team ???????? nein
-            }
-                );*/
+                TeamMember teammember = new TeamMember();
+                teammember.id = default;
+                teammember.teamId = teamId;
+                teammember.firstName = TeamMemberFirstName.Text;
+                teammember.surName = TeamMemberLastName.Text;
 
-            TeamMember teammember = new TeamMember();
-            teammember.id = default;
-            teammember.firstName = firstNameOfMember;
-            teammember.surName = lastNameOfMember;
-            //teammember.teamId = default; ??
-            //teammember.team = team;
+                ApiService apiService = new ApiService();
+                apiService.AddTeamMember(teammember);
 
+                DisplayAlert(TeamMemberFirstName.Text + " " + TeamMemberLastName.Text, " wurde dem Team " + teamName + " hinzugefügt.", "OK");
 
-            
-            if (TeamPicker.SelectedIndex != -1 || firstNameOfMember != "" || lastNameOfMember != "") 
-            {
-                //var dataForPerson = new List<string> { team, firstNameOfMember, lastNameOfMember };
-                //dataForPerson iwie an DB
-                DisplayAlert(firstNameOfMember + " " + lastNameOfMember, " wurde dem Team " + teamName + " hinzugefügt.", "OK");
+                Navigation.PushAsync(new TeamsPage());
             }
             else
             {
@@ -79,51 +80,29 @@ namespace Ponyliga.Views
 
         private void btn_AddPony_Clicked(object sender, EventArgs e)
         {
-
-            int team = TeamPicker.SelectedIndex;
-            string teamName = "";
-            if ((TeamPicker.SelectedIndex) >= 0)
+            if (TeamPicker.SelectedIndex >= 0 && PonyName.Text != null)
             {
-                teamName = TeamPicker.Items[TeamPicker.SelectedIndex];
-            }
-            string nameOfPony = PonyName.Text;
-            string breedOfPony = PonyBreed.Text;
-            string ageOfPony = /*Int16.Parse(*/PonyAge.Text/*)*/; //wenn ich das int mache (statt var), gibts ne Fehlermeldung bei Nicht-Eintragung
+                //int team = TeamPicker.SelectedIndex;
+                var teams = taskTeam;
+                string teamName = TeamPicker.Items[TeamPicker.SelectedIndex];
+                //int teamId = teams.Find(t => t.name == teamName).id;
 
-            /*List<Pony> pony = new List<Pony>();
-            pony.Add(new Pony()
-            {
-                //teamId = default, ja
-                //id = default, nein
-                name = nameOfPony,
-                race = breedOfPony,
-                age = ageOfPony
-            }
-                ); */
+                Pony pony = new Pony();
+                pony.id = default;
+                pony.name = PonyName.Text;
+                if (PonyBreed.Text != null)
+                    pony.race = PonyBreed.Text;
+                else pony.race = "";
+                if (PonyAge.Text != null)
+                    pony.age = PonyAge.Text;
+                else pony.age = "";
 
-            Pony pony = new Pony();
-            pony.id = default;
-            pony.name = nameOfPony;
-            pony.race = breedOfPony;
-            pony.age = ageOfPony;
-            //pony.teams = team; 
-            //pony.teamPonies = ???
+                ApiService apiService = new ApiService();
+                apiService.AddPony(pony);
 
-           /* List<TeamPony> teampony = new List<TeamPony>();
-            teampony.Add(new TeamPony()
-            {
-                //teamId = default, ja
-                //team = team, ?????? nein
-                //ponyId = default, ja
-                //pony = ???? nein
-            }
-                ) ; */
+                DisplayAlert(PonyName.Text, "wurde dem Team " + teamName + " hinzugefügt.", "OK");
 
-            if (TeamPicker.SelectedIndex != -1 || nameOfPony != "")
-            {
-                //var dataForPony = new List<string> { team, nameOfPony, breedOfPony, ageOfPony};
-                //dataForPony iwie an DB
-                DisplayAlert(nameOfPony, "wurde dem Team " + teamName + " hinzugefügt.", "OK");
+                Navigation.PushAsync(new TeamsPage());
             }
             else
             {
