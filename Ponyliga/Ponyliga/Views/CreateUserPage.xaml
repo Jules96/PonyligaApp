@@ -33,10 +33,6 @@
                 IsPassword="True" 
                    Placeholder="Passwort" />
 
-            <Label Text="ID: " />
-            <Entry x:Name="userId"
-                Placeholder="ID" />
-
             <Button Text="Registrierem" Clicked="btn_newUser_Clicked"/>
 
         </StackLayout>
