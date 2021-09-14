@@ -11,6 +11,10 @@
                     FontSize="30" 
                     SelectedIndexChanged="TeamPicker_OnSelectedIndexChanged"/>
 
+            <Label Text=" " 
+                   FontSize="20" 
+                   HorizontalOptions="Start" />
+
             <Label Text="Mitglied hinzufügen:" 
                    FontSize="20" 
                    HorizontalOptions="Start" />
@@ -20,6 +24,14 @@
                    Placeholder="Nachname*"/>
             <Button Text="Mitglied hinzufügen" 
                     Clicked="btn_AddPerson_Clicked"/>
+
+            <Label Text="Mit * gekennzeichnete Felder benötigen eine Eingabe" 
+                   FontSize="13" 
+                   HorizontalOptions="Start" />
+
+            <Label Text=" " 
+                   FontSize="20" 
+                   HorizontalOptions="Start" />
 
             <Label Text="Pony hinzufügen:" 
                    FontSize="20" 

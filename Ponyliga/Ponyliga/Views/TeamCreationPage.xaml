@@ -1,14 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Ponyliga.Views.TeamCreationPage">
+             x:Class="Ponyliga.Views.TeamCreationPage"
+             Title="Team erstellen">
     <ContentPage.Content>
         <StackLayout>
 
+            <Entry x:Name="ClubName" 
+                   Placeholder="Clubnamen eingeben*"/>
             <Entry x:Name="TeamName" 
-                   Placeholder="Teamnamen eingeben"/>
+                   Placeholder="Teamnamen eingeben*"/>
+            <Entry x:Name="ConsultorName" 
+                   Placeholder="Namen des Vertreters eingeben*"/>
             <Button Text="Team erstellen" 
                     Clicked="btn_CreateTeam_Clicked"/>
+
+            <Label Text="Mit * gekennzeichnete Felder benötigen eine Eingabe" 
+                   FontSize="13" 
+                   HorizontalOptions="Start" />
 
         </StackLayout>
     </ContentPage.Content>
