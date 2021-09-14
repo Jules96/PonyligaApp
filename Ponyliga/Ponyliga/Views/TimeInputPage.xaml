@@ -5,27 +5,21 @@
              xmlns:local="clr-namespace:Ponyliga.Views">
 
     <NavigationPage.TitleView>
-        <StackLayout
-            HorizontalOptions="Center"
-            VerticalOptions="Center"
-            Orientation="Horizontal">
+        <StackLayout>
 
             <Label
                 x:Name="label_manual_result_title"
                 Text="Manuelle Zeiteingabe"
                 FontSize="25"
                 FontAttributes="Bold"
-                TextColor="#FFFF"
-                Margin="0, 0, 40, 0"
-                HorizontalOptions="Center" 
-                VerticalTextAlignment="Center"
-                HorizontalTextAlignment="Center"/>
-
+                TextColor="#FFFF">
+            </Label>
+            
         </StackLayout>
     </NavigationPage.TitleView>
 
     <ContentPage.Resources>
-        <x:String x:Key="formatdecimalthreeplaces">{00:00:00.000}</x:String>
+        <x:String x:Key="formatdecimaltwoplaces">{00:00:00.00}</x:String>
     </ContentPage.Resources>
 
     <ContentPage.Content>
@@ -42,7 +36,40 @@
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"/>
 
-            <!--shows the measured result-->
+            <Picker
+                x:Name="TeamPicker"
+                Title="Team auswählen*"
+                FontAttributes="Italic"
+                FontSize="20"
+                VerticalOptions="Start"
+                SelectedIndexChanged="TeamPicker_OnSelectedIndexChanged">
+            </Picker>
+
+            <Picker
+                x:Name="GamePicker"
+                Title="Spiel auswählen*" 
+                FontAttributes="Italic"
+                FontSize="20"
+                VerticalOptions="Start"
+                SelectedIndexChanged="GamePicker_OnSelectedIndexChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Slalom</x:String>
+                        <x:String>Becherrennen</x:String>
+                        <x:String>Steine</x:String>
+                        <x:String>Sacklaufen</x:String>
+                        <x:String>Flaggenrennen</x:String>
+                        <x:String>Kartoffelrennen</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Label 
+                Text="* Pflichtfelder"
+                FontSize="Micro"
+                Margin="10,-10,0,0"/>
+            
+            <!--shows the measured result for testing-->
             <Label
                 x:Name="label_manual_result"
                 Text=""
@@ -63,9 +90,9 @@
                     x:Name="timeInput1"
                     Placeholder="00"
                     Keyboard="Numeric"
-                    MaxLength="3"
+                    MaxLength="2"
                     FontSize="40"
-                    WidthRequest="60"
+                    WidthRequest="75"
                     HorizontalTextAlignment="Center"
                     ClearButtonVisibility="WhileEditing">
                     <Entry.Behaviors>
@@ -83,9 +110,9 @@
                     x:Name="timeInput2"
                     Placeholder="00"
                     Keyboard="Numeric"
-                    MaxLength="3"
+                    MaxLength="2"
                     FontSize="40"
-                    WidthRequest="60"
+                    WidthRequest="75"
                     HorizontalTextAlignment="Center"
                     ClearButtonVisibility="WhileEditing">
                     <Entry.Behaviors>
@@ -103,9 +130,9 @@
                     x:Name="timeInput3"
                     Placeholder="00"
                     Keyboard="Numeric"
-                    MaxLength="3"
+                    MaxLength="2"
                     FontSize="40"
-                    WidthRequest="60"
+                    WidthRequest="75"
                     HorizontalTextAlignment="Center"
                     ClearButtonVisibility="WhileEditing">
                     <Entry.Behaviors>
@@ -121,9 +148,9 @@
 
                 <Entry
                     x:Name="timeInput4"
-                    Placeholder="000"
+                    Placeholder="00"
                     Keyboard="Numeric"
-                    MaxLength="3"
+                    MaxLength="2"
                     FontSize="40"
                     WidthRequest="75"
                     HorizontalTextAlignment="Center"
@@ -182,7 +209,7 @@
             <Button
                 x:Name="btn_AcceptResult"
                 Text="Übermitteln"
-                Clicked="btn_AcceptResult_Clicked"
+                Clicked="btn_TransmitResults_Clicked"
                 TextTransform="None">
             </Button>
 
