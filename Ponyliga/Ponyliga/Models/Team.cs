@@ -20,7 +20,8 @@ namespace Ponyliga.Models
         public string place { get; set; }
         public string consultor { get; set; }
         public int teamSize { get; set; }
-        public int groupId { get; set; }
+        //[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public int? groupId { get; set; }
         public Group group { get; set; }
 
         public ICollection<Pony> ponies { get; set; }

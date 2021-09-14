@@ -29,9 +29,9 @@ namespace Ponyliga.Views
         //GET all Data
         public async void FillUserList()
         {
-            ApiService apiService = new ApiService();
-            //Task<List<User>> task = apiService.GetAllUser();
-            var taskUser = await apiService.GetAllUser();
+            ApiService apiService = new ApiService(); 
+            //Task<List<User>> task = apiService.GetAllUser(); 
+            var taskUser = await apiService.GetAllUser(); 
 
             listViewUser.ItemsSource = Users;
 
