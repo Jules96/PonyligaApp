@@ -100,7 +100,7 @@
                 FontSize="20"
                 FontAttributes="Bold"
                 Padding="20"
-                Margin="0, 235, 0, 0"
+                Margin="0, 200, 0, 0"
                 VerticalOptions="End"
                 Clicked="btn_TimeInputPage_Clicked"/>
 

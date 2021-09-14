@@ -180,8 +180,8 @@
             </StackLayout>
 
             <Button
-                x:Name="acceptResult"
-                Text="Übernehmen"
+                x:Name="btn_AcceptResult"
+                Text="Übermitteln"
                 Clicked="btn_AcceptResult_Clicked"
                 TextTransform="None">
             </Button>

@@ -102,25 +102,27 @@ namespace Ponyliga.Views
         private async void btn_TransmitResults_Clicked(object sender, EventArgs e)
         {
             var stoppedTime = stopWatch.Time;
-            // convert stoppedTime into a string => necessary?
+            // convert stoppedTime into a string
             string test = stoppedTime.ToString();
 
-            //string team = TeamPicker.Items[TeamPicker.SelectedIndex];
+            string selectedTeam = TeamPicker.Items[TeamPicker.SelectedIndex];
 
-            //if (team != "" && stoppedTime != "")
-            //{
-            //    Result result = new Result();
-            //    result.finishingTime = test;
+            if (selectedTeam != null && stoppedTime != null)
+            {
+                Result result = new Result();
+                result.time = test;
 
-            //    ApiService apiService = new ApiService();
-            //    await apiService.AddResult(result);
+                ApiService apiService = new ApiService();
+                await apiService.AddResult(result);
 
-            //}
+            }
+            else
+            {
+                DisplayAlert("Achtung", "Es wurde kein Team ausgewählt.", "OK");
+            }
 
             // label to make stopped time visible
             label_getTime.Text = test;
-
-
         }
 
         private void btn_TimeInputPage_Clicked(object sender, EventArgs e)
