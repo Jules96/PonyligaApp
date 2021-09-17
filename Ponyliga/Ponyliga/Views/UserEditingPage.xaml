@@ -1,13 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Ponyliga.Views.CreateUserPage" Title="Registrieren"
-             xmlns:pages="clr-namespace:Ponyliga.Views">
-
+             x:Class="Ponyliga.Views.UserEditingPage" Title="Ändern">
     <ContentPage.Content>
-
         <StackLayout>
-
 
             <Label Text="Vorname: " />
             <Entry x:Name="userFirstName"
@@ -33,10 +29,8 @@
                 IsPassword="True" 
                    Placeholder="Passwort" />
 
-            <Button Text="Registrierem" Clicked="btn_newUser_Clicked"/>
+            <Button Text="Ändern" Clicked="btn_newUser_Clicked"/>
 
         </StackLayout>
-
     </ContentPage.Content>
-
 </ContentPage>

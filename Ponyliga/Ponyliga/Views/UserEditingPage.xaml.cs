@@ -12,9 +12,9 @@ using Ponyliga.Services;
 namespace Ponyliga.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CreateUserPage : ContentPage
+    public partial class UserEditingPage : ContentPage
     {
-        public CreateUserPage()
+        public UserEditingPage()
         {
             InitializeComponent();
 
@@ -29,15 +29,15 @@ namespace Ponyliga.Views
             string firstName = userFirstName.Text;
             string lastName = userLastName.Text;
             int rights = userRightsPicker.SelectedIndex;
-            
-            
+
+
             string loginName = userLoginName.Text;
             string password = userPassword.Text;
 
             //Liste
 
 
-            if(rights != -1)
+            if (rights != -1)
             {
                 User user = new User();
                 user.id = default;
@@ -48,7 +48,7 @@ namespace Ponyliga.Views
                 user.userPrivileges = rights;
 
                 ApiService apiService = new ApiService();
-                apiService.AddUser(user);
+                apiService.UpdateUser(user.id, user);
 
                 Navigation.PushAsync(new MainPageAfterLogin());
             }
@@ -56,11 +56,6 @@ namespace Ponyliga.Views
             {
                 DisplayAlert("Fehler", "Es wurden nicht alle Felder ausgefüllt!", "OK");
             }
-
-            
-
         }
-
-
     }
 }
