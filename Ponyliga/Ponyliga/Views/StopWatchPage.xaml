@@ -14,8 +14,7 @@
                 Text="Stoppuhr"
                 FontSize="25"
                 FontAttributes="Bold"
-                TextColor="#FFFF"
-                Margin="0, 0, 0, 0">
+                TextColor="#FFFF">
             </Label>
             
         </StackLayout>
@@ -28,16 +27,38 @@
             <Label 
                 x:Name="label_Logged_as" />
 
-            <!--TeamsDB-->
             <Picker
                 x:Name="TeamPicker"
-                Title="Team auswählen"
+                Title="Team auswählen*"
                 FontAttributes="Italic"
                 FontSize="20"
                 VerticalOptions="Start"
                 SelectedIndexChanged="TeamPicker_OnSelectedIndexChanged">
-                
             </Picker>
+
+            <Picker
+                x:Name="GamePicker"
+                Title="Spiel auswählen*" 
+                FontAttributes="Italic"
+                FontSize="20"
+                VerticalOptions="Start"
+                SelectedIndexChanged="GamePicker_OnSelectedIndexChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Slalom</x:String>
+                        <x:String>Becherrennen</x:String>
+                        <x:String>Steine</x:String>
+                        <x:String>Sacklaufen</x:String>
+                        <x:String>Flaggenrennen</x:String>
+                        <x:String>Kartoffelrennen</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Label 
+                Text="* Pflichtfelder"
+                FontSize="Micro"
+                Margin="10,-10,0,0"/>
 
             <Label
                 x:Name="label_result"
@@ -95,12 +116,13 @@
                 Clicked="btn_TransmitResults_Clicked"/>
 
             <Button 
+                x:Name="btn_LinkToTimeInputPage"
                 Text="Manuelle Zeiteingabe"
                 TextTransform="None"
                 FontSize="20"
                 FontAttributes="Bold"
                 Padding="20"
-                Margin="0, 235, 0, 0"
+                Margin="0, 150, 0, 0"
                 VerticalOptions="End"
                 Clicked="btn_TimeInputPage_Clicked"/>
 

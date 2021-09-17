@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Ponyliga.Models;
+using Ponyliga.Services;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -16,24 +19,83 @@ namespace Ponyliga.Views
     // page for manual time input
     public partial class TimeInputPage : ContentPage
     {
+        public List<Team> taskTeam;
+
         public TimeInputPage()
         {
             InitializeComponent();
+
+            FillTeamList();
         }
 
-        private void btn_AcceptResult_Clicked(object sender, EventArgs e)
+        public async void FillTeamList()
+        {
+            ApiService apiService = new ApiService();
+            taskTeam = await apiService.GetAllTeams();
+
+            ArrayList teamList = new ArrayList();
+
+            foreach (var team in taskTeam)
+            {
+                teamList.Add(team.name);
+            }
+
+            TeamPicker.ItemsSource = teamList;
+        }
+
+        public void TeamPicker_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            //int teamID = TeamPicker.SelectedIndex;
+            string team = TeamPicker.Items[TeamPicker.SelectedIndex];
+            //DisplayAlert(team, "wurde als Team ausgewählt", "OK");
+        }
+
+        public void GamePicker_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            string game = GamePicker.Items[GamePicker.SelectedIndex];
+            //DisplayAlert(game, "wurde als Spiel ausgewählt", "OK");
+        }
+
+        private void btn_TransmitResults_Clicked(object sender, EventArgs e)
         {
             // saves time in a label
-            label_manual_result.Text = timeInput1.Text + " : " + timeInput2.Text + " : " + timeInput3.Text + " ." + timeInput4.Text;
+            label_manual_result.Text = timeInput1.Text + ":" + timeInput2.Text + ":" + timeInput3.Text + "." + timeInput4.Text;
+            var stoppedTime = label_manual_result.Text;
+            string convertedTime = stoppedTime.ToString();
 
+            if (TeamPicker.SelectedIndex > -1 && GamePicker.SelectedIndex > -1 && stoppedTime != null)
+            {
+                string selectedTeam = TeamPicker.Items[TeamPicker.SelectedIndex];
+                var teams = taskTeam;
+                int teamId = teams.Find(t => t.name == selectedTeam).id;
+                string selectedGame = GamePicker.Items[GamePicker.SelectedIndex];
+
+                Result result = new Result();
+                result.gameDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                result.id = default;
+                result.game = selectedGame;
+                result.time = convertedTime;
+                result.teamId = teamId;
+
+                ApiService apiService = new ApiService();
+                apiService.AddResult(result);
+
+                DisplayAlert("Übermittelt!", "Die Zeit für " + selectedTeam + " wurde hinzugefügt.", "OK");
+
+                Navigation.PushAsync(new TimeInputPage());
+            }
+            else
+            {
+                DisplayAlert("Fehler", "Mit * markierte Felder wurden nicht oder fehlerhaft ausgefüllt.", "OK");
+            }
+
+            
 
             // label_manuel_result.Text = TEST_entry_behavior.Text;
 
             // DBConnection
         }
     }
-
-    // <-- now it takes the right range - test successful -->
 
     // limit the keyboard input in range to the time value
 
@@ -43,7 +105,7 @@ namespace Ponyliga.Views
     {
         protected Action<Entry, string> AdditionalCheck;
 
-        public int MaximumAmount { get; set; } = 24;
+        public int MaximumAmount { get; set; } = 23;
 
         public MaxHourAmountEntryBehavior()
         {
