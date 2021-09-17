@@ -28,7 +28,7 @@ namespace Ponyliga.Views
 
         private void btn_Register_Clicked(object sender, EventArgs e)
         {
-           /* User user = new User();
+            User user = new User();
             user.id = default;
             user.firstName = default;
             user.surName = default;
@@ -44,9 +44,9 @@ namespace Ponyliga.Views
             if(result)
             {
                 Navigation.PushAsync(new CreateUserPage());
-            }*/
+            }
 
-            Navigation.PushAsync(new CreateUserPage());
+            //Navigation.PushAsync(new CreateUserPage());
         }
 
         private void btn_MainPage_Clicked(object sender, EventArgs e)
