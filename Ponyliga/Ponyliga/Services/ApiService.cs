@@ -129,14 +129,15 @@ namespace Ponyliga.Services
 
             string UserSerializer =
                 JsonSerializer.Serialize<User>(user, options);
-
+            
             StringContent content = new StringContent(UserSerializer.ToString(), Encoding.UTF8, "application/json");
-            var response = await httpClient.PostAsync(uri, content);
-
-            if (response.IsSuccessStatusCode)
+            var response =  httpClient.PostAsync(uri, content);
+            
+            if (response.Result.ToString().Contains("200"))
             {
                 return true;
             }
+            
 
             return false;
         }
@@ -152,7 +153,7 @@ namespace Ponyliga.Services
 
             var json = JsonConvert.SerializeObject(user);
             StringContent content = new StringContent(json.ToString(), Encoding.UTF8, "application/json");
-
+            var response = await httpClient.PutAsync(uri, content);
 
         }
 
@@ -473,6 +474,28 @@ namespace Ponyliga.Services
             httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
 
             string uri = GetUrl("result");
+            var data = await httpClient.GetAsync(uri);
+
+            if (data.IsSuccessStatusCode)
+            {
+                var respContent = await data.Content.ReadAsStringAsync();
+                var settings = new JsonSerializerSettings
+                {
+                    Formatting = Formatting.Indented
+                };
+
+                return await Task.Run(() => JsonConvert.DeserializeObject<List<Result>>(respContent, settings));
+
+            }
+            return null;
+        }
+
+        public async Task<List<Result>> GetResultSummary()
+        {
+            httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
+
+            string uri = GetUrl("result/summary");
             var data = await httpClient.GetAsync(uri);
 
             if (data.IsSuccessStatusCode)

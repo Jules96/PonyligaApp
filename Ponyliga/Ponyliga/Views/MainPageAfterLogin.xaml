@@ -36,14 +36,17 @@
 
             <Button Text="Logout" 
                     Clicked="btn_LogOut_Clicked" />
+            <Button Text="Benutzer"
+                    Clicked="btn_User_Clicked"/>
             <Button Text="Tabelle"
                     Clicked="btn_Table_Clicked" />
-            <Button Text="Gruppen" />
             <Button Text="Teams" 
                     Clicked="btn_EditTeams_Clicked"/>
             <Button Text="Tabelle bearbeiten" />
             <Button Text="Stoppuhr" 
                     Clicked="btn_StopWatch_Clicked"/>
+            <Button Text="Gruppen" 
+                    Clicked="btn_Group_Clicked"/>
             <Button Text="Impressum" />
             <Button Text="Rechte" />
         </StackLayout>

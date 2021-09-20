@@ -7,28 +7,16 @@
              Title="Stoppuhr" >
 
     <NavigationPage.TitleView>
-        <StackLayout
-            HorizontalOptions="Center"
-            VerticalOptions="Center"
-            Orientation="Horizontal">
+        <StackLayout>
 
             <Label
                 x:Name="Stoppuhr"
                 Text="Stoppuhr"
                 FontSize="25"
                 FontAttributes="Bold"
-                TextColor="#FFFF"
-                Margin="0, 0, 50, 0"
-                HorizontalOptions="Center" 
-                VerticalTextAlignment="Center"/>
-
-            <Button 
-                Text="Logout"
-                TextTransform="None"
-                Clicked="btn_LogOut_Clicked"
-                HorizontalOptions="EndAndExpand" 
-                VerticalOptions="EndAndExpand"/>
-
+                TextColor="#FFFF">
+            </Label>
+            
         </StackLayout>
     </NavigationPage.TitleView>
 
@@ -39,31 +27,38 @@
             <Label 
                 x:Name="label_Logged_as" />
 
-            <!--TeamsDB-->
             <Picker
                 x:Name="TeamPicker"
-                Title="Team auswählen"
+                Title="Team auswählen*"
                 FontAttributes="Italic"
                 FontSize="20"
                 VerticalOptions="Start"
-                SelectedIndexChanged="TeamPicker_OnSelectedIndexChanged"
-                >
-                <!--ItemsSource="{Binding Teams}"-->
-
-                <!--<Picker.ItemDisplayBinding>
-                    <Binding 
-                        Path="">
-                    </Binding>
-                </Picker.ItemDisplayBinding>-->
-
-                <!--<Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Team A</x:String>
-                        <x:String>Team B</x:String>
-                        <x:String>Team C</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>-->
+                SelectedIndexChanged="TeamPicker_OnSelectedIndexChanged">
             </Picker>
+
+            <Picker
+                x:Name="GamePicker"
+                Title="Spiel auswählen*" 
+                FontAttributes="Italic"
+                FontSize="20"
+                VerticalOptions="Start"
+                SelectedIndexChanged="GamePicker_OnSelectedIndexChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Slalom</x:String>
+                        <x:String>Becherrennen</x:String>
+                        <x:String>Steine</x:String>
+                        <x:String>Sacklaufen</x:String>
+                        <x:String>Flaggenrennen</x:String>
+                        <x:String>Kartoffelrennen</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Label 
+                Text="* Pflichtfelder"
+                FontSize="Micro"
+                Margin="10,-10,0,0"/>
 
             <Label
                 x:Name="label_result"
@@ -110,15 +105,26 @@
 
             </StackLayout>
 
+            <Label 
+                x:Name="label_getTime"
+                Text="" />
+
             <Button 
-                    Text="Manuelle Zeiteingabe"
-                    TextTransform="None"
-                    FontSize="20"
-                    FontAttributes="Bold"
-                    Padding="20"
-                    Margin="0, 300, 0, 0"
-                    VerticalOptions="End"
-                    Clicked="btn_ManuelResult_Clicked"/>
+                x:Name="btn_TransmitResults"
+                Text="Übermitteln"
+                TextTransform="None"
+                Clicked="btn_TransmitResults_Clicked"/>
+
+            <Button 
+                x:Name="btn_LinkToTimeInputPage"
+                Text="Manuelle Zeiteingabe"
+                TextTransform="None"
+                FontSize="20"
+                FontAttributes="Bold"
+                Padding="20"
+                Margin="0, 150, 0, 0"
+                VerticalOptions="End"
+                Clicked="btn_TimeInputPage_Clicked"/>
 
         </StackLayout>
     </ContentPage.Content>

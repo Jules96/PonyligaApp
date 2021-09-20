@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ponyliga.Views.UserDeletionPage" Title="Löschen">
+    <ContentPage.Content>
+        <StackLayout>
+            <Picker x:Name="UserPicker"
+                    Title="User auswählen*" 
+                    FontSize="30" 
+                    SelectedIndexChanged="UserPicker_OnSelectedIndexChanged"/>
+
+
+            <Button Text="User löschen" Clicked="btn_deleteUser_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
