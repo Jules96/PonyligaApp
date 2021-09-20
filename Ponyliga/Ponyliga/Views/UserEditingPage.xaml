@@ -4,7 +4,6 @@
              x:Class="Ponyliga.Views.UserEditingPage" Title="Ändern">
     <ContentPage.Content>
         <StackLayout>
-
             <Picker x:Name="UserPicker"
                     Title="User auswählen*" 
                     FontSize="30" 
@@ -26,7 +25,6 @@
             <Entry x:Name="userPassword"
                 IsPassword="True" 
                    Placeholder="Passwort" />
-
 
             <Button Text="Ändern" Clicked="btn_editUser_Clicked"/>
 

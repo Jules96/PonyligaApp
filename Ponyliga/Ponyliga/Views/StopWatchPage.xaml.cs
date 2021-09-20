@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Collections.Generic;
 
 namespace Ponyliga.Views
 {
@@ -13,15 +14,18 @@ namespace Ponyliga.Views
     {
         StopWatch stopWatch;
 
+        public List<Team> taskTeam;
+
         public StopWatchPage()
         {
-            FillTeamList();
             InitializeComponent();
+
+            FillTeamList();
 
             stopWatch = new StopWatch();
 
-            // shows the correct time formatting
             BindingContext = stopWatch;
+            // shows the correct time formatting at the beginning
             stopWatch.Time = "00:00:00.00";
 
             btn_Continue.IsEnabled = false;
@@ -34,17 +38,20 @@ namespace Ponyliga.Views
             Navigation.PushAsync(new LogInPage());
         }
 
+        // API Request lagged
         // fills the picker with the registered teams
         public async void FillTeamList()
         {
             ApiService apiService = new ApiService();
-            var taskTeam = await apiService.GetAllTeams();
+            taskTeam = await apiService.GetAllTeams();
 
             ArrayList teamList = new ArrayList();
 
             foreach (var team in taskTeam)
+            {
                 teamList.Add(team.name);
-
+            }
+            
             TeamPicker.ItemsSource = teamList;
         }
 
@@ -52,7 +59,13 @@ namespace Ponyliga.Views
         {
             //int teamID = TeamPicker.SelectedIndex;
             string team = TeamPicker.Items[TeamPicker.SelectedIndex];
-            DisplayAlert(team, "wurde als Team ausgewählt", "OK");
+            //DisplayAlert(team, "wurde als Team ausgewählt", "OK");
+        }
+
+        public void GamePicker_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            string game = GamePicker.Items[GamePicker.SelectedIndex];
+            //DisplayAlert(game, "wurde als Spiel ausgewählt", "OK");
         }
 
         private void btn_Start_Clicked(object sender, EventArgs e)
@@ -99,28 +112,39 @@ namespace Ponyliga.Views
             btn_Reset.IsEnabled = false;
         }
 
-        private async void btn_TransmitResults_Clicked(object sender, EventArgs e)
+        private void btn_TransmitResults_Clicked(object sender, EventArgs e)
         {
             var stoppedTime = stopWatch.Time;
-            // convert stoppedTime into a string => necessary?
-            string test = stoppedTime.ToString();
+            string convertedTime = stoppedTime.ToString();
+            
+            if (TeamPicker.SelectedIndex > -1 && GamePicker.SelectedIndex > -1 && stoppedTime != null)
+            {
+                string selectedTeam = TeamPicker.Items[TeamPicker.SelectedIndex];
+                var teams = taskTeam;
+                int teamId = teams.Find(t => t.name == selectedTeam).id;
+                string selectedGame = GamePicker.Items[GamePicker.SelectedIndex];
 
-            //string team = TeamPicker.Items[TeamPicker.SelectedIndex];
+                Result result = new Result();
+                result.gameDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                result.id = default;
+                result.game = selectedGame;
+                result.time = convertedTime;
+                result.teamId = teamId;
 
-            //if (team != "" && stoppedTime != "")
-            //{
-            //    Result result = new Result();
-            //    result.finishingTime = test;
+                ApiService apiService = new ApiService();
+                apiService.AddResult(result);
 
-            //    ApiService apiService = new ApiService();
-            //    await apiService.AddResult(result);
+                DisplayAlert("Übermittelt!", "Die Zeit für "+ selectedTeam + " wurde hinzugefügt.", "OK");
 
-            //}
+                Navigation.PushAsync(new StopWatchPage());
+            }
+            else
+            {
+                DisplayAlert("Fehler", "Mit * markierte Felder wurden nicht oder fehlerhaft ausgefüllt.", "OK");
+            }
 
             // label to make stopped time visible
-            label_getTime.Text = test;
-
-
+            // label_getTime.Text = convertetTime;
         }
 
         private void btn_TimeInputPage_Clicked(object sender, EventArgs e)

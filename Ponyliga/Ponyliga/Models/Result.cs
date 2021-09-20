@@ -16,7 +16,7 @@ namespace Ponyliga.Models
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public int id { get; set; }
-        public DateTime gameDate { get; set; }
+        public String gameDate { get; set; }
         public String game { get; set; }
         public int position { get; set; }
         public String time { get; set; }

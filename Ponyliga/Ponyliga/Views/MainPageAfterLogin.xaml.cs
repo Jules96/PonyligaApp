@@ -46,5 +46,10 @@ namespace Ponyliga.Views
         {
             Navigation.PushAsync(new UserTablePage());
         }
+
+        private void btn_Group_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CreateGroup());
+        }
     }
 }

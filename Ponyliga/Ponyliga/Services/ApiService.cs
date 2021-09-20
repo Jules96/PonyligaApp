@@ -129,14 +129,15 @@ namespace Ponyliga.Services
 
             string UserSerializer =
                 JsonSerializer.Serialize<User>(user, options);
-
+            
             StringContent content = new StringContent(UserSerializer.ToString(), Encoding.UTF8, "application/json");
-            var response = await httpClient.PostAsync(uri, content);
-
-            if (response.IsSuccessStatusCode)
+            var response =  httpClient.PostAsync(uri, content);
+            
+            if (response.Result.ToString().Contains("200"))
             {
                 return true;
             }
+            
 
             return false;
         }

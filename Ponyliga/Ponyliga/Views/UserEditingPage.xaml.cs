@@ -19,7 +19,6 @@ namespace Ponyliga.Views
         public UserEditingPage()
         {
             InitializeComponent();
-
             FillUserList();
 
             userRightsPicker.Items.Add("User");
