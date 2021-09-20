@@ -80,20 +80,34 @@ namespace Ponyliga.Views
            
             int num_groups = int.Parse(groupSize.Text);
 
-            int group_num = 0;
+            int group_num = 1;
+            int numCount = 1;
 
-            
-
-            for (int i = 0; i < teamCount; i++)
-            {
-                Users.Add(new RandomizeGroup { groupNr = group_num, groupName = shuffledcards[i], Bande= "r", BackColour = BackgroundList [i]});
-                group_num = ++group_num % num_groups;
-            }
             ArrayList arrayList = new ArrayList(listSorted);
             listViewRandomTeam.ItemsSource = Users;
+           
+
+            for (int i = 0; i < teamCount; i++)
+            {            
+                
+                Users.Add(new RandomizeGroup { groupNr = group_num, groupName = shuffledcards[i], Bande= "r", BackColour = BackgroundList [group_num] });
+                //group_num = ++group_num % num_groups;
+                if( numCount < num_groups)
+                {
+                    numCount++;
+                    
+                }
+                else
+                    {
+                    numCount = 1;
+                    group_num++;
+                    Users.Add(new RandomizeGroup { groupNr = null, groupName = "", Bande = "", BackColour = "LightBlue" });
+                }
+            }
 
 
-            
+
+
         }
 
         async void Handle_ItemiTapped(object sender, ItemTappedEventArgs e)
