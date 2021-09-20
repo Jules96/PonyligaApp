@@ -27,6 +27,11 @@ namespace Ponyliga.Views
             Navigation.PushAsync(new LogInPage());
         }
 
+        private void btn_User_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new UserPage());
+        }
+
         private void btn_EditTeams_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new TeamsPage());

@@ -8,7 +8,6 @@
 
         <StackLayout>
 
-
             <Label Text="Vorname: " />
             <Entry x:Name="userFirstName"
                 Placeholder="Vorname" />
