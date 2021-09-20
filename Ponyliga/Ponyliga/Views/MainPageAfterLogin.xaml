@@ -36,6 +36,8 @@
 
             <Button Text="Logout" 
                     Clicked="btn_LogOut_Clicked" />
+            <Button Text="Benutzer"
+                    Clicked="btn_User_Clicked"/>
             <Button Text="Tabelle"
                     Clicked="btn_Table_Clicked" />
             <Button Text="Teams" 
