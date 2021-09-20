@@ -47,8 +47,7 @@ namespace Ponyliga.Views
                 user.passwordHash = password;
                 user.userPrivileges = rights;
 
-                ApiService apiService = new ApiService();
-                apiService.UpdateUser(user.id, user);
+               
 
                 Navigation.PushAsync(new MainPageAfterLogin());
             }
