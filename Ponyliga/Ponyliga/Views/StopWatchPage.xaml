@@ -59,22 +59,27 @@
                 Text="* Pflichtfelder"
                 FontSize="Micro"
                 Margin="10,-10,0,0"/>
+            
+            <Frame
+                HasShadow="True"
+                Margin="10,10,10,10"
+                CornerRadius="10"
+                BorderColor="Black">
 
-            <Label
-                x:Name="label_result"
-                Text="" 
-                TextColor="Black"
-                FontSize="50"
-                Padding="30"
-                HorizontalOptions="Center"
-                VerticalOptions="CenterAndExpand">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="{Binding Time}"/>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-
+                <Label
+                    x:Name="label_result"
+                    Text="" 
+                    TextColor="Black"
+                    FontSize="50"
+                    HorizontalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding Time}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Frame>
+            
             <StackLayout 
                 Orientation="Horizontal"
                 VerticalOptions="CenterAndExpand">
@@ -113,6 +118,11 @@
                 x:Name="btn_TransmitResults"
                 Text="Übermitteln"
                 TextTransform="None"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                HeightRequest="50"
+                WidthRequest="150"
+                CornerRadius="20"
                 Clicked="btn_TransmitResults_Clicked"/>
 
             <Button 
@@ -121,8 +131,11 @@
                 TextTransform="None"
                 FontSize="20"
                 FontAttributes="Bold"
-                Padding="20"
-                Margin="0, 150, 0, 0"
+                HorizontalOptions="Center"
+                HeightRequest="80"
+                WidthRequest="250"
+                CornerRadius="100"
+                Margin="0, 120, 0, 0"
                 VerticalOptions="End"
                 Clicked="btn_TimeInputPage_Clicked"/>
 

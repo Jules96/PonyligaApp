@@ -73,146 +73,112 @@
             <Label
                 x:Name="label_manual_result"
                 Text=""
-                HorizontalOptions="Center">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <!--<Span Text="{Binding GetTime}"/>-->
-                    </FormattedString>
-                </Label.FormattedText>
+                HorizontalOptions="Center">                
             </Label>
 
-            <!--manual time input-->
-            <StackLayout
-                Orientation="Horizontal"
-                HorizontalOptions="Center">
+            <Frame
+                HasShadow="True"
+                Margin="10,-10,10,10"
+                CornerRadius="20"
+                BorderColor="Black">
 
-                <Entry
-                    x:Name="timeInput1"
-                    Placeholder="00"
-                    Keyboard="Numeric"
-                    MaxLength="2"
-                    FontSize="40"
-                    WidthRequest="75"
-                    HorizontalTextAlignment="Center"
-                    ClearButtonVisibility="WhileEditing">
-                    <Entry.Behaviors>
-                        <local:MaxHourAmountEntryBehavior/>
-                    </Entry.Behaviors>
-                </Entry>
+                <!--manual time input-->
+                <StackLayout
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center">
 
-                <Label
-                    VerticalOptions="Center"
-                    Text=":"
-                    FontSize="40">
-                </Label>
+                    <Entry
+                        x:Name="timeInputHour"
+                        Placeholder="hh"
+                        Keyboard="Numeric"
+                        MaxLength="2"
+                        FontSize="30"
+                        WidthRequest="65"
+                        HorizontalTextAlignment="Center"
+                        ClearButtonVisibility="WhileEditing">
+                        <Entry.Behaviors>
+                            <local:MaxHourAmountEntryBehavior/>
+                        </Entry.Behaviors>
+                    </Entry>
 
-                <Entry
-                    x:Name="timeInput2"
-                    Placeholder="00"
-                    Keyboard="Numeric"
-                    MaxLength="2"
-                    FontSize="40"
-                    WidthRequest="75"
-                    HorizontalTextAlignment="Center"
-                    ClearButtonVisibility="WhileEditing">
-                    <Entry.Behaviors>
-                        <local:MaxMinuteAmountEntryBehavior/>
-                    </Entry.Behaviors>
-                </Entry>
+                    <Label
+                        VerticalOptions="Center"
+                        Text=":"
+                        FontSize="40"
+                        Margin="-5,0">
+                    </Label>
 
-                <Label
-                    VerticalOptions="Center"
-                    Text=":"
-                    FontSize="40">
-                </Label>
+                    <Entry
+                        x:Name="timeInputMin"
+                        Placeholder="mm"
+                        Keyboard="Numeric"
+                        MaxLength="2"
+                        FontSize="30"
+                        WidthRequest="65"
+                        HorizontalTextAlignment="Center"
+                        ClearButtonVisibility="WhileEditing">
+                        <Entry.Behaviors>
+                            <local:MaxMinuteAmountEntryBehavior/>
+                        </Entry.Behaviors>
+                    </Entry>
 
-                <Entry
-                    x:Name="timeInput3"
-                    Placeholder="00"
-                    Keyboard="Numeric"
-                    MaxLength="2"
-                    FontSize="40"
-                    WidthRequest="75"
-                    HorizontalTextAlignment="Center"
-                    ClearButtonVisibility="WhileEditing">
-                    <Entry.Behaviors>
-                        <local:MaxSecAmountEntryBehavior/>
-                    </Entry.Behaviors>
-                </Entry>
+                    <Label
+                        VerticalOptions="Center"
+                        Text=":"
+                        FontSize="40"
+                        Margin="-5,0">
+                    </Label>
 
-                <Label
-                    VerticalOptions="Center"
-                    Text="."
-                    FontSize="40">
-                </Label>
+                    <Entry
+                        x:Name="timeInputSec"
+                        Placeholder="ss"
+                        Keyboard="Numeric"
+                        MaxLength="2"
+                        FontSize="30"
+                        WidthRequest="65"
+                        HorizontalTextAlignment="Center"
+                        ClearButtonVisibility="WhileEditing">
+                        <Entry.Behaviors>
+                            <local:MaxSecAmountEntryBehavior/>
+                        </Entry.Behaviors>
+                    </Entry>
 
-                <Entry
-                    x:Name="timeInput4"
-                    Placeholder="00"
-                    Keyboard="Numeric"
-                    MaxLength="2"
-                    FontSize="40"
-                    WidthRequest="75"
-                    HorizontalTextAlignment="Center"
-                    ClearButtonVisibility="WhileEditing">
-                    <Entry.Behaviors>
-                        <local:MaxMsecAmountEntryBehavior/>
-                    </Entry.Behaviors>
-                </Entry>
+                    <Label
+                        VerticalOptions="Center"
+                        Text="."
+                        FontSize="40"
+                        Margin="-5,0">
+                    </Label>
 
+                    <Entry
+                        x:Name="timeInputMsec"
+                        Placeholder="ms"
+                        Keyboard="Numeric"
+                        MaxLength="2"
+                        FontSize="30"
+                        WidthRequest="65"
+                        HorizontalTextAlignment="Start"
+                        ClearButtonVisibility="WhileEditing">
+                        <Entry.Behaviors>
+                            <local:MaxMsecAmountEntryBehavior/>
+                        </Entry.Behaviors>
+                    </Entry>
 
-
-
-
-                <!--General TESTs for behaviors and masks-->
-
-
-                <!--<Entry
-                    x:Name="entry_behavior"
-                    Placeholder="Enter numbers"
-                    FontSize="Large">
-                    <Entry.Behaviors>
-                        <local:CustomBehavior/>
-                    </Entry.Behaviors>
-                </Entry>-->
-
-
-
-                <!--Test with one Entry + Format Mask-->
-                <!--<Entry
-                    x:Name="TEST_entry_behavior"
-                    Placeholder="Enter numbers"
-                    FontSize="Large"
-                    Keyboard="Numeric">
-                    <Entry.Behaviors>
-                        <local:CustomBehavior Mask="XX:XX:XX.XXX"/>
-                    </Entry.Behaviors>
-                </Entry>-->
-
-
-
-
-                <!--Test - finally it works-->
-                <!--<Entry
-                    x:Name="TEST_entry_behavior"
-                    Keyboard="Numeric"
-                    Placeholder="Enter numbers"
-                    FontSize="Large"
-                    ClearButtonVisibility="WhileEditing">
-                    <Entry.Behaviors>
-                        <local:MaxMsecAmountEntryBehavior MaximumAmount="999"/>
-                    </Entry.Behaviors>
-                </Entry>-->
-
-            </StackLayout>
+                </StackLayout>
+            </Frame>
 
             <Button
                 x:Name="btn_AcceptResult"
                 Text="Übermitteln"
-                Clicked="btn_TransmitResults_Clicked"
-                TextTransform="None">
+                FontAttributes="Bold"
+                TextTransform="None"
+                HorizontalOptions="Center"
+                HeightRequest="50"
+                WidthRequest="150"
+                CornerRadius="100"
+                Clicked="btn_TransmitResults_Clicked">
             </Button>
-
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
