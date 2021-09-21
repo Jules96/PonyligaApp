@@ -1,43 +1,74 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Ponyliga.Views.LogInPage" Title="Login">
+             x:Class="Ponyliga.Views.LogInPage" 
+             Title="Login">
 
     <NavigationPage.TitleView>
         <StackLayout
-            HorizontalOptions="Center"
-            VerticalOptions="Center"
             Orientation="Horizontal">
+
             <Label
                 x:Name="Login"
                 Text="Login"
                 FontSize="25"
                 FontAttributes="Bold"
                 TextColor="#FFFF"
-                HorizontalOptions="Center" 
-                VerticalTextAlignment="Center"/>
-            <Button 
+                HorizontalOptions="Start"
+                VerticalOptions="Center"/>
+
+            <Button
                 Text="Zurück"
                 TextTransform="None"
-                Clicked="btn_MainPage_Clicked"
-                HorizontalOptions="EndAndExpand" 
-                VerticalOptions="EndAndExpand"/>
+                FontAttributes="Bold"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Clicked="btn_MainPage_Clicked" 
+                Margin="110,0,0,0"
+                CornerRadius="100" 
+                BackgroundColor="#ED03FC">
+            </Button>
+
         </StackLayout>
     </NavigationPage.TitleView>
 
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout
+            Margin="0,20,0,0">
+
             <Entry 
                 Placeholder="Benutzername"
+                FontSize="Title"
                 x:Name= "username"/>
-            <Entry IsPassword="True"  
-                   Placeholder="Passwort"
-                   x:Name= "password"/>
-            <Button Text="Anmelden" 
+
+            <Entry 
+                IsPassword="True"  
+                Placeholder="Passwort"
+                FontSize="Title"
+                x:Name= "password"/>
+
+            <StackLayout
+                Orientation="Horizontal"
+                HorizontalOptions="Center"
+                Margin="0,20,0,0">
+
+                <Button 
+                    Text="Anmelden" 
+                    CornerRadius="100"
+                    HorizontalOptions="Center"
+                    HeightRequest="50"
+                    WidthRequest="150"
                     Clicked="btn_LogIn_Clicked" />
-            <Button Text="Registrieren" 
+
+                <Button 
+                    Text="Registrieren" 
+                    CornerRadius="100"
+                    HorizontalOptions="Center"
+                    HeightRequest="50"
+                    WidthRequest="150"
                     Clicked="btn_Register_Clicked" />
+
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
-    
 </ContentPage>

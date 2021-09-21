@@ -59,8 +59,8 @@ namespace Ponyliga.Views
         private void btn_TransmitResults_Clicked(object sender, EventArgs e)
         {
             // saves time in a label
-            label_manual_result.Text = timeInput1.Text + ":" + timeInput2.Text + ":" + timeInput3.Text + "." + timeInput4.Text;
-            var stoppedTime = label_manual_result.Text;
+            //label_manual_result.Text = timeInputHour.Text + ":" + timeInputMin.Text + ":" + timeInputSec.Text + "." + timeInputMsec.Text;
+            var stoppedTime = timeInputHour.Text + ":" + timeInputMin.Text + ":" + timeInputSec.Text + "." + timeInputMsec.Text;
             string convertedTime = stoppedTime.ToString();
 
             if (TeamPicker.SelectedIndex > -1 && GamePicker.SelectedIndex > -1 && stoppedTime != null)
@@ -88,12 +88,6 @@ namespace Ponyliga.Views
             {
                 DisplayAlert("Fehler", "Mit * markierte Felder wurden nicht oder fehlerhaft ausgefüllt.", "OK");
             }
-
-            
-
-            // label_manuel_result.Text = TEST_entry_behavior.Text;
-
-            // DBConnection
         }
     }
 
@@ -220,7 +214,7 @@ namespace Ponyliga.Views
         }
     }
 
-    // Check for milliseconds
+    // Check for milliseconds cut to two decimal places
     public class MaxMsecAmountEntryBehavior : Behavior<Entry>
     {
         protected Action<Entry, string> AdditionalCheck;
