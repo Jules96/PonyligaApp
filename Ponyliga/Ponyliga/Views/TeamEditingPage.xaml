@@ -5,9 +5,27 @@
              Title="Team bearbeiten">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+
+            <Picker x:Name="TeamPicker"
+                    Title="Team auswählen*" 
+                    FontSize="30" 
+                    SelectedIndexChanged="TeamPicker_OnSelectedIndexChanged"/>
+
+            <Label Text="Clubname: "/>
+            <Entry x:Name="teamClubname"
+                   Placeholder="Clubname"/>
+
+            <!--<Label Text="Teamname: "/>
+            <Entry x:Name="teamTeamname"
+                   Placeholder="Teamname"/>-->
+
+            <Label Text="Name des Vertreter: "/>
+            <Entry x:Name="teamConsultor"
+                   Placeholder="Vertreter"/>
+
+            <Button Text="Ändern"
+                    Clicked="btn_editTeam_Clicked"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
