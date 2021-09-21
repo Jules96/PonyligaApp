@@ -33,6 +33,7 @@ namespace Ponyliga.Views
             
             string loginName = userLoginName.Text;
             string password = userPassword.Text;
+            string id;
 
             //Liste
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,46 +15,67 @@ namespace Ponyliga.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UserEditingPage : ContentPage
     {
+        public List<User> taskUser;
         public UserEditingPage()
         {
             InitializeComponent();
+            FillUserList();
 
-            userRightsPicker.Items.Add("Admin");
             userRightsPicker.Items.Add("User");
-            /*userRightsPicker.Items.Add("Rechte 3");
-            userRightsPicker.Items.Add("Rechte 4");*/
+            userRightsPicker.Items.Add("Admin");
         }
 
-        private void btn_newUser_Clicked(object sender, EventArgs e)
+        public async void FillUserList()
         {
-            string firstName = userFirstName.Text;
-            string lastName = userLastName.Text;
-            int rights = userRightsPicker.SelectedIndex;
+            ApiService apiService = new ApiService();
+            taskUser = await apiService.GetAllUser();
 
+            var listOfUsers = new ArrayList();
 
-            string loginName = userLoginName.Text;
-            string password = userPassword.Text;
-
-            //Liste
-
-
-            if (rights != -1)
+            foreach (var user in taskUser)
             {
-                User user = new User();
-                user.id = default;
-                user.firstName = firstName;
-                user.loginName = loginName;
-                user.surName = lastName;
-                user.passwordHash = password;
-                user.userPrivileges = rights;
-
-               
-
-                Navigation.PushAsync(new MainPageAfterLogin());
+                listOfUsers.Add(user.loginName);
             }
-            else
+
+            UserPicker.ItemsSource = listOfUsers;
+        }
+
+        public void UserPicker_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            string loginName = UserPicker.Items[UserPicker.SelectedIndex];
+            User user = taskUser.Find(u => u.loginName == loginName);
+            userFirstName.Text = user.firstName;
+            userLastName.Text = user.surName;
+            userPassword.Text = user.passwordHash;
+            userRightsPicker.SelectedIndex = user.userPrivileges;
+        }
+
+        private void btn_editUser_Clicked(object sender, EventArgs e)
+        {
+            if (UserPicker.SelectedIndex != -1)
             {
-                DisplayAlert("Fehler", "Es wurden nicht alle Felder ausgefüllt!", "OK");
+                string loginName = UserPicker.Items[UserPicker.SelectedIndex];
+                User listUser = taskUser.Find(u => u.loginName == loginName);
+
+                if (userRightsPicker.SelectedIndex != -1)
+                {
+                    User user = new User();
+                    user.id = listUser.id;
+                    user.firstName = userFirstName.Text;
+                    user.loginName = listUser.loginName;
+                    user.surName = userLastName.Text;
+                    user.passwordHash = userPassword.Text;
+                    user.userPrivileges = userRightsPicker.SelectedIndex;
+
+                    ApiService apiService = new ApiService();
+                    apiService.UpdateUser(user.id.ToString(), user);
+
+                    Navigation.PushAsync(new MainPageAfterLogin());
+                }
+                else
+                {
+                    DisplayAlert("Fehler", "Es wurden nicht alle Felder ausgefüllt!", "OK");
+                }
             }
         }
     }
