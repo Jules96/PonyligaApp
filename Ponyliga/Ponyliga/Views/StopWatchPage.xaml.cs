@@ -33,10 +33,10 @@ namespace Ponyliga.Views
             btn_Reset.IsEnabled = false;
         }
 
-        private void btn_LogOut_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new LogInPage());
-        }
+        //private void btn_LogOut_Clicked(object sender, EventArgs e)
+        //{
+        //    Navigation.PopAsync();
+        //}
 
         // API Request lagged
         // fills the picker with the registered teams
@@ -115,8 +115,23 @@ namespace Ponyliga.Views
         private void btn_TransmitResults_Clicked(object sender, EventArgs e)
         {
             var stoppedTime = stopWatch.Time;
+           // string specifier = "0,0.00";
             string convertedTime = stoppedTime.ToString();
-            
+
+            // irgendwie mit strafsekunden
+
+            //if (penaltyTime.Text != null)
+            //{
+            //    var pTime = penaltyTime.Text;
+
+
+            //    timeIncPenalty.Text = String.Format("{0}: {2}", pTime.ToString(specifier));
+
+            //    //timeIncPenalty.Text = pTime + stoppedTime;
+            //}
+
+
+
             if (TeamPicker.SelectedIndex > -1 && GamePicker.SelectedIndex > -1 && stoppedTime != null)
             {
                 string selectedTeam = TeamPicker.Items[TeamPicker.SelectedIndex];
@@ -134,7 +149,7 @@ namespace Ponyliga.Views
                 ApiService apiService = new ApiService();
                 apiService.AddResult(result);
 
-                DisplayAlert("Übermittelt!", "Die Zeit für "+ selectedTeam + " wurde hinzugefügt.", "OK");
+                DisplayAlert("Übermittelt!", "Die Zeit für " + selectedTeam + " wurde hinzugefügt.", "OK");
 
                 Navigation.PushAsync(new StopWatchPage());
             }
@@ -142,9 +157,6 @@ namespace Ponyliga.Views
             {
                 DisplayAlert("Fehler", "Mit * markierte Felder wurden nicht oder fehlerhaft ausgefüllt.", "OK");
             }
-
-            // label to make stopped time visible
-            // label_getTime.Text = convertetTime;
         }
 
         private void btn_TimeInputPage_Clicked(object sender, EventArgs e)
