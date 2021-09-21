@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -18,11 +19,14 @@ namespace Ponyliga.Views
         ObservableCollection<RandomizeGroup> Users = new ObservableCollection<RandomizeGroup>();
         ObservableCollection<RandomizeGroup> User { get { return Users; } }
         public List<String> BackgroundList = new List<String>();
+        public List<Team> taskTeam;
+
+
         public CreateGroup()
         {
             InitializeComponent();
             this.BindingContext = this;
-            FillBackgroundList();
+            
 
         }
         private void btn_Randomize_Clicked(object sender, EventArgs e)
@@ -45,7 +49,7 @@ namespace Ponyliga.Views
         {
 
             ApiService apiService = new ApiService();
-            var taskTeam = await apiService.GetAllTeams();
+            taskTeam = await apiService.GetAllTeams();
 
             List<string> teamList = new List<string>();
 
@@ -60,10 +64,9 @@ namespace Ponyliga.Views
 
         }
 
-        public void randomizeList(List<string> teamList)
+        public async void randomizeList(List<string> teamList)
         {
             List<String> BackgroundList = new List<String>();
-
             BackgroundList.Add("Red");
             BackgroundList.Add("Blue");
             BackgroundList.Add("Green");
@@ -71,7 +74,7 @@ namespace Ponyliga.Views
             BackgroundList.Add("Pink");
         
 
-        List<RandomizeGroup> listSorted = new List<RandomizeGroup>();
+            List<RandomizeGroup> listSorted = new List<RandomizeGroup>();
             int teamCount = teamList.Count;
 
             
@@ -79,11 +82,34 @@ namespace Ponyliga.Views
             var shuffledcards = teamList.OrderBy(a => Guid.NewGuid()).ToList();
            
             int num_groups = int.Parse(groupSize.Text);
+            decimal totalGroups = Math.Ceiling(Convert.ToDecimal(teamCount/ num_groups));
+            int moduloGroup = teamCount % num_groups;
+            ApiService apiService = new ApiService();
+            List<Group> groupIds = new List<Group>();
+
+
+            
+
+
+            for (int i = 0; i < totalGroups; i++)
+            {
+                var response = await apiService.AddGroup(new Group
+                {
+                    id = default,
+                    name = "Gruppe" + (i + 1),
+                    rule = 0,
+                    groupSize = num_groups,
+                    participants = "name1, name2",
+                    teams = default
+                });
+                groupIds.Add(response);
+
+            }
 
             int group_num = 1;
             int numCount = 1;
 
-            ArrayList arrayList = new ArrayList(listSorted);
+            //ArrayList arrayList = new ArrayList(listSorted);
             listViewRandomTeam.ItemsSource = Users;
            
 
@@ -95,16 +121,19 @@ namespace Ponyliga.Views
                 if( numCount < num_groups)
                 {
                     numCount++;
-                    
+                    Team team = taskTeam.Find(t => t.name == shuffledcards[i]);
+                    team.groupId = groupIds[group_num-1].id;
+                    apiService.UpdateTeam(team.id, team);
                 }
                 else
-                    {
+                {
+
                     numCount = 1;
                     group_num++;
-                    Users.Add(new RandomizeGroup { groupNr = null, groupName = "", Bande = "", BackColour = "LightBlue" });
+                   // Users.Add(new RandomizeGroup { groupNr = null, groupName = "", Bande = "", BackColour = "LightBlue" });
                 }
             }
-
+            // Update Team mit groupid
 
 
 
@@ -121,15 +150,5 @@ namespace Ponyliga.Views
             ((ListView)sender).SelectedItem = null;
         }
 
-        public void FillBackgroundList()
-        {
-           List<String> BackgroundList = new List<String>();
-
-            BackgroundList.Add("Red");
-            BackgroundList.Add("Blue");
-            BackgroundList.Add("Green");
-            BackgroundList.Add("Purple");
-            BackgroundList.Add("Pink");
-        }
     }
 }
