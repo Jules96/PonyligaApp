@@ -29,10 +29,12 @@
         </StackLayout>
     </NavigationPage.TitleView>
 
+
     <StackLayout
         VerticalOptions="FillAndExpand"
         HorizontalOptions="FillAndExpand">
         
+
         <StackLayout
             VerticalOptions="Start">
             
@@ -78,10 +80,12 @@
                 Text="Impressum"
                 HorizontalOptions="StartAndExpand"/>
 
+
             <Button 
                 Text="Rechte" 
                 HorizontalOptions="End"/>
             
+
         </StackLayout>
         
     </StackLayout>
