@@ -47,6 +47,7 @@ namespace Ponyliga.ViewModels
                 string elapsedTime = string.Format("{0:00}:{1:00}:{2:00}.{3:00}",
                     ts.Hours, ts.Minutes, ts.Seconds,
                     ts.Milliseconds / 10);
+                
 
                 
                 Time = elapsedTime.ToString();
@@ -75,12 +76,14 @@ namespace Ponyliga.ViewModels
             StartStopWatch();
         }
 
+
         public String AddPenaltyTime(String stoppedTime, double penTime)
         {
             DateTime parsedTime = DateTime.ParseExact(stoppedTime, "HH:mm:ss.FF", null);
             string result = parsedTime.AddSeconds(penTime).ToString("HH:mm:ss.FF");
 
             return result;
+
         }
     }
 }

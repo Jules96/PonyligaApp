@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Ponyliga.Services;
 
 namespace Ponyliga.Views
 {
@@ -16,14 +17,15 @@ namespace Ponyliga.Views
     public partial class UserPage : ContentPage
     {
 
-        ObservableCollection<User> MyItems = new ObservableCollection<User>();
-        ObservableCollection<User> Item { get { return MyItems; } }
+        ObservableCollection<User> Users = new ObservableCollection<User>();
+        ObservableCollection<User> User { get { return Users; } }
+    
 
         public UserPage()
         {
             InitializeComponent();
+            FillUserList();
 
-            listViewn.ItemsSource = MyItems;
 
             //MyItems.Add(new Team() { name = "Herzlake II", teamSize = 5, consultor = "Harald" });
             //MyItems.Add(new Team() { name = "Herzlake I", teamSize = 5, consultor = "Achim" });
@@ -60,6 +62,19 @@ namespace Ponyliga.Views
         private void btn_Register_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new CreateUserPage());
+        }
+
+        public async void FillUserList()
+        {
+            ApiService apiService = new ApiService();
+            //Task<List<User>> task = apiService.GetAllUser(); 
+            var taskUser = await apiService.GetAllUser();
+
+            listViewUser.ItemsSource = Users;
+
+            foreach (var user in taskUser)
+                Users.Add(new User() {firstName = user.firstName, surName = user.surName, loginName = user.loginName, userPrivileges = user.userPrivileges });
+
         }
     }
 }
