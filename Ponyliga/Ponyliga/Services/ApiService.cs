@@ -342,7 +342,9 @@ namespace Ponyliga.Services
             return false;
         }
 
-        public async Task UpdateTeam(int id, Team team)
+
+        public async Task<bool> UpdateTeam(string id, Team team)
+
         {
             //List<User> users = new List<User>();
             //users.Add(new User { firstName = "Homer", surName = "Simpson", loginName = "HOSIM", passwordHash = "123123", userPrivileges = 1 });
@@ -353,7 +355,14 @@ namespace Ponyliga.Services
 
             var json = JsonConvert.SerializeObject(team);
             StringContent content = new StringContent(json.ToString(), Encoding.UTF8, "application/json");
-            //var response = await httpClient.PutAsync(uri, content);
+            var response = await httpClient.PutAsync(uri, content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+
+            return false;
 
         }
 
