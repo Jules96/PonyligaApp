@@ -74,5 +74,13 @@ namespace Ponyliga.ViewModels
         {
             StartStopWatch();
         }
+
+        public String AddPenaltyTime(String stoppedTime, double penTime)
+        {
+            DateTime parsedTime = DateTime.ParseExact(stoppedTime, "HH:mm:ss.FF", null);
+            string result = parsedTime.AddSeconds(penTime).ToString("HH:mm:ss.FF");
+
+            return result;
+        }
     }
 }

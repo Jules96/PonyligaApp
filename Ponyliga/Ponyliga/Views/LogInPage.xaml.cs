@@ -51,9 +51,10 @@ namespace Ponyliga.Views
             Navigation.PushAsync(new CreateUserPage());
         }
 
+        //swapped push to popAsync
         private void btn_MainPage_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new LandingPage());
+            Navigation.PopAsync();
         }
     }
 }

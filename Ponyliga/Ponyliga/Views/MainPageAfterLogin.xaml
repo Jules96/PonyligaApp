@@ -29,10 +29,14 @@
         </StackLayout>
     </NavigationPage.TitleView>
 
-    <ContentPage.Content>
+
+    <StackLayout
+        VerticalOptions="FillAndExpand"
+        HorizontalOptions="FillAndExpand">
+        
 
         <StackLayout
-            VerticalOptions="StartAndExpand">
+            VerticalOptions="Start">
             
             <Label 
                 Text="Willkommen, (Username)!" />
@@ -62,20 +66,27 @@
             <Button 
                 Text="Gruppen" 
                 Clicked="btn_Group_Clicked"/>
+        </StackLayout>
 
-            <StackLayout
-                Orientation="Horizontal"
-                Margin="0,200,0,0">
+        <StackLayout 
+            VerticalOptions="CenterAndExpand">
+        </StackLayout>
+        
+        <StackLayout 
+            Orientation="Horizontal"
+            VerticalOptions="End">
 
-                <Button 
-                    Text="Impressum"/>
+            <Button 
+                Text="Impressum"
+                HorizontalOptions="StartAndExpand"/>
 
-                <Button 
-                    Text="Rechte" 
-                    Margin="160,0,0,0"/>
 
-            </StackLayout>
+            <Button 
+                Text="Rechte" 
+                HorizontalOptions="End"/>
+            
 
         </StackLayout>
-    </ContentPage.Content>
+        
+    </StackLayout>
 </ContentPage>
