@@ -60,12 +60,12 @@ namespace Ponyliga.Views
                 team.club = teamClubname.Text;
                 team.name = listTeam.name;
                 team.consultor = teamConsultor.Text;
-                team.teamSize = +0;
-                team.groupId = +0;
+                team.teamSize = listTeam.teamSize;
+                team.groupId = listTeam.groupId;
                 //team.group = ;
 
                 ApiService apiService = new ApiService();
-                apiService.UpdateTeam(team.id.ToString(), team);
+                var result = apiService.UpdateTeam(team.id.ToString(), team);
 
                 Navigation.PushAsync(new MainPageAfterLogin());
             }
