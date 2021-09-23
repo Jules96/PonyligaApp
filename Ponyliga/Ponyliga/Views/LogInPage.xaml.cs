@@ -59,11 +59,12 @@ namespace Ponyliga.Views
 
             ApiService apiService = new ApiService();
             bool result = apiService.LogInUser(user).Result;
+        }
 
 
-        //swapped push to popAsync
+            //swapped push to popAsync
 
-        private void btn_MainPage_Clicked(object sender, EventArgs e)
+            private void btn_MainPage_Clicked(object sender, EventArgs e)
         {
             Navigation.PopAsync();
         }

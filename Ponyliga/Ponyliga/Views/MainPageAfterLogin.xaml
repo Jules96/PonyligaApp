@@ -76,6 +76,7 @@
             <StackLayout
                 Orientation="Horizontal"
                 Margin="0,200,0,0">
+        </StackLayout>
 
         <StackLayout 
             VerticalOptions="CenterAndExpand">
