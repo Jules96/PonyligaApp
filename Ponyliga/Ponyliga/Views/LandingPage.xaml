@@ -19,37 +19,51 @@
     </NavigationPage.TitleView>
     
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand">
             
             <Label 
                 Text="Welcome to the BifiCup!" 
                 FontSize="25" 
                 HorizontalOptions="Center" />
-
-            <Button 
-                Text="Login" 
-                Clicked="btn_LogIn_Clicked"/>
             
-            <Button 
-                Text="Tabelle"
-                Clicked="btn_Table_Clicked"/>
-            
-            <Button Text="QR-Code" />
-            
-            <Button Text="Regeln" />
-
             <StackLayout
-                Orientation="Horizontal"
-                Margin="0,320,0,0">
+                VerticalOptions="Start">
+                
+                <Button 
+                    Text="Login" 
+                    Clicked="btn_LogIn_Clicked"/>
 
                 <Button 
-                    Text="Impressum"/>
+                    Text="Tabelle"
+                    Clicked="btn_Table_Clicked"/>
+
+                <Button 
+                    Text="QR-Code" />
+
+                <Button 
+                    Text="Regeln" />
+            </StackLayout>
+
+            <StackLayout 
+                VerticalOptions="CenterAndExpand">
+            </StackLayout>
+
+            <StackLayout 
+                Orientation="Horizontal"
+                VerticalOptions="End">
+
+                <Button 
+                    Text="Impressum"
+                    HorizontalOptions="StartAndExpand"/>
 
                 <Button 
                     Text="Rechte" 
-                    Margin="160,0,0,0"/>
+                    HorizontalOptions="End"/>
 
             </StackLayout>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

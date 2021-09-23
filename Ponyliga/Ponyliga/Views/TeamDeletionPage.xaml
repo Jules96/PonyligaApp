@@ -5,9 +5,12 @@
              Title="Team löschen">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+           <Picker x:Name="TeamPicker"
+                    Title="Team auswählen*" 
+                    FontSize="30" 
+                    SelectedIndexChanged="TeamPicker_OnSelectedIndexChanged"/>
+
+            <Button Text="Team löschen" Clicked="btn_deleteTeam_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

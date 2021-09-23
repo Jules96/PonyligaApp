@@ -48,7 +48,7 @@ namespace Ponyliga.Views
         {
             int team = TeamPicker.SelectedIndex;
             string teamName = TeamPicker.Items[TeamPicker.SelectedIndex];
-            DisplayAlert(teamName, "wurde als Team ausgewählt", "OK");
+            //DisplayAlert(teamName, "wurde als Team ausgewählt", "OK");
         }
 
         private void btn_AddPerson_Clicked(object sender, EventArgs e)

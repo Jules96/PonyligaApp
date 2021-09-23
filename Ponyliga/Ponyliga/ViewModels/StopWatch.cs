@@ -76,10 +76,14 @@ namespace Ponyliga.ViewModels
             StartStopWatch();
         }
 
-        public TimeSpan AddTime(TimeSpan StoppedTime, TimeSpan Strafzeit)
+
+        public String AddPenaltyTime(String stoppedTime, double penTime)
         {
-            TimeSpan Lasttime = StoppedTime + Strafzeit;
-            return Lasttime;
+            DateTime parsedTime = DateTime.ParseExact(stoppedTime, "HH:mm:ss.FF", null);
+            string result = parsedTime.AddSeconds(penTime).ToString("HH:mm:ss.FF");
+
+            return result;
+
         }
     }
 }

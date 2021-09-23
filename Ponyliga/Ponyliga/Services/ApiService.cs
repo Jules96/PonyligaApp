@@ -353,7 +353,7 @@ namespace Ponyliga.Services
 
             var json = JsonConvert.SerializeObject(team);
             StringContent content = new StringContent(json.ToString(), Encoding.UTF8, "application/json");
-
+            //var response = await httpClient.PutAsync(uri, content);
 
         }
 

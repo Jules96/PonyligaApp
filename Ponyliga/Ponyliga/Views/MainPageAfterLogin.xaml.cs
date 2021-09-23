@@ -31,7 +31,7 @@ namespace Ponyliga.Views
 
         private void btn_LogOut_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new LogInPage());
+            Navigation.PopAsync();
         }
 
         private void btn_User_Clicked(object sender, EventArgs e)
