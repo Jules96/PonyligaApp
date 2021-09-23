@@ -51,7 +51,7 @@ namespace Ponyliga.Views
 
         private void btn_Table_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new UserTablePage());
+            Navigation.PushAsync(new ResultTablePage());
         }
 
         private void btn_Group_Clicked(object sender, EventArgs e)

@@ -504,7 +504,7 @@ namespace Ponyliga.Services
             return null;
         }
 
-        public async Task<List<Result>> GetResultSummary()
+        public async Task<List<Team>> GetResultSummary()
         {
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
@@ -520,7 +520,7 @@ namespace Ponyliga.Services
                     Formatting = Formatting.Indented
                 };
 
-                return await Task.Run(() => JsonConvert.DeserializeObject<List<Result>>(respContent, settings));
+                return await Task.Run(() => JsonConvert.DeserializeObject<List<Team>>(respContent, settings));
 
             }
             return null;

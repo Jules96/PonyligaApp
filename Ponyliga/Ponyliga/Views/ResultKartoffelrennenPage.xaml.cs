@@ -1,5 +1,6 @@
 ﻿using Ponyliga.Models;
 using Ponyliga.Services;
+using System;
 using System.Collections.ObjectModel;
 
 using Xamarin.Forms;
@@ -8,26 +9,26 @@ using Xamarin.Forms.Xaml;
 namespace Ponyliga.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ResultTablePage : ContentPage
+    public partial class ResultKartoffelrennenPage : ContentPage
     {
-        
+
         ObservableCollection<TeamResult> MyItems = new ObservableCollection<TeamResult>();
         ObservableCollection<TeamResult> Item { get { return MyItems; } }
 
 
 
-        public ResultTablePage()
+        public ResultKartoffelrennenPage()
         {
             InitializeComponent();
             FillResultTable();
-            
-            listViewm.ItemsSource = MyItems;
+
+            listViewKartoffel.ItemsSource = MyItems;
 
 
             //MyItems.Add(new Result() { Club="Herzlake II", Placement="1", Score="15(5;5;5;)"});
             //MyItems.Add(new Result() { Club = "Herzlake I", Placement = "2", Score = "12(4;4;4;)" });
             //MyItems.Add(new Result() { Club = "Haselünne", Placement = "3", Score = "9(3;3;3;)" });
-           // MyItems.Add(new Result() { Club = "Meppen", Placement = "4", Score = "6(2;2;2;)" });
+            // MyItems.Add(new Result() { Club = "Meppen", Placement = "4", Score = "6(2;2;2;)" });
 
 
         }
@@ -43,34 +44,44 @@ namespace Ponyliga.Views
             ((ListView)sender).SelectedItem = null;
         }
 
-        
+
         public async void FillResultTable()
         {
-            
+
             ApiService apiService = new ApiService();
             System.Collections.Generic.List<Models.Team> taskResultSum = await apiService.GetResultSummary();
 
-           
-            listViewm.ItemsSource = MyItems;
+
+            listViewKartoffel.ItemsSource = MyItems;
+            
 
             if (taskResultSum != null)
             {
 
+
                 foreach (var resultSum in taskResultSum)
                 {
-                    MyItems.Add(new TeamResult { place = resultSum.place, name = resultSum.name, score = resultSum.totalScore });
-                    foreach (var resultSums in resultSum.results)
-                    {
-
+                    
+                        foreach (var resultSums in resultSum.results)
+                        {
+                        if (resultSums.game == "Kartoffelrennen")
+                        {
+                            //int penaltyTimeInt = Int16.Parse(resultSums.penaltyTime);
+                            if(String.IsNullOrEmpty(resultSums.penaltyTime))
+                            {
+                                TeamResult team = new TeamResult();
+                                resultSums.penaltyTime = "0";
+                            }
+                            MyItems.Add(new TeamResult { position = resultSums.position.ToString(), name = resultSum.name, score = resultSums.score.ToString(), time = resultSums.time, penaltyTime = resultSums.penaltyTime +"sek"});
+                        }
                     }
-
                 }
             }
         }
 
         private void btn_Kartoffelrennen_Clicked(object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new ResultKartoffelrennenPage());
+            //Navigation.PushAsync(new UserPage());
         }
 
         private void btn_Flaggenrennen_Clicked(object sender, System.EventArgs e)
