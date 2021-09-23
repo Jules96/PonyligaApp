@@ -5,50 +5,77 @@
 
     <NavigationPage.TitleView>
         <StackLayout
-            HorizontalOptions="Center"
-            VerticalOptions="Center"
             Orientation="Horizontal">
+            
             <Label
                 x:Name="Startseite"
                 Text="Startseite"
                 FontSize="25"
                 FontAttributes="Bold"
                 TextColor="#FFFF"
-                HorizontalOptions="Start" 
-                VerticalTextAlignment="Center" />
-            <StackLayout
+                HorizontalOptions="Start"
+                VerticalOptions="Center"/>
+
+            <Button
+                Text="Logout"
+                TextTransform="None"
                 HorizontalOptions="End"
-                VerticalOptions="Center">
-                <Button 
-                    Text="Logout"
-                    TextTransform="None"
-                    Clicked="btn_LogOut_Clicked"
-                    HorizontalOptions="End" 
-                    VerticalOptions="Center"/>
-            </StackLayout>
+                VerticalOptions="End"
+                Clicked="btn_LogOut_Clicked" 
+                Margin="60,0,0,0"
+                CornerRadius="100">
+            </Button>
+            
         </StackLayout>
     </NavigationPage.TitleView>
 
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Willkommen, (Username)!" />
-            <Label x:Name="LabelUsername"  />
 
-            <Button Text="Logout" 
-                    Clicked="btn_LogOut_Clicked" />
-            <Button Text="Benutzer"
-                    Clicked="btn_User_Clicked"/>
-            <Button Text="Tabelle"
-                    Clicked="btn_Table_Clicked" />
-            <Button Text="Teams" 
-                    Clicked="btn_EditTeams_Clicked"/>
-            <Button Text="Tabelle bearbeiten" />
-            <Button Text="Stoppuhr" 
-                    Clicked="btn_StopWatch_Clicked"/>
-            <Button Text="Gruppen" 
-                    Clicked="btn_Group_Clicked"/>
-            <Button Text="Impressum" />
-            <Button Text="Rechte" />
+        <StackLayout
+            VerticalOptions="StartAndExpand">
+            
+            <Label 
+                Text="Willkommen, (Username)!" />
+            
+            <Label 
+                x:Name="LabelUsername"/>
+
+            <Button 
+                Text="Logout" 
+                Clicked="btn_LogOut_Clicked"/>
+            
+            <Button 
+                Text="Tabelle"
+                Clicked="btn_Table_Clicked"/>
+            
+            <Button 
+                Text="Teams" 
+                Clicked="btn_EditTeams_Clicked"/>
+            
+            <Button 
+                Text="Tabelle bearbeiten"/>
+            
+            <Button 
+                Text="Stoppuhr" 
+                Clicked="btn_StopWatch_Clicked"/>
+            
+            <Button 
+                Text="Gruppen" 
+                Clicked="btn_Group_Clicked"/>
+
+            <StackLayout
+                Orientation="Horizontal"
+                Margin="0,200,0,0">
+
+                <Button 
+                    Text="Impressum"/>
+
+                <Button 
+                    Text="Rechte" 
+                    Margin="160,0,0,0"/>
+
+            </StackLayout>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
