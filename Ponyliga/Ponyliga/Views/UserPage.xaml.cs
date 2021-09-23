@@ -72,8 +72,18 @@ namespace Ponyliga.Views
 
             listViewUser.ItemsSource = Users;
 
-            foreach (var user in taskUser)
-                Users.Add(new User() {firstName = user.firstName, surName = user.surName, loginName = user.loginName, userPrivileges = user.userPrivileges });
+            if (taskUser != null)
+            {
+                foreach (var user in taskUser)
+                    Users.Add(new User() { firstName = user.firstName, surName = user.surName, loginName = user.loginName, userPrivileges = user.userPrivileges });
+            }
+            /* else
+             {
+                 DisplayAlert("Achtung!", "Es sind keine Teams vorhanden!", "OK");
+
+             }*/
+
+           
 
         }
     }

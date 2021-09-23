@@ -79,8 +79,18 @@ namespace Ponyliga.Views
 
             listViewTeams.ItemsSource = Teams;
 
-            foreach (var team in taskTeam)
-                Teams.Add(new Team() { name = team.name, teamSize = team.teamSize, consultor = team.consultor});
+            if (taskTeam != null)
+            {
+                foreach (var team in taskTeam)
+                    Teams.Add(new Team() { name = team.name, teamSize = team.teamSize, consultor = team.consultor });
+            }
+           /* else
+            {
+                DisplayAlert("Achtung!", "Es sind keine Teams vorhanden!", "OK");
+
+            }*/
+
+           
 
         }
     }
