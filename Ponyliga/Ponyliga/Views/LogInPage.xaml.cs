@@ -1,11 +1,6 @@
-﻿using Newtonsoft.Json;
-using Ponyliga.Models;
+﻿using Ponyliga.Models;
 using Ponyliga.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -59,11 +54,12 @@ namespace Ponyliga.Views
 
             ApiService apiService = new ApiService();
             bool result = apiService.LogInUser(user).Result;
+        }
 
 
-        //swapped push to popAsync
+            //swapped push to popAsync
 
-        private void btn_MainPage_Clicked(object sender, EventArgs e)
+            private void btn_MainPage_Clicked(object sender, EventArgs e)
         {
             Navigation.PopAsync();
         }

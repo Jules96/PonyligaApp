@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Ponyliga.Services;
 
 namespace Ponyliga.Views
 {
@@ -16,12 +17,13 @@ namespace Ponyliga.Views
     public partial class TeamsPage : ContentPage
     {
 
-        ObservableCollection<Team> MyItems = new ObservableCollection<Team>();
-        ObservableCollection<Team> Item { get { return MyItems; } }
+        ObservableCollection<Team> Teams = new ObservableCollection<Team>();
+        ObservableCollection<Team> Team { get { return Teams; } }
 
         public TeamsPage()
         {
             InitializeComponent();
+            FillUserList();
 
             /*listViewn.ItemsSource = MyItems;
 
@@ -67,6 +69,29 @@ namespace Ponyliga.Views
         private void btn_deleteExistingTeam_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new TeamDeletionPage()); //getrennt von TeamEditingPage um versehentliches Löschen zu vermeiden
+        }
+
+        public async void FillUserList()
+        {
+            ApiService apiService = new ApiService();
+            //Task<List<User>> task = apiService.GetAllUser(); 
+            var taskTeam = await apiService.GetAllTeams();
+
+            listViewTeams.ItemsSource = Teams;
+
+            if (taskTeam != null)
+            {
+                foreach (var team in taskTeam)
+                    Teams.Add(new Team() { name = team.name, teamSize = team.teamSize, consultor = team.consultor });
+            }
+           /* else
+            {
+                DisplayAlert("Achtung!", "Es sind keine Teams vorhanden!", "OK");
+
+            }*/
+
+           
+
         }
     }
 }
