@@ -154,8 +154,13 @@ namespace Ponyliga.Views
 
             List<RandomizeGroup>  SortedListByNumberNr = randomizeSortList.OrderBy(randomizeGroup => randomizeGroup.groupNr).ToList();
 
-            foreach(var item in SortedListByNumberNr)
-            Users.Add(item);
+            foreach (var item in SortedListByNumberNr)
+            {
+                Users.Add(item);
+                //Team team = taskTeam.Find(t => t.name == shuffledcards[i]);
+                //team.groupId = groupIds[group_num - 1].id;
+                //apiService.UpdateTeam(team.id, team);
+            }
             listViewRandomTeam.ItemsSource = Users;
 
         }
