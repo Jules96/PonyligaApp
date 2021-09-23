@@ -13,14 +13,21 @@ namespace Ponyliga.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPageAfterLogin : ContentPage
     {
+        public MainPageAfterLogin(string Username)
+        {
+            InitializeComponent();
+            Label labelUsername = new Label { Text = "Willkommen, " + Username, ClassId = "" };
+        }
+
         public MainPageAfterLogin()
         {
             InitializeComponent();
+            
         }
 
-        // Label for Username (Welcome, *Username*)
+        //Label for Username(Welcome, * Username*);
 
-        // Label labelUsername = new Label { Text = "Willkommen, " , ClassId = "" };
+
 
         private void btn_LogOut_Clicked(object sender, EventArgs e)
         {

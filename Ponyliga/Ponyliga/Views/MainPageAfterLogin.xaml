@@ -68,6 +68,15 @@
                 Clicked="btn_Group_Clicked"/>
         </StackLayout>
 
+
+            <Button 
+                Text="User" 
+                Clicked="btn_User_Clicked"/>
+
+            <StackLayout
+                Orientation="Horizontal"
+                Margin="0,200,0,0">
+
         <StackLayout 
             VerticalOptions="CenterAndExpand">
         </StackLayout>
@@ -75,6 +84,7 @@
         <StackLayout 
             Orientation="Horizontal"
             VerticalOptions="End">
+
 
             <Button 
                 Text="Impressum"

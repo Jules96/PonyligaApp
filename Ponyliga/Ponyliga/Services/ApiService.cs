@@ -214,7 +214,7 @@ namespace Ponyliga.Services
             return null;
         }
 
-        public async Task<bool> AddGroup(Group group)
+        public async Task<Group> AddGroup(Group group)
         {
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
@@ -230,23 +230,28 @@ namespace Ponyliga.Services
 
             StringContent content = new StringContent(UserSerializer.ToString(), Encoding.UTF8, "application/json");
             var response = await httpClient.PostAsync(uri, content);
+            var settings = new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented
+            };
 
             if (response.IsSuccessStatusCode)
             {
-                return true;
+                string respContent = await response.Content.ReadAsStringAsync();
+                return await Task.Run(() => JsonConvert.DeserializeObject<Group>(respContent, settings));
             }
 
-            return false;
+            return null;
         }
 
-        public async Task UpdateGroup(string id, Group group)
+        public async Task UpdateGroup(int id, Group group)
         {
             //List<User> users = new List<User>();
             //users.Add(new User { firstName = "Homer", surName = "Simpson", loginName = "HOSIM", passwordHash = "123123", userPrivileges = 1 });
 
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
-            string uri = GetUrlID("group", id);
+            string uri = GetUrlID("group", id.ToString());
 
             var json = JsonConvert.SerializeObject(group);
             StringContent content = new StringContent(json.ToString(), Encoding.UTF8, "application/json");
@@ -337,14 +342,16 @@ namespace Ponyliga.Services
             return false;
         }
 
+
         public async Task<bool> UpdateTeam(string id, Team team)
+
         {
             //List<User> users = new List<User>();
             //users.Add(new User { firstName = "Homer", surName = "Simpson", loginName = "HOSIM", passwordHash = "123123", userPrivileges = 1 });
 
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
-            string uri = GetUrlID("team", id);
+            string uri = GetUrlID("team", id.ToString());
 
             var json = JsonConvert.SerializeObject(team);
             StringContent content = new StringContent(json.ToString(), Encoding.UTF8, "application/json");
