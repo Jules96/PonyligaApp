@@ -25,7 +25,7 @@ namespace Ponyliga.Views
             stopWatch = new StopWatch();
 
             BindingContext = stopWatch;
-            // shows the correct time formatting at the beginning
+            
             stopWatch.Time = "00:00:00.00";
 
             btn_Continue.IsEnabled = false;
@@ -38,7 +38,7 @@ namespace Ponyliga.Views
         //    Navigation.PopAsync();
         //}
 
-        // API Request lagged
+        // TODO: API Request lagged
         // fills the picker with the registered teams
         public async void FillTeamList()
         {
@@ -115,48 +115,104 @@ namespace Ponyliga.Views
         private void btn_TransmitResults_Clicked(object sender, EventArgs e)
         {
             var stoppedTime = stopWatch.Time;
-           // string specifier = "0,0.00";
-            string convertedTime = stoppedTime.ToString();
+            var penTime = penaltyTime.Text;
+            double pentime = Convert.ToDouble(penTime);
 
-            // irgendwie mit strafsekunden
-
-            //if (penaltyTime.Text != null)
-            //{
-            //    var pTime = penaltyTime.Text;
-
-
-            //    timeIncPenalty.Text = String.Format("{0}: {2}", pTime.ToString(specifier));
-
-            //    //timeIncPenalty.Text = pTime + stoppedTime;
-            //}
-
-
-
-            if (TeamPicker.SelectedIndex > -1 && GamePicker.SelectedIndex > -1 && stoppedTime != null)
+            // with time penalty
+            if (penaltyTime.Text != null)
             {
-                string selectedTeam = TeamPicker.Items[TeamPicker.SelectedIndex];
-                var teams = taskTeam;
-                int teamId = teams.Find(t => t.name == selectedTeam).id;
-                string selectedGame = GamePicker.Items[GamePicker.SelectedIndex];
+                // shows the calculated Time incl. penalty
+                timeIncPenalty.Text = stopWatch.AddPenaltyTime(stoppedTime, pentime).ToString();
 
-                Result result = new Result();
-                result.gameDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
-                result.id = default;
-                result.game = selectedGame;
-                result.time = convertedTime;
-                result.teamId = teamId;
+                if (TeamPicker.SelectedIndex > -1 && GamePicker.SelectedIndex > -1 && stoppedTime != null)
+                {
+                    string selectedTeam = TeamPicker.Items[TeamPicker.SelectedIndex];
+                    var teams = taskTeam;
+                    int teamId = teams.Find(t => t.name == selectedTeam).id;
+                    string selectedGame = GamePicker.Items[GamePicker.SelectedIndex];
 
-                ApiService apiService = new ApiService();
-                apiService.AddResult(result);
+                    Result result = new Result();
+                    result.gameDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                    result.id = default;
+                    result.game = selectedGame;
+                    result.time = stopWatch.AddPenaltyTime(stoppedTime, pentime).ToString();
+                    result.teamId = teamId;
 
-                DisplayAlert("Übermittelt!", "Die Zeit für " + selectedTeam + " wurde hinzugefügt.", "OK");
+                    ApiService apiService = new ApiService();
+                    apiService.AddResult(result);
 
-                Navigation.PushAsync(new StopWatchPage());
+                    DisplayAlert("Übermittelt!", "Die Zeit für " + selectedTeam + " wurde hinzugefügt.", "OK");
+
+                    Navigation.PushAsync(new StopWatchPage());
+                }
+                else
+                {
+                    DisplayAlert("Fehler", "Mit * markierte Felder wurden nicht oder fehlerhaft ausgefüllt.", "OK");
+                }
+
             }
             else
             {
-                DisplayAlert("Fehler", "Mit * markierte Felder wurden nicht oder fehlerhaft ausgefüllt.", "OK");
+                string convertedTime = stoppedTime.ToString();
+
+                // without time penalty
+                if (TeamPicker.SelectedIndex > -1 && GamePicker.SelectedIndex > -1 && stoppedTime != null)
+                {
+                    string selectedTeam = TeamPicker.Items[TeamPicker.SelectedIndex];
+                    var teams = taskTeam;
+                    int teamId = teams.Find(t => t.name == selectedTeam).id;
+                    string selectedGame = GamePicker.Items[GamePicker.SelectedIndex];
+
+                    Result result = new Result();
+                    result.gameDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                    result.id = default;
+                    result.game = selectedGame;
+                    result.time = convertedTime;
+                    result.teamId = teamId;
+
+                    ApiService apiService = new ApiService();
+                    apiService.AddResult(result);
+
+                    DisplayAlert("Übermittelt!", "Die Zeit für " + selectedTeam + " wurde hinzugefügt.", "OK");
+
+                    Navigation.PushAsync(new StopWatchPage());
+                }
+                else
+                {
+                    DisplayAlert("Fehler", "Mit * markierte Felder wurden nicht oder fehlerhaft ausgefüllt.", "OK");
+                }
             }
+
+
+            //string convertedTime = stoppedTime.ToString();
+
+
+
+            //if (TeamPicker.SelectedIndex > -1 && GamePicker.SelectedIndex > -1 && stoppedTime != null)
+            //{
+            //    string selectedTeam = TeamPicker.Items[TeamPicker.SelectedIndex];
+            //    var teams = taskTeam;
+            //    int teamId = teams.Find(t => t.name == selectedTeam).id;
+            //    string selectedGame = GamePicker.Items[GamePicker.SelectedIndex];
+
+            //    Result result = new Result();
+            //    result.gameDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+            //    result.id = default;
+            //    result.game = selectedGame;
+            //    result.time = convertedTime;
+            //    result.teamId = teamId;
+
+            //    ApiService apiService = new ApiService();
+            //    apiService.AddResult(result);
+
+            //    DisplayAlert("Übermittelt!", "Die Zeit für " + selectedTeam + " wurde hinzugefügt.", "OK");
+
+            //    Navigation.PushAsync(new StopWatchPage());
+            //}
+            //else
+            //{
+            //    DisplayAlert("Fehler", "Mit * markierte Felder wurden nicht oder fehlerhaft ausgefüllt.", "OK");
+            //}
         }
 
         private void btn_TimeInputPage_Clicked(object sender, EventArgs e)
