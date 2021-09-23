@@ -47,6 +47,7 @@ namespace Ponyliga.ViewModels
                 string elapsedTime = string.Format("{0:00}:{1:00}:{2:00}.{3:00}",
                     ts.Hours, ts.Minutes, ts.Seconds,
                     ts.Milliseconds / 10);
+                
 
                 
                 Time = elapsedTime.ToString();
@@ -73,6 +74,12 @@ namespace Ponyliga.ViewModels
         public void ContinueStopWatch()
         {
             StartStopWatch();
+        }
+
+        public TimeSpan AddTime(TimeSpan StoppedTime, TimeSpan Strafzeit)
+        {
+            TimeSpan Lasttime = StoppedTime + Strafzeit;
+            return Lasttime;
         }
     }
 }

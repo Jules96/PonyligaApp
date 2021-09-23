@@ -20,5 +20,7 @@ namespace Ponyliga.Models
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public int userPrivileges { get; set; }
 
+
+
     }
 }

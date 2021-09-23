@@ -29,7 +29,7 @@ namespace Ponyliga.Views
             //user.loginName = username.Text;
             //user.passwordHash = password.Text;
             //user.userPrivileges = default;
-
+            string userName = username.Text;
 
             //ApiService apiService = new ApiService();
             //bool result = apiService.LogInUser(user).Result;
@@ -43,7 +43,7 @@ namespace Ponyliga.Views
             //{
             //    DisplayAlert("Fehler", "Passwort oder Benutzername ist falsch!", "ok");
             //}
-            Navigation.PushAsync(new MainPageAfterLogin());
+            Navigation.PushAsync(new MainPageAfterLogin(userName));
         }
 
         private void btn_Register_Clicked(object sender, EventArgs e)
@@ -60,12 +60,14 @@ namespace Ponyliga.Views
             ApiService apiService = new ApiService();
             bool result = apiService.LogInUser(user).Result;
 
-            
-            if(result)
+
+            if (result)
             {
                 Navigation.PushAsync(new CreateUserPage());
             }
 
+        }
+        
         private void btn_MainPage_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new LandingPage());

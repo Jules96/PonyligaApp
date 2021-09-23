@@ -16,6 +16,8 @@ namespace Ponyliga.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CreateGroup : ContentPage
     {
+        // List<RandomizeGroup> Users = new List<RandomizeGroup>();
+      
         ObservableCollection<RandomizeGroup> Users = new ObservableCollection<RandomizeGroup>();
         ObservableCollection<RandomizeGroup> User { get { return Users; } }
         public List<String> BackgroundList = new List<String>();
@@ -82,7 +84,8 @@ namespace Ponyliga.Views
             var shuffledcards = teamList.OrderBy(a => Guid.NewGuid()).ToList();
            
             int num_groups = int.Parse(groupSize.Text);
-            decimal totalGroups = Math.Ceiling(Convert.ToDecimal(teamCount/ num_groups));
+            decimal g = Convert.ToDecimal(teamCount)/Convert.ToDecimal(num_groups);
+            decimal totalGroups = Math.Ceiling(g);
             int moduloGroup = teamCount % num_groups;
             ApiService apiService = new ApiService();
             List<Group> groupIds = new List<Group>();
@@ -110,15 +113,18 @@ namespace Ponyliga.Views
             int numCount = 1;
 
             //ArrayList arrayList = new ArrayList(listSorted);
-            listViewRandomTeam.ItemsSource = Users;
-           
+            
 
-            for (int i = 0; i < teamCount; i++)
+
+
+
+
+            /*for (int i = 0; i < teamCount; i++)
             {            
                 
                 Users.Add(new RandomizeGroup { groupNr = group_num, groupName = shuffledcards[i], Bande= "r", BackColour = BackgroundList [group_num] });
                 //group_num = ++group_num % num_groups;
-                if( numCount < num_groups)
+                if(numCount < num_groups)
                 {
                     numCount++;
                     Team team = taskTeam.Find(t => t.name == shuffledcards[i]);
@@ -132,10 +138,25 @@ namespace Ponyliga.Views
                     group_num++;
                    // Users.Add(new RandomizeGroup { groupNr = null, groupName = "", Bande = "", BackColour = "LightBlue" });
                 }
-            }
+            }*/
             // Update Team mit groupid
+            List<RandomizeGroup> randomizeSortList = new List<RandomizeGroup>();
+            for (int i = 0; i < teamCount; i++)
+            {
+                
+                randomizeSortList.Add(new RandomizeGroup { groupNr = group_num+1, groupName = shuffledcards[i], BackColour = BackgroundList[group_num] });
+                
+                 // listView1.Sorting = SortOrder.Ascending;
+
+                 group_num = ++group_num % num_groups;
+            }
 
 
+            List<RandomizeGroup>  SortedListByNumberNr = randomizeSortList.OrderBy(randomizeGroup => randomizeGroup.groupNr).ToList();
+
+            foreach(var item in SortedListByNumberNr)
+            Users.Add(item);
+            listViewRandomTeam.ItemsSource = Users;
 
         }
 
@@ -151,4 +172,5 @@ namespace Ponyliga.Views
         }
 
     }
+   
 }
