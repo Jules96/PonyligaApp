@@ -23,12 +23,12 @@ namespace Ponyliga.Views
         {
             InitializeComponent();
 
-            listViewn.ItemsSource = MyItems;
+            /*listViewn.ItemsSource = MyItems;
 
             MyItems.Add(new Team() { name = "Herzlake II", teamSize = 5, consultor = "Harald" });
             MyItems.Add(new Team() { name = "Herzlake I", teamSize = 5, consultor = "Achim" });
             MyItems.Add(new Team() { name = "Haselünne", teamSize = 5, consultor = "Timon" });
-            MyItems.Add(new Team() { name = "Meppen", teamSize = 5, consultor = "Die Jungs von der Straße" });
+            MyItems.Add(new Team() { name = "Meppen", teamSize = 5, consultor = "Die Jungs von der Straße" });*/
         }
 
         async void Handle_ItemTappedn(object sender, ItemTappedEventArgs e)
