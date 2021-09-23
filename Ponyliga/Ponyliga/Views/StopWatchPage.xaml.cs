@@ -47,11 +47,19 @@ namespace Ponyliga.Views
 
             ArrayList teamList = new ArrayList();
 
-            foreach (var team in taskTeam)
+            if (taskTeam != null)
             {
-                teamList.Add(team.name);
+                foreach (var team in taskTeam)
+                {
+                    teamList.Add(team.name);
+                }
             }
-            
+            else
+            {
+                DisplayAlert("Achtung!", "Es sind keine Teams vorhanden! Erstellen Sie Teams, um die Stoppuhr benutzen zu können. Melden Sie sich beim Admin.", "OK");
+
+            }
+
             TeamPicker.ItemsSource = teamList;
         }
 
@@ -117,6 +125,7 @@ namespace Ponyliga.Views
             var stoppedTime = stopWatch.Time;
             var penTime = penaltyTime.Text;
             double pentime = Convert.ToDouble(penTime);
+            double stoppedtime = Convert.ToDouble(stoppedTime);
 
             // with time penalty
             if (penaltyTime.Text != null)
@@ -137,6 +146,7 @@ namespace Ponyliga.Views
                     result.game = selectedGame;
                     result.time = stopWatch.AddPenaltyTime(stoppedTime, pentime).ToString();
                     result.teamId = teamId;
+                    result.penaltyTime = stoppedtime.ToString();
 
                     ApiService apiService = new ApiService();
                     apiService.AddResult(result);
