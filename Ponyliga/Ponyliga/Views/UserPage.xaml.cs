@@ -46,7 +46,9 @@ namespace Ponyliga.Views
 
         private void btn_updateListOfUsers_Clicked(object sender, EventArgs e)
         {
-            //iwie Liste aktualisieren
+            User.Clear();
+            FillUserList();
+            DisplayAlert("Liste der User", "wurde aktualisiert.", "OK");
         }
 
         private void btn_edUser_Clicked(object sender, EventArgs e)

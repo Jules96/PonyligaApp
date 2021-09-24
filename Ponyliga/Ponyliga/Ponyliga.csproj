@@ -43,6 +43,12 @@
     <Compile Update="Views\MainPageAfterLogin.xaml.cs">
       <DependentUpon>MainPageAfterLogin.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\ResultKartoffelrennenPage.xaml.cs">
+      <DependentUpon>ResultKartoffelrennenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ResultSacklaufenPage.xaml.cs">
+      <DependentUpon>ResultSacklaufenPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\TeamsPage.xaml.cs">
       <DependentUpon>TeamsPage.xaml</DependentUpon>
     </Compile>
@@ -65,6 +71,24 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\MainPageAfterLogin.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ResultBecherrennenPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ResultFlaggenrennenPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ResultKartoffelrennenPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ResultSacklaufenPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ResultSlalomPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ResultSteinePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ResultTablePage.xaml">

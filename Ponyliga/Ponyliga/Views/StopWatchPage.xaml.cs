@@ -120,7 +120,9 @@ namespace Ponyliga.Views
             var penTime = penaltyTime.Text;
             double pentime = Convert.ToDouble(penTime);
             
+
             // with penalty time
+
             if (penaltyTime.Text != null)
             {
                 // shows the calculated Time incl. penalty
@@ -139,7 +141,9 @@ namespace Ponyliga.Views
                     result.game = selectedGame;
                     result.time = stopWatch.AddPenaltyTime(stoppedTime, pentime).ToString();
                     result.teamId = teamId;
+
                     result.penaltyTime = penTime.ToString();
+
 
                     ApiService apiService = new ApiService();
                     apiService.AddResult(result);
