@@ -67,16 +67,11 @@
             <Button 
                 Text="Gruppen" 
                 Clicked="btn_Group_Clicked"/>
-        </StackLayout>
-
-
+            
             <Button 
                 Text="User" 
                 Clicked="btn_User_Clicked"/>
-
-            <StackLayout
-                Orientation="Horizontal"
-                Margin="0,200,0,0">
+            
         </StackLayout>
 
         <StackLayout 
