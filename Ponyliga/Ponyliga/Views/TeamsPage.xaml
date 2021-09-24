@@ -18,8 +18,7 @@
                    HorizontalOptions="Center" />
 
             
-            <Button Text="Update"
-                    Clicked="btn_updateListOfTeams_Clicked"/>
+
             
             <Button Text="Team bearbeiten"
                     Clicked="btn_editExistingTeam_Clicked"/>
@@ -27,8 +26,10 @@
             <Button Text="Team löschen"
                     Clicked="btn_deleteExistingTeam_Clicked"/>
 
-            <!--hier irgendwie Tabelle mit bereits bestehenden Teams rein-->
-            <!--wie soll die aussehen?-->
+            <Button Text="Update"
+                    Clicked="btn_updateListOfTeams_Clicked"/>
+
+            <!--ab hier Tabelle-->
 
 
         <ListView x:Name="listViewTeams"

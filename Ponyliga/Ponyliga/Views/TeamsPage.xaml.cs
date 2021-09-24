@@ -23,7 +23,7 @@ namespace Ponyliga.Views
         public TeamsPage()
         {
             InitializeComponent();
-            FillUserList();
+            FillTeamList();
 
             /*listViewn.ItemsSource = MyItems;
 
@@ -58,7 +58,10 @@ namespace Ponyliga.Views
 
         private void btn_updateListOfTeams_Clicked(object sender, EventArgs e)
         {
-            //iwie Liste aktualisieren
+            Teams.Clear();
+            FillTeamList();
+            DisplayAlert("Liste der Teams", "wurde aktualisiert.", "OK");
+
         }
 
         private void btn_editExistingTeam_Clicked(object sender, EventArgs e)
@@ -71,7 +74,7 @@ namespace Ponyliga.Views
             Navigation.PushAsync(new TeamDeletionPage()); //getrennt von TeamEditingPage um versehentliches Löschen zu vermeiden
         }
 
-        public async void FillUserList()
+        public async void FillTeamList()
         {
             ApiService apiService = new ApiService();
             //Task<List<User>> task = apiService.GetAllUser(); 

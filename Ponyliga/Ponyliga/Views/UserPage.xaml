@@ -13,18 +13,20 @@
                    FontSize="25" 
                    HorizontalOptions="Center" />
 
-            <Button Text="Update"
-                    Clicked="btn_updateListOfUsers_Clicked"/>
-
+           
             <Button Text="Benutzer bearbeiten"
                     Clicked="btn_edUser_Clicked"/>
 
             <Button Text="Benutzer löschen"
                     Clicked="btn_delUser_Clicked"/>
 
+            <Button Text="Update"
+                    Clicked="btn_updateListOfUsers_Clicked"/>
+
             <!--hier irgendwie Tabelle mit bereits bestehenden Teams rein-->
             <!--wie soll die aussehen?-->
 
+            
 
             <ListView x:Name="listViewUser"
             ItemsSource="{Binding Item}"
