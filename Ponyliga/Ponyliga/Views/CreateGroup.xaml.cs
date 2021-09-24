@@ -85,7 +85,7 @@ namespace Ponyliga.Views
            
             int num_groups = int.Parse(groupSize.Text);
             decimal g = Convert.ToDecimal(teamCount)/Convert.ToDecimal(num_groups);
-            decimal totalGroups = Math.Ceiling(g);
+            int totalGroups = Convert.ToInt32(Math.Ceiling(g));
             int moduloGroup = teamCount % num_groups;
             ApiService apiService = new ApiService();
             List<Group> groupIds = new List<Group>();
@@ -101,7 +101,7 @@ namespace Ponyliga.Views
                     id = default,
                     name = "Gruppe" + (i + 1),
                     rule = 0,
-                    groupSize = num_groups,
+                    groupSize = totalGroups,
                     participants = "name1, name2",
                     teams = default
                 });
@@ -109,7 +109,7 @@ namespace Ponyliga.Views
 
             }
 
-            int group_num = 1;
+            int group_num = 0;
             int numCount = 1;
 
             //ArrayList arrayList = new ArrayList(listSorted);
@@ -144,11 +144,12 @@ namespace Ponyliga.Views
             for (int i = 0; i < teamCount; i++)
             {
                 
-                randomizeSortList.Add(new RandomizeGroup { groupNr = group_num+1, groupName = shuffledcards[i], BackColour = BackgroundList[group_num] });
-                
-                 // listView1.Sorting = SortOrder.Ascending;
 
-                 group_num = ++group_num % num_groups;
+                    randomizeSortList.Add(new RandomizeGroup { groupNr = group_num +1 , groupName = shuffledcards[i], BackColour = BackgroundList[group_num] });
+                
+
+                group_num = ++group_num % totalGroups;
+                
             }
 
 
@@ -156,10 +157,17 @@ namespace Ponyliga.Views
 
             foreach (var item in SortedListByNumberNr)
             {
-                Users.Add(item);
-                //Team team = taskTeam.Find(t => t.name == shuffledcards[i]);
-                //team.groupId = groupIds[group_num - 1].id;
-                //apiService.UpdateTeam(team.id, team);
+               Users.Add(item);
+               Team team = taskTeam.Find(t => t.name == item.groupName);
+               team.groupId = groupIds[item.groupNr.Value - 1 ].id;
+               //team.group.name = "Gruppe"; // +  groupIds[item.groupNr.Value - 1].name
+                var b = await apiService.UpdateTeam(team.id.ToString(), team);
+                if(b)
+                {
+                    Console.WriteLine(b + "We did it");
+                }
+
+
             }
             listViewRandomTeam.ItemsSource = Users;
 

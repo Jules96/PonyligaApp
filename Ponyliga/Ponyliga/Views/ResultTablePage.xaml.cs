@@ -75,32 +75,27 @@ namespace Ponyliga.Views
 
         private void btn_Flaggenrennen_Clicked(object sender, System.EventArgs e)
         {
-            //Navigation.PushAsync(new UserPage());
+            Navigation.PushAsync(new ResultFlaggenrennenPage());
         }
 
         private void btn_Sacklaufen_Clicked(object sender, System.EventArgs e)
         {
-            //Navigation.PushAsync(new UserPage());
+            Navigation.PushAsync(new ResultSacklaufenPage());
         }
 
         private void btn_Steine_Clicked(object sender, System.EventArgs e)
         {
-            //Navigation.PushAsync(new UserPage());
+           Navigation.PushAsync(new ResultSteinePage());
         }
 
         private void btn_Becherrennen_Clicked(object sender, System.EventArgs e)
         {
-            //Navigation.PushAsync(new UserPage());
+            Navigation.PushAsync(new ResultBecherrennenPage());
         }
 
         private void btn_Slalom_Clicked(object sender, System.EventArgs e)
         {
-            //Navigation.PushAsync(new UserPage());
-        }
-
-        private void btn_sumTable_Clicked(object sender, System.EventArgs e)
-        {
-            //Navigation.PushAsync(new UserPage());
+            Navigation.PushAsync(new ResultSlalomPage());
         }
 
         private void btn_aktualisieren_Clicked(object sender, System.EventArgs e)

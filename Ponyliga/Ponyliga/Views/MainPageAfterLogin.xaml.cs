@@ -13,13 +13,28 @@ namespace Ponyliga.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPageAfterLogin : ContentPage
     {
-        public MainPageAfterLogin(string Username)
+
+        private string labelProperty;
+        public string LabelProperty
+        {
+            get { return labelProperty; }
+            set
+            {
+                labelProperty = value;
+                OnPropertyChanged(nameof(LabelProperty)); // Notify that there was a change on this property
+            }
+        }
+        public MainPageAfterLogin(string username)
         {
             InitializeComponent();
-            Label labelUsername = new Label { Text = "Willkommen, " + Username, ClassId = "" };
+            BindingContext = this;
+            LabelProperty = "Herzlich Willkommen " + username + "!" ; // It will be shown at your label
+            
+            
+
         }
 
-        public MainPageAfterLogin()
+    public MainPageAfterLogin()
         {
             InitializeComponent();
             

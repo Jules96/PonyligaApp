@@ -39,15 +39,15 @@
                 </Button>
 
                 <Button
-        Text="Kartoffelrennen"
-        Clicked="btn_Kartoffelrennen_Clicked">
+        Text="Gesamttabelle"
+        Clicked="btn_sumTable_Clicked">
                 </Button>
 
             </StackLayout>
 
 
 
-
+            <Label Text="Tabelle vom Kartoffelrennen: "/>
 
             <ListView x:Name="listViewKartoffel"
             ItemsSource="{Binding Item}"

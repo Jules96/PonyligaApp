@@ -7,10 +7,11 @@ using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
 namespace Ponyliga.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ResultKartoffelrennenPage : ContentPage
+    public partial class ResultSacklaufenPage : ContentPage
     {
 
         ObservableCollection<TeamResult> MyItems = new ObservableCollection<TeamResult>();
@@ -18,12 +19,12 @@ namespace Ponyliga.Views
 
 
 
-        public ResultKartoffelrennenPage()
+        public ResultSacklaufenPage()
         {
             InitializeComponent();
             FillResultTable();
 
-            listViewKartoffel.ItemsSource = MyItems;
+            listViewSacklaufen.ItemsSource = MyItems;
 
 
             //MyItems.Add(new Result() { Club="Herzlake II", Placement="1", Score="15(5;5;5;)"});
@@ -53,8 +54,8 @@ namespace Ponyliga.Views
             System.Collections.Generic.List<Models.Team> taskResultSum = await apiService.GetResultSummary();
 
 
-            listViewKartoffel.ItemsSource = MyItems;
-            
+            listViewSacklaufen.ItemsSource = MyItems;
+
 
             if (taskResultSum != null)
             {
@@ -62,13 +63,13 @@ namespace Ponyliga.Views
                 List<TeamResult> randomizeSortList = new List<TeamResult>();
                 foreach (var resultSum in taskResultSum)
                 {
-                    
-                        foreach (var resultSums in resultSum.results)
-                        {
-                        if (resultSums.game == "Kartoffelrennen")
+
+                    foreach (var resultSums in resultSum.results)
+                    {
+                        if (resultSums.game == "Sacklaufen")
                         {
                             //int penaltyTimeInt = Int16.Parse(resultSums.penaltyTime);
-                            if(String.IsNullOrEmpty(resultSums.penaltyTime))
+                            if (String.IsNullOrEmpty(resultSums.penaltyTime))
                             {
                                 TeamResult team = new TeamResult();
                                 resultSums.penaltyTime = "0";
@@ -88,16 +89,14 @@ namespace Ponyliga.Views
             }
         }
 
-
+        private void btn_Kartoffelrennen_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new ResultKartoffelrennenPage());
+        }
 
         private void btn_Flaggenrennen_Clicked(object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new ResultFlaggenrennenPage());
-        }
-
-        private void btn_Sacklaufen_Clicked(object sender, System.EventArgs e)
-        {
-            Navigation.PushAsync(new ResultSacklaufenPage());
         }
 
         private void btn_Steine_Clicked(object sender, System.EventArgs e)

@@ -25,7 +25,7 @@ namespace Ponyliga.Models
         public Group group { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public string totalScore { get; set; }
+        public int totalScore { get; set; }
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string game { get; set; }
 

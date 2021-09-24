@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace Ponyliga.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ResultKartoffelrennenPage : ContentPage
+    public partial class ResultBecherrennenPage : ContentPage
     {
 
         ObservableCollection<TeamResult> MyItems = new ObservableCollection<TeamResult>();
@@ -18,12 +18,12 @@ namespace Ponyliga.Views
 
 
 
-        public ResultKartoffelrennenPage()
+        public ResultBecherrennenPage()
         {
             InitializeComponent();
             FillResultTable();
 
-            listViewKartoffel.ItemsSource = MyItems;
+            listViewBecher.ItemsSource = MyItems;
 
 
             //MyItems.Add(new Result() { Club="Herzlake II", Placement="1", Score="15(5;5;5;)"});
@@ -53,8 +53,8 @@ namespace Ponyliga.Views
             System.Collections.Generic.List<Models.Team> taskResultSum = await apiService.GetResultSummary();
 
 
-            listViewKartoffel.ItemsSource = MyItems;
-            
+            listViewBecher.ItemsSource = MyItems;
+
 
             if (taskResultSum != null)
             {
@@ -62,13 +62,13 @@ namespace Ponyliga.Views
                 List<TeamResult> randomizeSortList = new List<TeamResult>();
                 foreach (var resultSum in taskResultSum)
                 {
-                    
-                        foreach (var resultSums in resultSum.results)
-                        {
-                        if (resultSums.game == "Kartoffelrennen")
+
+                    foreach (var resultSums in resultSum.results)
+                    {
+                        if (resultSums.game == "Becherrennen")
                         {
                             //int penaltyTimeInt = Int16.Parse(resultSums.penaltyTime);
-                            if(String.IsNullOrEmpty(resultSums.penaltyTime))
+                            if (String.IsNullOrEmpty(resultSums.penaltyTime))
                             {
                                 TeamResult team = new TeamResult();
                                 resultSums.penaltyTime = "0";
@@ -81,14 +81,18 @@ namespace Ponyliga.Views
 
                 foreach (var item in SortedListByNumberNr)
                 {
-                    MyItems.Add(item);
+                    MyItems.Add(item);                  
 
 
                 }
+
             }
         }
 
-
+        private void btn_Kartoffelrennen_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new ResultKartoffelrennenPage());
+        }
 
         private void btn_Flaggenrennen_Clicked(object sender, System.EventArgs e)
         {
@@ -105,10 +109,6 @@ namespace Ponyliga.Views
             Navigation.PushAsync(new ResultSteinePage());
         }
 
-        private void btn_Becherrennen_Clicked(object sender, System.EventArgs e)
-        {
-            Navigation.PushAsync(new ResultBecherrennenPage());
-        }
 
         private void btn_Slalom_Clicked(object sender, System.EventArgs e)
         {

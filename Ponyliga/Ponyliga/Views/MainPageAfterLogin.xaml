@@ -39,7 +39,8 @@
             VerticalOptions="Start">
             
             <Label 
-                Text="Willkommen, (Username)!" />
+                x:Name="label"
+                Text="{Binding LabelProperty}" />
             
             <Label 
                 x:Name="LabelUsername"/>
