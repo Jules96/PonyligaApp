@@ -87,10 +87,12 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
+                    
                 </Frame>
 
                 <StackLayout 
                     Orientation="Horizontal"
+                    HorizontalOptions="Center"
                     VerticalOptions="CenterAndExpand">
 
                     <Button 
@@ -130,12 +132,14 @@
                         x:Name="penaltyTime"
                         Placeholder="Strafsekunden"
                         FontAttributes="Italic"
+                        PlaceholderColor="Black"
                         FontSize="Large"
                         Keyboard="Numeric"
                         ClearButtonVisibility="WhileEditing"
                         HorizontalOptions="Center"
                         VerticalOptions="Center">
                     </Entry>
+                    
                 </Frame>
 
                 <Label

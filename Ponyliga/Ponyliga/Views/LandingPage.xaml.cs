@@ -27,5 +27,10 @@ namespace Ponyliga.Views
             Navigation.PushAsync(new LogInPage());
         }
 
+        private void btn_Rules_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Rules());
+        }
+
     }
 }

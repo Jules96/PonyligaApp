@@ -33,12 +33,6 @@ namespace Ponyliga.Views
             btn_Reset.IsEnabled = false;
         }
 
-        //private void btn_LogOut_Clicked(object sender, EventArgs e)
-        //{
-        //    Navigation.PopAsync();
-        //}
-
-        // TODO: API Request lagged
         // fills the picker with the registered teams
         public async void FillTeamList()
         {
@@ -125,9 +119,8 @@ namespace Ponyliga.Views
             var stoppedTime = stopWatch.Time;
             var penTime = penaltyTime.Text;
             double pentime = Convert.ToDouble(penTime);
-            double stoppedtime = Convert.ToDouble(stoppedTime);
-
-            // with time penalty
+            
+            // with penalty time
             if (penaltyTime.Text != null)
             {
                 // shows the calculated Time incl. penalty
@@ -146,7 +139,7 @@ namespace Ponyliga.Views
                     result.game = selectedGame;
                     result.time = stopWatch.AddPenaltyTime(stoppedTime, pentime).ToString();
                     result.teamId = teamId;
-                    result.penaltyTime = stoppedtime.ToString();
+                    result.penaltyTime = penTime.ToString();
 
                     ApiService apiService = new ApiService();
                     apiService.AddResult(result);
@@ -165,7 +158,7 @@ namespace Ponyliga.Views
             {
                 string convertedTime = stoppedTime.ToString();
 
-                // without time penalty
+                // without penalty time
                 if (TeamPicker.SelectedIndex > -1 && GamePicker.SelectedIndex > -1 && stoppedTime != null)
                 {
                     string selectedTeam = TeamPicker.Items[TeamPicker.SelectedIndex];
@@ -179,6 +172,7 @@ namespace Ponyliga.Views
                     result.game = selectedGame;
                     result.time = convertedTime;
                     result.teamId = teamId;
+                    result.penaltyTime = 0.ToString();
 
                     ApiService apiService = new ApiService();
                     apiService.AddResult(result);
@@ -192,37 +186,6 @@ namespace Ponyliga.Views
                     DisplayAlert("Fehler", "Mit * markierte Felder wurden nicht oder fehlerhaft ausgefüllt.", "OK");
                 }
             }
-
-
-            //string convertedTime = stoppedTime.ToString();
-
-
-
-            //if (TeamPicker.SelectedIndex > -1 && GamePicker.SelectedIndex > -1 && stoppedTime != null)
-            //{
-            //    string selectedTeam = TeamPicker.Items[TeamPicker.SelectedIndex];
-            //    var teams = taskTeam;
-            //    int teamId = teams.Find(t => t.name == selectedTeam).id;
-            //    string selectedGame = GamePicker.Items[GamePicker.SelectedIndex];
-
-            //    Result result = new Result();
-            //    result.gameDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
-            //    result.id = default;
-            //    result.game = selectedGame;
-            //    result.time = convertedTime;
-            //    result.teamId = teamId;
-
-            //    ApiService apiService = new ApiService();
-            //    apiService.AddResult(result);
-
-            //    DisplayAlert("Übermittelt!", "Die Zeit für " + selectedTeam + " wurde hinzugefügt.", "OK");
-
-            //    Navigation.PushAsync(new StopWatchPage());
-            //}
-            //else
-            //{
-            //    DisplayAlert("Fehler", "Mit * markierte Felder wurden nicht oder fehlerhaft ausgefüllt.", "OK");
-            //}
         }
 
         private void btn_TimeInputPage_Clicked(object sender, EventArgs e)

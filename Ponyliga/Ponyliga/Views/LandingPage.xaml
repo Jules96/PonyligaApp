@@ -43,7 +43,9 @@
                     Text="QR-Code" />
 
                 <Button 
-                    Text="Regeln" />
+                    Text="Regeln" 
+                    Clicked="btn_Rules_Clicked"/>
+                
             </StackLayout>
 
             <StackLayout 
@@ -65,5 +67,6 @@
             </StackLayout>
 
         </StackLayout>
+        
     </ContentPage.Content>
 </ContentPage>
