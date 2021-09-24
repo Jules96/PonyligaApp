@@ -24,6 +24,11 @@ namespace Ponyliga.Models
         public int? groupId { get; set; }
         public Group group { get; set; }
 
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public int totalScore { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public string game { get; set; }
+
         public ICollection<Pony> ponies { get; set; }
         public ICollection<TeamMember> teamMembers { get; set; }
         public ICollection<Result> results { get; set; }

@@ -125,7 +125,7 @@ namespace Ponyliga.Views
             var stoppedTime = stopWatch.Time;
             var penTime = penaltyTime.Text;
             double pentime = Convert.ToDouble(penTime);
-            double stoppedtime = Convert.ToDouble(stoppedTime);
+            
 
             // with time penalty
             if (penaltyTime.Text != null)
@@ -146,7 +146,7 @@ namespace Ponyliga.Views
                     result.game = selectedGame;
                     result.time = stopWatch.AddPenaltyTime(stoppedTime, pentime).ToString();
                     result.teamId = teamId;
-                    result.penaltyTime = stoppedtime.ToString();
+                    result.penaltyTime = pentime.ToString();
 
                     ApiService apiService = new ApiService();
                     apiService.AddResult(result);
