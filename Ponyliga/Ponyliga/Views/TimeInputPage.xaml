@@ -167,6 +167,32 @@
                 </StackLayout>
             </Frame>
 
+            <Frame
+                    HasShadow="True"
+                    Margin="10,10,10,10"
+                    CornerRadius="20"
+                    BorderColor="Black"
+                    HorizontalOptions="Center">
+
+                <Entry
+                        x:Name="penaltyTime"
+                        Placeholder="Strafsekunden"
+                        FontAttributes="Italic"
+                        PlaceholderColor="Black"
+                        FontSize="Large"
+                        Keyboard="Numeric"
+                        ClearButtonVisibility="WhileEditing"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                </Entry>
+
+            </Frame>
+
+            <Label
+                    x:Name="timeIncPenalty">
+
+            </Label>
+
             <Button
                 x:Name="btn_AcceptResult"
                 Text="Übermitteln"
