@@ -34,9 +34,11 @@ namespace Ponyliga.Views
             var taskUser = await apiService.GetAllUser(); 
 
             listViewUser.ItemsSource = Users;
+            
 
             foreach (var user in taskUser)
-                Users.Add(new User() { id = user.id, firstName = user.firstName, surName = user.surName, loginName = user.loginName, userPrivileges = user.userPrivileges });
+                
+                    Users.Add(new User() { firstName = user.firstName, surName = user.surName, loginName = user.loginName,  userPrivileges = user.userPrivileges });
 
         }
 

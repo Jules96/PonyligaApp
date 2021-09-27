@@ -13,18 +13,40 @@ namespace Ponyliga.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPageAfterLogin : ContentPage
     {
-        public MainPageAfterLogin()
+
+        private string labelProperty;
+        public string LabelProperty
+        {
+            get { return labelProperty; }
+            set
+            {
+                labelProperty = value;
+                OnPropertyChanged(nameof(LabelProperty)); // Notify that there was a change on this property
+            }
+        }
+        public MainPageAfterLogin(string username)
         {
             InitializeComponent();
+            BindingContext = this;
+            LabelProperty = "Herzlich Willkommen " + username + "!" ; // It will be shown at your label
+            
+            
+
         }
 
-        // Label for Username (Welcome, *Username*)
+    public MainPageAfterLogin()
+        {
+            InitializeComponent();
+            
+        }
 
-        // Label labelUsername = new Label { Text = "Willkommen, " , ClassId = "" };
+        //Label for Username(Welcome, * Username*);
+
+
 
         private void btn_LogOut_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new LogInPage());
+            Navigation.PopAsync();
         }
 
         private void btn_User_Clicked(object sender, EventArgs e)
@@ -44,7 +66,7 @@ namespace Ponyliga.Views
 
         private void btn_Table_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new UserTablePage());
+            Navigation.PushAsync(new ResultTablePage());
         }
 
         private void btn_Group_Clicked(object sender, EventArgs e)

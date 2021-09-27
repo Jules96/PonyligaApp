@@ -99,9 +99,24 @@ namespace Ponyliga.Views
             user.id = userId;
 
             ApiService apiService = new ApiService();
-            apiService.DeleteUser(user.id.ToString());
+            LogInPage logInPage = new LogInPage();
+            string username = logInPage.GetUsermame();
+            if(loginName == username)
+            {
+                DisplayAlert("Achtung!", "Der eingeloggte Nutzer kann nicht gelöscht werden", "OK");
 
-            DisplayAlert("Warnung", "User wird gelöscht!", "OK");
+            }
+            else
+            {
+                apiService.DeleteUser(user.id.ToString());
+                DisplayAlert("Warnung", "User wird gelöscht!", "OK");
+            }
+
+            
+
+           
+
+            
             FillUserList();
             UserPicker.SelectedIndex = -1;
         }

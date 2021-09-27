@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ponyliga.Views.Rules"
+             Title="Regeln">
+    
+    <ContentPage.Content>
+        <StackLayout
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand">
+            
+            <RadioButton
+                x:Name="rb1"
+                Content="Spiel 1: Slalom"
+                CheckedChanged="OnRule_RadioButton_CheckedChanged"/>
+
+            <RadioButton
+                x:Name="rb2"
+                Content="Spiel 2: Becherrennen"
+                CheckedChanged="OnRule_RadioButton_CheckedChanged"/>
+
+            <RadioButton
+                x:Name="rb3"
+                Content="Spiel 3: Steine"
+                CheckedChanged="OnRule_RadioButton_CheckedChanged"/>
+
+            <RadioButton
+                x:Name="rb4"
+                Content="Spiel 4: Sacklaufen"
+                CheckedChanged="OnRule_RadioButton_CheckedChanged"/>
+
+            <RadioButton
+                x:Name="rb5"
+                Content="Spiel 5: Flaggenrennen"
+                CheckedChanged="OnRule_RadioButton_CheckedChanged"/>
+
+            <RadioButton
+                x:Name="rb6"
+                Content="Spiel 6: Kartoffelrennen"
+                CheckedChanged="OnRule_RadioButton_CheckedChanged"/>
+
+            <Frame
+                HasShadow="True"
+                BorderColor="Black"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                Margin="10,10,10,10">
+
+                <ScrollView
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    
+                    <StackLayout>
+                        <Label
+                            x:Name="LabelGameRules"
+                            Text="Spielregel:"
+                            TextColor="Black"
+                            FontSize="Large"
+                            FontAttributes="Bold"/>
+
+                        <Label
+                            x:Name="LabelRuleText"
+                            Text=""
+                            TextColor="Black"
+                            FontSize="Medium"/>
+
+                    </StackLayout>
+
+                </ScrollView>
+            </Frame>
+            
+        </StackLayout>
+  
+    </ContentPage.Content>
+</ContentPage>

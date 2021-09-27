@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Ponyliga.Views.ResultTablePage">
+             x:Class="Ponyliga.Views.ResultBecherrennenPage">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout
@@ -11,10 +11,9 @@
         Text="Slalom"
         Clicked="btn_Slalom_Clicked">
                 </Button>
-
                 <Button
-        Text="Becherrennen"
-        Clicked="btn_Becherrennen_Clicked">
+        Text="Kartoffelrennen"
+        Clicked="btn_Kartoffelrennen_Clicked">
                 </Button>
 
                 <Button
@@ -25,9 +24,6 @@
 
             <StackLayout 
                 Orientation="Horizontal">
-
-
-
                 <Button
         Text="Sacklaufen"
         Clicked="btn_Sacklaufen_Clicked">
@@ -39,19 +35,19 @@
                 </Button>
 
                 <Button
-        Text="Kartoffelrennen"
-        Clicked="btn_Kartoffelrennen_Clicked">
+        Text="Gesamttabelle"
+        Clicked="btn_sumTable_Clicked">
                 </Button>
+
+
 
             </StackLayout>
 
-            <Label Text= "Punktetabelle: ">
-            </Label>
 
 
 
-
-            <ListView x:Name="listViewm"
+            <Label Text="Tabelle vom Becherrennen: "/>
+            <ListView x:Name="listViewBecher"
             ItemsSource="{Binding Item}"
             ItemTapped="Handle_ItemTapped"
             CachingStrategy="RecycleElement">
@@ -61,14 +57,17 @@
                     <Grid BackgroundColor="Black">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="3*"></ColumnDefinition>
                             <ColumnDefinition Width="1*"></ColumnDefinition>
-                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
 
                         </Grid.ColumnDefinitions>
                         <Label Text="#" HorizontalOptions="Fill"  Grid.Column="0"   FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
                         <Label Text="Verein" HorizontalOptions="Fill"  Grid.Column="1"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
-                        <Label Text="Punkte (S;K;L)" HorizontalOptions="Fill"  Grid.Column="2"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
-
+                        <Label Text="Pkt" HorizontalOptions="Fill"  Grid.Column="2"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label Text="Zeit" HorizontalOptions="Fill"  Grid.Column="3"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label Text="StrafSek" HorizontalOptions="Fill"  Grid.Column="4"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
                     </Grid>
                 </ListView.Header>
 
@@ -80,13 +79,17 @@
                             <Grid BackgroundColor="Black">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="3*"></ColumnDefinition>
                                     <ColumnDefinition Width="1*"></ColumnDefinition>
-                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                                    <ColumnDefinition Width="2*"></ColumnDefinition>
+
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text ="{Binding place}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                <Label Grid.Column="0" Text ="{Binding position}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
                                 <Label Grid.Column="1" Text ="{Binding name}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
                                 <Label Grid.Column="2" Text ="{Binding score}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
-
+                                <Label Grid.Column="3" Text ="{Binding time}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                <Label Grid.Column="4" Text ="{Binding penaltyTime}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

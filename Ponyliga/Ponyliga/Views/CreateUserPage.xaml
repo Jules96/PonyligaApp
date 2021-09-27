@@ -1,41 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Ponyliga.Views.CreateUserPage" Title="Registrieren"
+             x:Class="Ponyliga.Views.CreateUserPage" 
+             Title="Registrieren"
              xmlns:pages="clr-namespace:Ponyliga.Views">
 
     <ContentPage.Content>
 
         <StackLayout>
 
-            <Label Text="Vorname: " />
-            <Entry x:Name="userFirstName"
-                Placeholder="Vorname" />
 
-            <Label Text="Name: " />
-            <Entry x:Name="userLastName"
+            <Label 
+                Text="Vorname: " />
+            
+            <Entry 
+                x:Name="userFirstName"
+               Placeholder="Vorname" />
+
+            <Label 
+                Text="Name: " />
+            
+            <Entry 
+                x:Name="userLastName"
                 Placeholder="Name" />
 
             <!-- <Label Text="Rechte: " />
             <Entry 
                 Placeholder="Rechte" /> -->
 
-            <Picker x:Name="userRightsPicker"
-                    Title="Rechte auswählen"/>
+            <Picker 
+                x:Name="userRightsPicker"
+                Title="Rechte auswählen"/>
 
-            <Label Text="Login Name: " />
-            <Entry x:Name="userLoginName"
+            <Label 
+                Text="Login Name: " />
+            
+            <Entry 
+                x:Name="userLoginName"
                 Placeholder="Login" />
 
-            <Label Text="Passwort: " />
-            <Entry x:Name="userPassword"
+            <Label 
+                Text="Passwort: " />
+            
+            <Entry 
+                x:Name="userPassword"
                 IsPassword="True" 
-                   Placeholder="Passwort" />
+                Placeholder="Passwort" />
 
-            <Button Text="Registrierem" Clicked="btn_newUser_Clicked"/>
+            <Button 
+                Text="Registrieren" 
+                Clicked="btn_newUser_Clicked"/>
 
         </StackLayout>
-
     </ContentPage.Content>
-
 </ContentPage>

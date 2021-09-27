@@ -18,8 +18,7 @@
                    HorizontalOptions="Center" />
 
             
-            <Button Text="Update"
-                    Clicked="btn_updateListOfTeams_Clicked"/>
+
             
             <Button Text="Team bearbeiten"
                     Clicked="btn_editExistingTeam_Clicked"/>
@@ -27,11 +26,13 @@
             <Button Text="Team löschen"
                     Clicked="btn_deleteExistingTeam_Clicked"/>
 
-            <!--hier irgendwie Tabelle mit bereits bestehenden Teams rein-->
-            <!--wie soll die aussehen?-->
+            <Button Text="Update"
+                    Clicked="btn_updateListOfTeams_Clicked"/>
+
+            <!--ab hier Tabelle-->
 
 
-        <ListView x:Name="listViewn"
+        <ListView x:Name="listViewTeams"
             ItemsSource="{Binding Item}"
             ItemTapped="Handle_ItemTappedn"
             CachingStrategy="RecycleElement">
@@ -60,9 +61,9 @@
                                 <ColumnDefinition Width="1*"></ColumnDefinition>
                                 <ColumnDefinition Width="1*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Text ="{Binding Name}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
-                            <Label Grid.Column="1" Text ="{Binding NrOfMembers}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
-                            <Label Grid.Column="2" Text ="{Binding Consultor}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                <Label Grid.Column="0" Text ="{Binding name}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                <Label Grid.Column="1" Text ="{Binding teamSize}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                <Label Grid.Column="2" Text ="{Binding consultor}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

@@ -22,110 +22,163 @@
 
     <ContentPage.Content>
         <StackLayout
-            VerticalOptions="Start">
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand">
 
-            <Label 
-                x:Name="label_Logged_as" />
+            <StackLayout
+                VerticalOptions="Start">
 
-            <Picker
-                x:Name="TeamPicker"
-                Title="Team auswählen*"
-                FontAttributes="Italic"
-                FontSize="20"
-                VerticalOptions="Start"
-                SelectedIndexChanged="TeamPicker_OnSelectedIndexChanged">
-            </Picker>
+                <Label 
+                    x:Name="label_Logged_as" />
 
-            <Picker
-                x:Name="GamePicker"
-                Title="Spiel auswählen*" 
-                FontAttributes="Italic"
-                FontSize="20"
-                VerticalOptions="Start"
-                SelectedIndexChanged="GamePicker_OnSelectedIndexChanged">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Slalom</x:String>
-                        <x:String>Becherrennen</x:String>
-                        <x:String>Steine</x:String>
-                        <x:String>Sacklaufen</x:String>
-                        <x:String>Flaggenrennen</x:String>
-                        <x:String>Kartoffelrennen</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
+                <Picker
+                    x:Name="TeamPicker"
+                    Title="Team auswählen*"
+                    FontAttributes="Italic"
+                    FontSize="20"
+                    VerticalOptions="Start"
+                    SelectedIndexChanged="TeamPicker_OnSelectedIndexChanged">
+                </Picker>
 
-            <Label 
-                Text="* Pflichtfelder"
-                FontSize="Micro"
-                Margin="10,-10,0,0"/>
+                <Picker
+                    x:Name="GamePicker"
+                    Title="Spiel auswählen*" 
+                    FontAttributes="Italic"
+                    FontSize="20"
+                    VerticalOptions="Start"
+                    SelectedIndexChanged="GamePicker_OnSelectedIndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Slalom</x:String>
+                            <x:String>Becherrennen</x:String>
+                            <x:String>Steine</x:String>
+                            <x:String>Sacklaufen</x:String>
+                            <x:String>Flaggenrennen</x:String>
+                            <x:String>Kartoffelrennen</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
 
-            <Label
-                x:Name="label_result"
-                Text="" 
-                TextColor="Black"
-                FontSize="50"
-                Padding="30"
-                HorizontalOptions="Center"
-                VerticalOptions="CenterAndExpand">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="{Binding Time}"/>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-
-            <StackLayout 
-                Orientation="Horizontal"
-                VerticalOptions="CenterAndExpand">
-
-                <Button 
-                    x:Name="btn_Start"
-                    Text="Start"
-                    TextTransform="None"
-                    Clicked="btn_Start_Clicked"/>
-
-                <Button 
-                    x:Name="btn_Continue"
-                    Text="Weiter"
-                    TextTransform="None"
-                    Clicked="btn_Continue_Clicked" />
-
-                <Button 
-                    x:Name="btn_Stop"
-                    Text="Stopp" 
-                    TextTransform="None"
-                    Clicked="btn_Stop_Clicked" />
-
-                <Button 
-                    x:Name="btn_Reset" 
-                    Text="Reset"
-                    TextTransform="None"
-                    Clicked="btn_Reset_Clicked" />
-
+                <Label 
+                    Text="* Pflichtfelder"
+                    FontSize="Micro"
+                    Margin="10,-10,0,0"/>
+                
             </StackLayout>
 
-            <Label 
-                x:Name="label_getTime"
-                Text="" />
+            <StackLayout
+                VerticalOptions="Center">
 
-            <Button 
-                x:Name="btn_TransmitResults"
-                Text="Übermitteln"
-                TextTransform="None"
-                Clicked="btn_TransmitResults_Clicked"/>
+                <Frame
+                    HasShadow="True"
+                    Margin="10,10,10,10"
+                    CornerRadius="10"
+                    BorderColor="Black">
 
+                    <Label
+                        x:Name="label_result"
+                        Text="" 
+                        TextColor="Black"
+                        FontSize="50"
+                        HorizontalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding Time}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    
+                </Frame>
+
+                <StackLayout 
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand">
+
+                    <Button 
+                        x:Name="btn_Start"
+                        Text="Start"
+                        TextTransform="None"
+                        Clicked="btn_Start_Clicked"
+                        Pressed="btn_Start_Clicked"/>
+
+                    <Button 
+                        x:Name="btn_Continue"
+                        Text="Weiter"
+                        TextTransform="None"
+                        Clicked="btn_Continue_Clicked" />
+
+                    <Button 
+                        x:Name="btn_Stop"
+                        Text="Stopp" 
+                        TextTransform="None"
+                        Clicked="btn_Stop_Clicked" />
+
+                    <Button 
+                        x:Name="btn_Reset" 
+                        Text="Reset"
+                        TextTransform="None"
+                        Clicked="btn_Reset_Clicked" />
+                    
+                </StackLayout>
+
+                <Frame
+                    HasShadow="True"
+                    Margin="10,10,10,10"
+                    CornerRadius="20"
+                    BorderColor="Black"
+                    HorizontalOptions="Center">
+
+                    <Entry
+                        x:Name="penaltyTime"
+                        Placeholder="Strafsekunden"
+                        FontAttributes="Italic"
+                        PlaceholderColor="Black"
+                        FontSize="Large"
+                        Keyboard="Numeric"
+                        ClearButtonVisibility="WhileEditing"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                    </Entry>
+                    
+                </Frame>
+
+                <Label
+                    x:Name="timeIncPenalty">
+                    
+                </Label>
+                
+                <Button 
+                    x:Name="btn_TransmitResults"
+                    Text="Zeit Übermitteln"
+                    TextTransform="None"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    HeightRequest="50"
+                    WidthRequest="150"
+                    CornerRadius="20"
+                    Clicked="btn_TransmitResults_Clicked"/>
+                
+            </StackLayout>
+
+            <StackLayout
+                VerticalOptions="CenterAndExpand">
+            </StackLayout>
+            
             <Button 
                 x:Name="btn_LinkToTimeInputPage"
                 Text="Manuelle Zeiteingabe"
                 TextTransform="None"
                 FontSize="20"
                 FontAttributes="Bold"
-                Padding="20"
-                Margin="0, 150, 0, 0"
+                HorizontalOptions="Center"
+                HeightRequest="60"
+                WidthRequest="250"
+                CornerRadius="100"
                 VerticalOptions="End"
                 Clicked="btn_TimeInputPage_Clicked"/>
 
         </StackLayout>
+        
     </ContentPage.Content>
 </ContentPage>

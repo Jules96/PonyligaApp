@@ -1,5 +1,6 @@
 ﻿using Ponyliga.Models;
 using Ponyliga.Services;
+using Ponyliga.ViewModels;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,6 +20,9 @@ namespace Ponyliga.Views
     // page for manual time input
     public partial class TimeInputPage : ContentPage
     {
+        // only for using the AddPenaltyTime method
+        StopWatch stopWatch;
+
         public List<Team> taskTeam;
 
         public TimeInputPage()
@@ -59,41 +63,88 @@ namespace Ponyliga.Views
         private void btn_TransmitResults_Clicked(object sender, EventArgs e)
         {
             // saves time in a label
-            label_manual_result.Text = timeInput1.Text + ":" + timeInput2.Text + ":" + timeInput3.Text + "." + timeInput4.Text;
-            var stoppedTime = label_manual_result.Text;
-            string convertedTime = stoppedTime.ToString();
+            //label_manual_result.Text = timeInputHour.Text + ":" + timeInputMin.Text + ":" + timeInputSec.Text + "." + timeInputMsec.Text;
 
-            if (TeamPicker.SelectedIndex > -1 && GamePicker.SelectedIndex > -1 && stoppedTime != null)
+            var stoppedTime = timeInputHour.Text + ":" + timeInputMin.Text + ":" + timeInputSec.Text + "." + timeInputMsec.Text;
+            var penTime = penaltyTime.Text;
+            
+            stopWatch = new StopWatch();
+
+            if(String.IsNullOrEmpty(timeInputHour.Text) | String.IsNullOrEmpty(timeInputMin.Text) | String.IsNullOrEmpty(timeInputSec.Text) | String.IsNullOrEmpty(timeInputMsec.Text))
             {
-                string selectedTeam = TeamPicker.Items[TeamPicker.SelectedIndex];
-                var teams = taskTeam;
-                int teamId = teams.Find(t => t.name == selectedTeam).id;
-                string selectedGame = GamePicker.Items[GamePicker.SelectedIndex];
-
-                Result result = new Result();
-                result.gameDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
-                result.id = default;
-                result.game = selectedGame;
-                result.time = convertedTime;
-                result.teamId = teamId;
-
-                ApiService apiService = new ApiService();
-                apiService.AddResult(result);
-
-                DisplayAlert("Übermittelt!", "Die Zeit für " + selectedTeam + " wurde hinzugefügt.", "OK");
-
-                Navigation.PushAsync(new TimeInputPage());
+                DisplayAlert("Achtung", "Es sind nicht alle Zeitfelder ausgefüllt!", "OK");
             }
             else
             {
-                DisplayAlert("Fehler", "Mit * markierte Felder wurden nicht oder fehlerhaft ausgefüllt.", "OK");
+                // with penalty time
+                if (penaltyTime.Text != null)
+                {
+                    double pentime = Convert.ToDouble(penTime);
+
+                    // shows the calculated Time incl. penalty
+                    timeIncPenalty.Text = stopWatch.AddPenaltyTime(stoppedTime, pentime).ToString();
+
+                    if (TeamPicker.SelectedIndex > -1 && GamePicker.SelectedIndex > -1 && stoppedTime != null)
+                    {
+                        string selectedTeam = TeamPicker.Items[TeamPicker.SelectedIndex];
+                        var teams = taskTeam;
+                        int teamId = teams.Find(t => t.name == selectedTeam).id;
+                        string selectedGame = GamePicker.Items[GamePicker.SelectedIndex];
+
+                        Result result = new Result();
+                        result.gameDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                        result.id = default;
+                        result.game = selectedGame;
+                        result.time = stopWatch.AddPenaltyTime(stoppedTime, pentime).ToString();
+                        result.teamId = teamId;
+                        result.penaltyTime = penTime.ToString();
+
+
+                        ApiService apiService = new ApiService();
+                        apiService.AddResult(result);
+
+                        DisplayAlert("Übermittelt!", "Die Zeit für " + selectedTeam + " wurde hinzugefügt.", "OK");
+
+                        Navigation.PushAsync(new StopWatchPage());
+                    }
+                    else
+                    {
+                        DisplayAlert("Fehler", "Mit * markierte Felder wurden nicht oder fehlerhaft ausgefüllt.", "OK");
+                    }
+                }
+                else
+                {
+                    string convertedTime = stoppedTime.ToString();
+
+                    // without penalty time
+                    if (TeamPicker.SelectedIndex > -1 && GamePicker.SelectedIndex > -1 && stoppedTime != null)
+                    {
+                        string selectedTeam = TeamPicker.Items[TeamPicker.SelectedIndex];
+                        var teams = taskTeam;
+                        int teamId = teams.Find(t => t.name == selectedTeam).id;
+                        string selectedGame = GamePicker.Items[GamePicker.SelectedIndex];
+
+                        Result result = new Result();
+                        result.gameDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                        result.id = default;
+                        result.game = selectedGame;
+                        result.time = convertedTime;
+                        result.teamId = teamId;
+                        result.penaltyTime = 0.ToString();
+
+                        ApiService apiService = new ApiService();
+                        apiService.AddResult(result);
+
+                        DisplayAlert("Übermittelt!", "Die Zeit für " + selectedTeam + " wurde hinzugefügt.", "OK");
+
+                        Navigation.PushAsync(new StopWatchPage());
+                    }
+                    else
+                    {
+                        DisplayAlert("Fehler", "Mit * markierte Felder wurden nicht oder fehlerhaft ausgefüllt.", "OK");
+                    }
+                }
             }
-
-            
-
-            // label_manuel_result.Text = TEST_entry_behavior.Text;
-
-            // DBConnection
         }
     }
 
@@ -220,7 +271,7 @@ namespace Ponyliga.Views
         }
     }
 
-    // Check for milliseconds
+    // Check for milliseconds cut to two decimal places
     public class MaxMsecAmountEntryBehavior : Behavior<Entry>
     {
         protected Action<Entry, string> AdditionalCheck;
