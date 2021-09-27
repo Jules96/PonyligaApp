@@ -12,12 +12,12 @@
                 Text="Startseite"
                 FontSize="25"
                 FontAttributes="Bold"
-                TextColor="#FFFF"
                 HorizontalOptions="Start"
                 VerticalOptions="Center"/>
 
             <Button
                 Text="Logout"
+                BackgroundColor="DeepPink"
                 TextTransform="None"
                 HorizontalOptions="End"
                 VerticalOptions="End"
@@ -33,44 +33,71 @@
     <StackLayout
         VerticalOptions="FillAndExpand"
         HorizontalOptions="FillAndExpand">
-        
+
+        <Label 
+            x:Name="label"
+            Text="{Binding LabelProperty}" 
+            TextColor="DeepPink"
+            FontAttributes="Bold"/>
 
         <StackLayout
-            VerticalOptions="Start">
-            
-            <Label 
-                x:Name="label"
-                Text="{Binding LabelProperty}" />
-            
+            VerticalOptions="CenterAndExpand">
+
             <Label 
                 x:Name="LabelUsername"/>
 
             <Button 
-                Text="Logout" 
-                Clicked="btn_LogOut_Clicked"/>
-            
-            <Button 
                 Text="Tabelle"
-                Clicked="btn_Table_Clicked"/>
+                BackgroundColor="LightBlue"
+                Clicked="btn_Table_Clicked"
+                HorizontalOptions="Center"
+                HeightRequest="60"
+                WidthRequest="200"
+                CornerRadius="10"/>
             
             <Button 
                 Text="Teams" 
-                Clicked="btn_EditTeams_Clicked"/>
+                BackgroundColor="LightBlue"
+                Clicked="btn_EditTeams_Clicked"
+                HorizontalOptions="Center"
+                HeightRequest="60"
+                WidthRequest="200"
+                CornerRadius="10"/>
             
             <Button 
-                Text="Tabelle bearbeiten"/>
+                Text="Tabelle bearbeiten"
+                BackgroundColor="LightBlue"
+                HorizontalOptions="Center"
+                HeightRequest="60"
+                WidthRequest="200"
+                CornerRadius="10"/>
             
             <Button 
                 Text="Stoppuhr" 
-                Clicked="btn_StopWatch_Clicked"/>
+                BackgroundColor="LightBlue"
+                Clicked="btn_StopWatch_Clicked"
+                HorizontalOptions="Center"
+                HeightRequest="60"
+                WidthRequest="200"
+                CornerRadius="10"/>
             
             <Button 
                 Text="Gruppen" 
-                Clicked="btn_Group_Clicked"/>
+                BackgroundColor="LightBlue"
+                Clicked="btn_Group_Clicked"
+                HorizontalOptions="Center"
+                HeightRequest="60"
+                WidthRequest="200"
+                CornerRadius="10"/>
             
             <Button 
                 Text="User" 
-                Clicked="btn_User_Clicked"/>
+                BackgroundColor="LightBlue"
+                Clicked="btn_User_Clicked"
+                HorizontalOptions="Center"
+                HeightRequest="60"
+                WidthRequest="200"
+                CornerRadius="10"/>
             
         </StackLayout>
 
@@ -82,17 +109,22 @@
             Orientation="Horizontal"
             VerticalOptions="End">
 
-
             <Button 
                 Text="Impressum"
-                HorizontalOptions="StartAndExpand"/>
-
+                BackgroundColor="LightBlue"
+                HorizontalOptions="StartAndExpand"
+                HeightRequest="60"
+                WidthRequest="120"
+                CornerRadius="10"/>
 
             <Button 
                 Text="Rechte" 
-                HorizontalOptions="End"/>
+                BackgroundColor="LightBlue"
+                HorizontalOptions="End"
+                HeightRequest="60"
+                WidthRequest="120"
+                CornerRadius="10"/>
             
-
         </StackLayout>
         
     </StackLayout>

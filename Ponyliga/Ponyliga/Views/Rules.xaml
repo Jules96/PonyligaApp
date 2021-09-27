@@ -8,7 +8,7 @@
         <StackLayout
             VerticalOptions="FillAndExpand"
             HorizontalOptions="FillAndExpand">
-            
+
             <RadioButton
                 x:Name="rb_GameOne"
                 Content="Spiel 1: Slalom"
@@ -51,7 +51,7 @@
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
                     x:Name="scrollViewRules">
-                    
+
                     <StackLayout>
                         <Label
                             x:Name="labelGameRules"
@@ -67,11 +67,9 @@
                             FontSize="Medium"/>
 
                     </StackLayout>
-
+                    
                 </ScrollView>
             </Frame>
-            
         </StackLayout>
-  
     </ContentPage.Content>
 </ContentPage>

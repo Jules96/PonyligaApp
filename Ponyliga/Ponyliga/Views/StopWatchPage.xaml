@@ -98,6 +98,7 @@
                     <Button 
                         x:Name="btn_Start"
                         Text="Start"
+                        BackgroundColor="LightBlue"
                         TextTransform="None"
                         Clicked="btn_Start_Clicked"
                         Pressed="btn_Start_Clicked"/>
@@ -105,18 +106,21 @@
                     <Button 
                         x:Name="btn_Continue"
                         Text="Weiter"
+                        BackgroundColor="LightBlue"
                         TextTransform="None"
                         Clicked="btn_Continue_Clicked" />
 
                     <Button 
                         x:Name="btn_Stop"
                         Text="Stopp" 
+                        BackgroundColor="LightBlue"
                         TextTransform="None"
                         Clicked="btn_Stop_Clicked" />
 
                     <Button 
                         x:Name="btn_Reset" 
                         Text="Reset"
+                        BackgroundColor="LightBlue"
                         TextTransform="None"
                         Clicked="btn_Reset_Clicked" />
                     
@@ -151,6 +155,7 @@
                 <Button 
                     x:Name="btn_TransmitResults"
                     Text="Zeit Übermitteln"
+                    BackgroundColor="LightBlue"
                     TextTransform="None"
                     FontAttributes="Bold"
                     HorizontalOptions="Center"
@@ -168,6 +173,7 @@
             <Button 
                 x:Name="btn_LinkToTimeInputPage"
                 Text="Manuelle Zeiteingabe"
+                BackgroundColor="LightBlue"
                 TextTransform="None"
                 FontSize="20"
                 FontAttributes="Bold"

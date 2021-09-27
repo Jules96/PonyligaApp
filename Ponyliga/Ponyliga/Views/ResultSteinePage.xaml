@@ -2,24 +2,28 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ponyliga.Views.ResultSteinePage">
+    
     <ContentPage.Content>
         <StackLayout>
             <StackLayout
-     Orientation="Horizontal">
+                Orientation="Horizontal">
 
                 <Button
-        Text="Slalom"
-        Clicked="btn_Slalom_Clicked">
+                    Text="Slalom"
+                    BackgroundColor="LightBlue"
+                    Clicked="btn_Slalom_Clicked">
                 </Button>
 
                 <Button
-        Text="Becherrennen"
-        Clicked="btn_Becherrennen_Clicked">
+                    Text="Becherrennen"
+                    BackgroundColor="LightBlue"
+                    Clicked="btn_Becherrennen_Clicked">
                 </Button>
 
-      <Button
-        Text="Sacklaufen"
-        Clicked="btn_Sacklaufen_Clicked">
+                <Button
+                    Text="Sacklaufen"
+                    BackgroundColor="LightBlue"
+                    Clicked="btn_Sacklaufen_Clicked">
                 </Button>
                 
                 
@@ -28,35 +32,36 @@
             <StackLayout 
                 Orientation="Horizontal">
 
-
-
-          
-
                 <Button
-        Text="Flaggenrennen"
-        Clicked="btn_Flaggenrennen_Clicked">
+                    Text="Flaggenrennen"
+                    BackgroundColor="LightBlue"
+                    Clicked="btn_Flaggenrennen_Clicked">
                 </Button>
 
                 <Button
-        Text="Kartoffelrennen"
-        Clicked="btn_Kartoffelrennen_Clicked">
+                    Text="Kartoffelrennen"
+                    BackgroundColor="LightBlue"
+                    Clicked="btn_Kartoffelrennen_Clicked">
                 </Button>
 
                 <Button
-        Text="Gesamttabelle"
-        Clicked="btn_sumTable_Clicked">
+                    Text="Gesamttabelle"
+                    BackgroundColor="LightBlue"
+                    Clicked="btn_sumTable_Clicked">
                 </Button>
 
             </StackLayout>
 
+            <Label 
+                Text="Tabelle vom Steinerennen: ">
+            </Label>
 
-
-            <Label Text="Tabelle vom Steinerennen: "></Label>
-
-            <ListView x:Name="listViewSteine"
-            ItemsSource="{Binding Item}"
-            ItemTapped="Handle_ItemTapped"
-            CachingStrategy="RecycleElement">
+            <ListView 
+                x:Name="listViewSteine"
+                ItemsSource="{Binding Item}"
+                ItemTapped="Handle_ItemTapped"
+                CachingStrategy="RecycleElement">
+                
                 <!--Built in Cells-->
 
                 <ListView.Header>
@@ -101,10 +106,13 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            
             <Button
-        Text="aktualisieren"
-        Clicked="btn_aktualisieren_Clicked">
+                Text="aktualisieren"
+                BackgroundColor="LightBlue"
+                Clicked="btn_aktualisieren_Clicked">
             </Button>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

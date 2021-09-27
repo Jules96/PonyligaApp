@@ -3,12 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ponyliga.Views.UserTablePage">
 
-
-
-    <ListView x:Name="listViewUser"
-            ItemsSource="{Binding Item}"
-            ItemTapped="Handle_ItemiTapped"
-            CachingStrategy="RecycleElement">
+    <ListView 
+        x:Name="listViewUser"
+        ItemsSource="{Binding Item}"
+        ItemTapped="Handle_ItemiTapped"
+        CachingStrategy="RecycleElement">
+        
         <!--Built in Cells-->
 
         <ListView.Header>
@@ -34,7 +34,9 @@
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <Grid BackgroundColor="Black">
+                    <Grid 
+                        BackgroundColor="Black">
+                        
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="Auto"/>
@@ -58,10 +60,15 @@
         </ListView.ItemTemplate>
     </ListView>
     <ContentPage.Content>
-        <StackLayout Orientation="Horizontal" Grid.Row="1">
-            <Button Text="Updaten" 
-                    Clicked="btn_Update_Clicked" />
+        <StackLayout 
+            Orientation="Horizontal" 
+            Grid.Row="1">
+            
+            <Button 
+                Text="Updaten"
+                BackgroundColor="LightBlue"
+                Clicked="btn_Update_Clicked" />
+            
         </StackLayout>
     </ContentPage.Content>
-
 </ContentPage>

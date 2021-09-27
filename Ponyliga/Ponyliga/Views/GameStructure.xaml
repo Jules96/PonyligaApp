@@ -14,7 +14,7 @@
                 Content="Allgemein"
                 CheckedChanged="OnGameStructure_RadioButton_CheckedChanged"
                 IsChecked="True"/>
-            
+
             <RadioButton
                 x:Name="rb_GameOne"
                 Content="Spiel 1: Slalom"
@@ -51,7 +51,7 @@
                 VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand"
                 Margin="10,10,10,10">
-                
+
                 <ScrollView
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
@@ -90,126 +90,11 @@
                         <Image
                             x:Name="imageGameStructure">
                         </Image>
-                        
+
                     </StackLayout>
                     
                 </ScrollView>
-                
             </Frame>
-
-            <!--<ScrollView
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand">
-                
-                <StackLayout>
-                    
-                    <Label 
-                        Text="Spiel 1: Slalom" 
-                        TextColor="Black"
-                        FontSize="Large"
-                        TextDecorations="Underline"/>
-                    
-                    <Label 
-                        Text="Material: 5 Kegel, 5 Tennisbälle, 1 Staffelstab" 
-                        TextColor="Black"/>
-
-                    <Label
-                        x:Name="label_GameOne"
-                        TextColor="Black"/>
-
-                    <Image 
-                        Source="Spiel1.jpg" />
-
-                    <Label 
-                        Text="Spiel 2: Becherrennen" 
-                        TextColor="Black"
-                        FontSize="Large"
-                        TextDecorations="Underline"/>
-
-                    <Label 
-                        Text="Material: 5 Kegel, 5 Besenstiele, 4 Becher" 
-                        TextColor="Black"/>
-
-                    <Label
-                        x:Name="label_GameTwo"
-                        TextColor="Black"/>
-
-                    <Image 
-                        Source="Spiel2.jpg" />
-
-                    <Label 
-                        Text="Spiel 3: Steine" 
-                        TextColor="Black"
-                        FontSize="Large"
-                        TextDecorations="Underline"/>
-
-                    <Label 
-                        Text="Material: 5 Eimer(Steine), 1 Kegel" 
-                        TextColor="Black"/>
-
-                    <Label
-                        x:Name="label_GameThree"
-                        TextColor="Black"/>
-
-                    <Image 
-                        Source="Spiel3.jpg" />
-
-                    <Label 
-                        Text="Spiel 4: Sacklaufen" 
-                        TextColor="Black"
-                        FontSize="Large"
-                        TextDecorations="Underline"/>
-
-                    <Label 
-                        Text="Material: 1 Sack, 1 Kegel" 
-                        TextColor="Black"/>
-
-                    <Label
-                        x:Name="label_GameFour"
-                        TextColor="Black"/>
-
-                    <Image 
-                        Source="Spiel4.jpg" />
-
-                    <Label 
-                        Text="Spiel 5: Flaggenrennen" 
-                        TextColor="Black"
-                        FontSize="Large"
-                        TextDecorations="Underline"/>
-
-                    <Label 
-                        Text="Material: 2 Holzkisten, 5 Flaggen" 
-                        TextColor="Black"/>
-
-                    <Label
-                        x:Name="label_GameFive"
-                        TextColor="Black"/>
-
-                    <Image 
-                        Source="Spiel5.jpg" />
-
-                    <Label 
-                        Text="Spiel 6: Kartoffelrennen" 
-                        TextColor="Black"
-                        FontSize="Large"
-                        TextDecorations="Underline"/>
-
-                    <Label 
-                        Text="Material: 2 10 ltr. Eimer, 4 kleine Säckchen" 
-                        TextColor="Black"/>
-
-                    <Label
-                        x:Name="label_GameSix"
-                        TextColor="Black"/>
-
-                    <Image 
-                        Source="Spiel6.jpg" />
-                    
-                </StackLayout>
-                
-            </ScrollView>-->
-            
         </StackLayout>
-        
     </ContentPage.Content>
 </ContentPage>

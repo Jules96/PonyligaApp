@@ -7,13 +7,12 @@
     <NavigationPage.TitleView>
         <StackLayout
             Orientation="Horizontal">
-            
+
             <Label
                 x:Name="Startseite"
                 Text="Startseite"
                 FontSize="25"
-                FontAttributes="Bold"
-                TextColor="#FFFF"/>
+                FontAttributes="Bold"/>
             
         </StackLayout>
     </NavigationPage.TitleView>
@@ -24,31 +23,57 @@
             HorizontalOptions="FillAndExpand">
             
             <Label 
-                Text="Welcome to the BifiCup!" 
+                Text="Willkommen bei der Ponyliga!" 
                 FontSize="25" 
+                TextColor="DeepPink"
                 HorizontalOptions="Center" />
             
             <StackLayout
-                VerticalOptions="Start">
+                VerticalOptions="CenterAndExpand">
                 
                 <Button 
                     Text="Login" 
-                    Clicked="btn_LogIn_Clicked"/>
+                    BackgroundColor="LightBlue"
+                    Clicked="btn_LogIn_Clicked"
+                    HorizontalOptions="Center"
+                    HeightRequest="60"
+                    WidthRequest="200"
+                    CornerRadius="10"/>
 
                 <Button 
                     Text="Tabelle"
-                    Clicked="btn_Table_Clicked"/>
+                    BackgroundColor="LightBlue"
+                    Clicked="btn_Table_Clicked"
+                    HorizontalOptions="Center"
+                    HeightRequest="60"
+                    WidthRequest="200"
+                    CornerRadius="10"/>
 
                 <Button 
-                    Text="QR-Code" />
+                    Text="QR-Code" 
+                    BackgroundColor="LightBlue"
+                    HorizontalOptions="Center"
+                    HeightRequest="60"
+                    WidthRequest="200"
+                    CornerRadius="10"/>
 
                 <Button 
                     Text="Regeln" 
-                    Clicked="btn_Rules_Clicked"/>
+                    BackgroundColor="LightBlue"
+                    Clicked="btn_Rules_Clicked"
+                    HorizontalOptions="Center"
+                    HeightRequest="60"
+                    WidthRequest="200"
+                    CornerRadius="10"/>
 
                 <Button 
                     Text="Spielaufbau" 
-                    Clicked="btn_GameStructure_Clicked"/>
+                    BackgroundColor="LightBlue"
+                    Clicked="btn_GameStructure_Clicked"
+                    HorizontalOptions="Center"
+                    HeightRequest="60"
+                    WidthRequest="200"
+                    CornerRadius="10"/>
 
             </StackLayout>
 
@@ -62,11 +87,19 @@
 
                 <Button 
                     Text="Impressum"
-                    HorizontalOptions="StartAndExpand"/>
+                    BackgroundColor="LightBlue"
+                    HorizontalOptions="StartAndExpand"
+                    HeightRequest="60"
+                    WidthRequest="120"
+                    CornerRadius="10"/>
 
                 <Button 
                     Text="Rechte" 
-                    HorizontalOptions="End"/>
+                    BackgroundColor="LightBlue"
+                    HorizontalOptions="End"
+                    HeightRequest="60"
+                    WidthRequest="120"
+                    CornerRadius="10"/>
 
             </StackLayout>
 

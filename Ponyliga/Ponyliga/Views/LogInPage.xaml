@@ -13,7 +13,6 @@
                 Text="Login"
                 FontSize="25"
                 FontAttributes="Bold"
-                TextColor="#FFFF"
                 HorizontalOptions="Start"
                 VerticalOptions="Center"/>
 
@@ -23,10 +22,10 @@
                 FontAttributes="Bold"
                 HorizontalOptions="End"
                 VerticalOptions="End"
-                Clicked="btn_MainPage_Clicked" 
+                Clicked="btn_LandingPage_Clicked" 
                 Margin="110,0,0,0"
                 CornerRadius="100" 
-                BackgroundColor="#ED03FC">
+                BackgroundColor="DeepPink">
             </Button>
 
         </StackLayout>
@@ -38,13 +37,17 @@
 
             <Entry 
                 Placeholder="Benutzername"
+                PlaceholderColor="LightPink"
                 FontSize="Title"
+                TextColor="Black"
                 x:Name= "username"/>
 
             <Entry 
                 IsPassword="True"  
                 Placeholder="Passwort"
+                PlaceholderColor="LightPink"
                 FontSize="Title"
+                TextColor="Black"
                 x:Name= "password"/>
 
             <StackLayout
@@ -54,6 +57,7 @@
 
                 <Button 
                     Text="Anmelden" 
+                    BackgroundColor="LightBlue"
                     CornerRadius="100"
                     HorizontalOptions="Center"
                     HeightRequest="50"
@@ -62,6 +66,7 @@
 
                 <Button 
                     Text="Registrieren" 
+                    BackgroundColor="LightBlue"
                     CornerRadius="100"
                     HorizontalOptions="Center"
                     HeightRequest="50"
