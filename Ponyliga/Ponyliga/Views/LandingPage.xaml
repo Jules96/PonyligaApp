@@ -45,7 +45,11 @@
                 <Button 
                     Text="Regeln" 
                     Clicked="btn_Rules_Clicked"/>
-                
+
+                <Button 
+                    Text="Spielaufbau" 
+                    Clicked="btn_GameStructure_Clicked"/>
+
             </StackLayout>
 
             <StackLayout 
