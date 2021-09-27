@@ -99,7 +99,8 @@
                         x:Name="btn_Start"
                         Text="Start"
                         TextTransform="None"
-                        Clicked="btn_Start_Clicked"/>
+                        Clicked="btn_Start_Clicked"
+                        Pressed="btn_Start_Clicked"/>
 
                     <Button 
                         x:Name="btn_Continue"
