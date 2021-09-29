@@ -59,10 +59,7 @@ namespace Ponyliga.Views
                 foreach (var resultSum in taskResultSum)
                 {
                     MyItems.Add(new TeamResult { place = resultSum.place, name = resultSum.name, score = resultSum.totalScore });
-                    foreach (var resultSums in resultSum.results)
-                    {
-
-                    }
+                    
 
                 }
             }
