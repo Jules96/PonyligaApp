@@ -11,31 +11,37 @@
             
             <RadioButton
                 x:Name="rb1"
+                AutomationId="rb1"
                 Content="Spiel 1: Slalom"
                 CheckedChanged="OnRule_RadioButton_CheckedChanged"/>
 
             <RadioButton
                 x:Name="rb2"
+                AutomationId="rb2"
                 Content="Spiel 2: Becherrennen"
                 CheckedChanged="OnRule_RadioButton_CheckedChanged"/>
 
             <RadioButton
                 x:Name="rb3"
+                AutomationId="rb3"
                 Content="Spiel 3: Steine"
                 CheckedChanged="OnRule_RadioButton_CheckedChanged"/>
 
             <RadioButton
                 x:Name="rb4"
+                AutomationId="rb4"
                 Content="Spiel 4: Sacklaufen"
                 CheckedChanged="OnRule_RadioButton_CheckedChanged"/>
 
             <RadioButton
                 x:Name="rb5"
+                AutomationId="rb5"
                 Content="Spiel 5: Flaggenrennen"
                 CheckedChanged="OnRule_RadioButton_CheckedChanged"/>
 
             <RadioButton
                 x:Name="rb6"
+                AutomationId="rb6"
                 Content="Spiel 6: Kartoffelrennen"
                 CheckedChanged="OnRule_RadioButton_CheckedChanged"/>
 
@@ -53,6 +59,7 @@
                     <StackLayout>
                         <Label
                             x:Name="LabelGameRules"
+                            AutomationId="LabelGameRules"
                             Text="Spielregel:"
                             TextColor="Black"
                             FontSize="Large"
@@ -60,6 +67,7 @@
 
                         <Label
                             x:Name="LabelRuleText"
+                            AutomationId="LabelRuleText"
                             Text=""
                             TextColor="Black"
                             FontSize="Medium"/>

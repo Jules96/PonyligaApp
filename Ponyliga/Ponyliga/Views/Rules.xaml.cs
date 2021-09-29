@@ -18,7 +18,7 @@ namespace Ponyliga.Views
         }
 
         // rb umbenennen
-        private void OnRule_RadioButton_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        public void OnRule_RadioButton_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             if (rb1.IsChecked)
             {
