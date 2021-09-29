@@ -15,7 +15,7 @@
             
             <Entry 
                 x:Name="userFirstName"
-               Placeholder="Vorname" />
+                Placeholder="Vorname" />
 
             <Label 
                 Text="Name: " />
@@ -49,6 +49,7 @@
 
             <Button 
                 Text="Registrieren" 
+                BackgroundColor="LightBlue"
                 Clicked="btn_newUser_Clicked"/>
 
         </StackLayout>

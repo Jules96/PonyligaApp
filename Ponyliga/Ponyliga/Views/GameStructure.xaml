@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Ponyliga.Views.Rules"
-             Title="Regeln">
+             x:Class="Ponyliga.Views.GameStructure"
+             Title="Spielaufbau">
     
     <ContentPage.Content>
         <StackLayout
@@ -10,35 +10,40 @@
             HorizontalOptions="FillAndExpand">
 
             <RadioButton
+                x:Name="rb_General"
+                Content="Allgemein"
+                CheckedChanged="OnGameStructure_RadioButton_CheckedChanged"
+                IsChecked="True"/>
+
+            <RadioButton
                 x:Name="rb_GameOne"
                 Content="Spiel 1: Slalom"
-                CheckedChanged="OnRule_RadioButton_CheckedChanged"
-                IsChecked="True"/>
+                CheckedChanged="OnGameStructure_RadioButton_CheckedChanged"/>
 
             <RadioButton
                 x:Name="rb_GameTwo"
                 Content="Spiel 2: Becherrennen"
-                CheckedChanged="OnRule_RadioButton_CheckedChanged"/>
+                CheckedChanged="OnGameStructure_RadioButton_CheckedChanged"/>
 
             <RadioButton
                 x:Name="rb_GameThree"
                 Content="Spiel 3: Steine"
-                CheckedChanged="OnRule_RadioButton_CheckedChanged"/>
+                CheckedChanged="OnGameStructure_RadioButton_CheckedChanged"/>
 
             <RadioButton
                 x:Name="rb_GameFour"
                 Content="Spiel 4: Sacklaufen"
-                CheckedChanged="OnRule_RadioButton_CheckedChanged"/>
+                CheckedChanged="OnGameStructure_RadioButton_CheckedChanged"/>
 
             <RadioButton
                 x:Name="rb_GameFive"
                 Content="Spiel 5: Flaggenrennen"
-                CheckedChanged="OnRule_RadioButton_CheckedChanged"/>
+                CheckedChanged="OnGameStructure_RadioButton_CheckedChanged"/>
 
             <RadioButton
                 x:Name="rb_GameSix"
                 Content="Spiel 6: Kartoffelrennen"
-                CheckedChanged="OnRule_RadioButton_CheckedChanged"/>
+                CheckedChanged="OnGameStructure_RadioButton_CheckedChanged"/>
 
             <Frame
                 HasShadow="True"
@@ -50,21 +55,41 @@
                 <ScrollView
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
-                    x:Name="scrollViewRules">
+                    x:Name="scrollViewGameStructure">
 
                     <StackLayout>
-                        <Label
-                            x:Name="labelGameRules"
-                            Text="Spielregel:"
+                        <Label 
+                            x:Name="labelGameName"
+                            Text="" 
                             TextColor="Black"
                             FontSize="Large"
-                            FontAttributes="Bold"/>
+                            TextDecorations="Underline"/>
+
+                        <Label 
+                            x:Name="labelMaterial"
+                            Text="" 
+                            TextColor="Black"/>
+
+                        <Image
+                            x:Name="imageMaterial">
+                        </Image>
 
                         <Label
-                            x:Name="labelRuleText"
+                            x:Name="labelGameStructureText"
                             Text=""
                             TextColor="Black"
                             FontSize="Medium"/>
+
+                        <Label 
+                            x:Name="labelStructure"
+                            Text="Aufbau:"
+                            TextColor="Black"
+                            FontSize="Medium"
+                            TextDecorations="Underline"/>
+
+                        <Image
+                            x:Name="imageGameStructure">
+                        </Image>
 
                     </StackLayout>
                     

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ponyliga.Views.TeamEditingPage"
              Title="Team bearbeiten">
+    
     <ContentPage.Content>
         <StackLayout>
 
@@ -11,20 +12,28 @@
                     FontSize="30" 
                     SelectedIndexChanged="TeamPicker_OnSelectedIndexChanged"/>
 
-            <Label Text="Clubname: "/>
-            <Entry x:Name="teamClubname"
-                   Placeholder="Clubname"/>
+            <Label 
+                Text="Clubname: "/>
+            
+            <Entry 
+                x:Name="teamClubname"
+                Placeholder="Clubname"/>
 
             <!--<Label Text="Teamname: "/>
             <Entry x:Name="teamTeamname"
                    Placeholder="Teamname"/>-->
 
-            <Label Text="Name des Vertreter: "/>
-            <Entry x:Name="teamConsultor"
-                   Placeholder="Vertreter"/>
+            <Label 
+                Text="Name des Vertreter: "/>
+            
+            <Entry 
+                x:Name="teamConsultor"
+                Placeholder="Vertreter"/>
 
-            <Button Text="Ändern"
-                    Clicked="btn_editTeam_Clicked"/>
+            <Button 
+                Text="Ändern"
+                BackgroundColor="LightBlue"
+                Clicked="btn_editTeam_Clicked"/>
 
         </StackLayout>
     </ContentPage.Content>
