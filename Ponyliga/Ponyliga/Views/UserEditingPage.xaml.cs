@@ -46,8 +46,7 @@ namespace Ponyliga.Views
             User user = taskUser.Find(u => u.loginName == loginName);
             userFirstName.Text = user.firstName;
             userLastName.Text = user.surName;
-            userPassword.Text = user.passwordHash;
-            userRightsPicker.SelectedIndex = user.userPrivileges;
+           userRightsPicker.SelectedIndex = user.userPrivileges;
         }
 
         private void btn_editUser_Clicked(object sender, EventArgs e)
@@ -57,7 +56,7 @@ namespace Ponyliga.Views
                 string loginName = UserPicker.Items[UserPicker.SelectedIndex];
                 User listUser = taskUser.Find(u => u.loginName == loginName);
 
-                if (userRightsPicker.SelectedIndex != -1)
+                if (userRightsPicker.SelectedIndex != -1 && userPassword.Text != null)
                 {
                     User user = new User();
                     user.id = listUser.id;
