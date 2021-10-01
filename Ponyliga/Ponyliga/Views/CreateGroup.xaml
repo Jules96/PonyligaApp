@@ -9,17 +9,19 @@
             
             <Entry 
                 x:Name="groupSize"
+                AutomationId="groupSize"
                 Placeholder="3*"/>
 
             <Button Text="Gruppen erstellen" 
                     BackgroundColor="LightBlue"
                     Clicked="btn_Randomize_Clicked" />
+            
+                        <ListView x:Name="listViewRandomTeam"
+            ItemsSource="{Binding Users}"
+            ItemTapped="Handle_ItemiTapped"
+            CachingStrategy="RecycleElement">
 
-            <ListView 
-                x:Name="listViewRandomTeam"
-                ItemsSource="{Binding Users}"
-                ItemTapped="Handle_ItemiTapped"
-                CachingStrategy="RecycleElement">
+
                 <!--Built in Cells-->
 
                 <ListView.Header>
