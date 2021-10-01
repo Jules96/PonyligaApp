@@ -4,23 +4,22 @@
              x:Class="Ponyliga.Views.CreateGroup">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Geben Sie die Gruppengröße an."
-                />
+            <Label 
+                Text="Geben Sie die Gruppengröße an."/>
             
             <Entry 
                 x:Name="groupSize"
-                AutomationId="groupSize"
                 Placeholder="3*"/>
 
             <Button Text="Gruppen erstellen" 
-                    Clicked="btn_Randomize_Clicked"
-                    AutomationId ="CreateGroup"/>
+                    BackgroundColor="LightBlue"
+                    Clicked="btn_Randomize_Clicked" />
 
-            <ListView x:Name="listViewRandomTeam"
-            ItemsSource="{Binding Users}"
-            ItemTapped="Handle_ItemiTapped"
-            CachingStrategy="RecycleElement"
-            AutomationId ="listViewRandomTeam" >
+            <ListView 
+                x:Name="listViewRandomTeam"
+                ItemsSource="{Binding Users}"
+                ItemTapped="Handle_ItemiTapped"
+                CachingStrategy="RecycleElement">
                 <!--Built in Cells-->
 
                 <ListView.Header>
@@ -43,7 +42,8 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid BackgroundColor="Black">
+                            <Grid 
+                                BackgroundColor="Black">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="Auto"/>

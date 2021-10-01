@@ -189,13 +189,13 @@
             </Frame>
 
             <Label
-                    x:Name="timeIncPenalty">
-
+                x:Name="timeIncPenalty">
             </Label>
 
             <Button
                 x:Name="btn_AcceptResult"
                 Text="Übermitteln"
+                BackgroundColor="LightBlue"
                 FontAttributes="Bold"
                 TextTransform="None"
                 HorizontalOptions="Center"

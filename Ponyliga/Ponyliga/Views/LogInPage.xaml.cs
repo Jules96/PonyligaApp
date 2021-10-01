@@ -12,8 +12,7 @@ namespace Ponyliga.Views
     {
         public LogInPage()
         {
-            InitializeComponent();
-            
+            InitializeComponent();   
         }
 
         private void btn_LogIn_Clicked(object sender, EventArgs e)
@@ -45,26 +44,15 @@ namespace Ponyliga.Views
 
         private void btn_Register_Clicked(object sender, EventArgs e)
         {
-            User user = new User();
-            user.id = default;
-            user.firstName = default;
-            user.surName = default;
-            user.loginName = username.Text;
-            user.passwordHash = password.Text;
-            user.userPrivileges = default;
-
-
-            ApiService apiService = new ApiService();
-            bool result = apiService.LogInUser(user).Result;
+            Navigation.PushAsync(new CreateUserPage());
         }
 
 
-            //swapped push to popAsync
-
-            private void btn_MainPage_Clicked(object sender, EventArgs e)
+        private void btn_LandingPage_Clicked(object sender, EventArgs e)
         {
             Navigation.PopAsync();
         }
+
         string userName = "";
         public string GetUsermame()
         {
@@ -75,7 +63,5 @@ namespace Ponyliga.Views
             }
             return userName;
         }
-
-
     }
 }

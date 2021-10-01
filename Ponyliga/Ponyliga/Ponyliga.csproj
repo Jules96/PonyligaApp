@@ -15,6 +15,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\.JPG" />
+    <None Remove="Resources\Spiel2.JPG" />
+    <None Remove="Resources\Spiel3.JPG" />
+    <None Remove="Resources\Spiel4.JPG" />
+    <None Remove="Resources\Spiel5.JPG" />
+    <None Remove="Resources\Spiel6.JPG" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="NUnit" Version="3.13.2" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
@@ -72,6 +81,9 @@
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CreateUserPage.xaml">
       <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\GameStructure.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LandingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

@@ -1,37 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Ponyliga.Views.UserPage" Title="Benutzer">
+             x:Class="Ponyliga.Views.UserPage" 
+             Title="Benutzer">
+    
     <ContentPage.Content>
         <StackLayout>
             <!--<Label Text="Teams bearbeiten" FontSize="Title"/>-->
 
-            <Button Text="Benutzer erstellen" 
-                    Clicked="btn_Register_Clicked" />
+            <Button 
+                Text="Benutzer erstellen" 
+                BackgroundColor="LightBlue"
+                Clicked="btn_Register_Clicked" />
 
-            <Label Text="bestehende Benutzer:" 
-                   FontSize="25" 
-                   HorizontalOptions="Center" />
+            <Label 
+                Text="bestehende Benutzer:" 
+                FontSize="25" 
+                HorizontalOptions="Center" />
 
-           
-            <Button Text="Benutzer bearbeiten"
-                    Clicked="btn_edUser_Clicked"/>
+            <Button 
+                Text="Benutzer bearbeiten"
+                BackgroundColor="LightBlue"
+                Clicked="btn_edUser_Clicked"/>
 
-            <Button Text="Benutzer löschen"
-                    Clicked="btn_delUser_Clicked"/>
+            <Button 
+                Text="Benutzer löschen"
+                BackgroundColor="LightBlue"
+                Clicked="btn_delUser_Clicked"/>
 
-            <Button Text="Update"
-                    Clicked="btn_updateListOfUsers_Clicked"/>
+            <Button 
+                Text="Update"
+                BackgroundColor="LightBlue"
+                Clicked="btn_updateListOfUsers_Clicked"/>
 
             <!--hier irgendwie Tabelle mit bereits bestehenden Teams rein-->
             <!--wie soll die aussehen?-->
 
-            
-
-            <ListView x:Name="listViewUser"
-            ItemsSource="{Binding Item}"
-            ItemTapped="Handle_ItemTappedn"
-            CachingStrategy="RecycleElement">
+            <ListView 
+                x:Name="listViewUser"
+                ItemsSource="{Binding Item}"
+                ItemTapped="Handle_ItemTappedn"
+                CachingStrategy="RecycleElement">
                 <!--Built in Cells-->
 
                 <ListView.Header>
