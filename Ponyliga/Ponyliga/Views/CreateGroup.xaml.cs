@@ -91,8 +91,11 @@ namespace Ponyliga.Views
             List<Group> groupIds = new List<Group>();
 
 
-            
 
+            if(teamCount < num_groups)
+            {
+
+            }
 
             for (int i = 0; i < totalGroups; i++)
             {
@@ -162,11 +165,6 @@ namespace Ponyliga.Views
                team.groupId = groupIds[item.groupNr.Value - 1 ].id;
                //team.group.name = "Gruppe"; // +  groupIds[item.groupNr.Value - 1].name
                 var b = await apiService.UpdateTeam(team.id.ToString(), team);
-                if(b)
-                {
-                    Console.WriteLine(b + "We did it");
-                }
-
 
             }
             listViewRandomTeam.ItemsSource = Users;

@@ -5,6 +5,10 @@ using NUnit.Framework;
 using Xamarin.UITest;
 using Xamarin.UITest.Queries;
 
+
+using Ponyliga.ViewModels;
+
+
 namespace Ponyliga.Test
 {
     [TestFixture(Platform.Android)]
@@ -12,7 +16,9 @@ namespace Ponyliga.Test
     public class Tests
     {
         IApp app;
+
         Platform platform;
+
 
         public Tests(Platform platform)
         {
@@ -26,12 +32,14 @@ namespace Ponyliga.Test
         }
 
         [Test]
+
         public void WelcomeTextIsDisplayed()
         {
             AppResult[] results = app.WaitForElement(c => c.Marked("Welcome to Xamarin.Forms!"));
             app.Screenshot("Welcome screen.");
 
             Assert.IsTrue(results.Any());
+
         }
     }
 }
