@@ -130,7 +130,8 @@ namespace Ponyliga.Views
         private void delelte_Clicked(object sender, EventArgs e)
         {
             ApiService apiService = new ApiService();
-            apiService.DeleteResult();
+            //apiService.DeleteResult(id);
+            
         }
 
         public class MaxHourAmountEntryBehavior : Behavior<Entry>
