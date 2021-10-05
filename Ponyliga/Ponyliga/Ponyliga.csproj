@@ -49,7 +49,7 @@
     <Compile Update="MainPage_old.xaml.cs">
       <DependentUpon>MainPage_old.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\CreateUserPage.xaml.cs">
+    <Compile Update="Views\Admin\CreateUserPage.xaml.cs">
       <DependentUpon>CreateUserPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\LandingPage.xaml.cs">
@@ -58,16 +58,16 @@
     <Compile Update="Views\LogInPage.xaml.cs">
       <DependentUpon>LogInPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\MainPageAfterLogin.xaml.cs">
+    <Compile Update="Views\Admin\MainPageAfterLogin.xaml.cs">
       <DependentUpon>MainPageAfterLogin.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\ResultKartoffelrennenPage.xaml.cs">
+    <Compile Update="Views\Table\ResultKartoffelrennenPage.xaml.cs">
       <DependentUpon>ResultKartoffelrennenPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\ResultSacklaufenPage.xaml.cs">
+    <Compile Update="Views\Table\ResultSacklaufenPage.xaml.cs">
       <DependentUpon>ResultSacklaufenPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\TeamsPage.xaml.cs">
+    <Compile Update="Views\Admin\TeamsPage.xaml.cs">
       <DependentUpon>TeamsPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\StopWatchPage.xaml.cs">
@@ -79,8 +79,11 @@
     <EmbeddedResource Update="MainPage - Kopieren.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\CreateUserPage.xaml">
+    <EmbeddedResource Update="Views\Admin\CreateUserPage.xaml">
       <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Admin\TableDeleteEditing.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\GameStructure.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -91,46 +94,46 @@
     <EmbeddedResource Update="Views\LogInPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\MainPageAfterLogin.xaml">
+    <EmbeddedResource Update="Views\Admin\MainPageAfterLogin.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ResultBecherrennenPage.xaml">
+    <EmbeddedResource Update="Views\Table\ResultBecherrennenPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ResultFlaggenrennenPage.xaml">
+    <EmbeddedResource Update="Views\Table\ResultFlaggenrennenPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ResultKartoffelrennenPage.xaml">
+    <EmbeddedResource Update="Views\Table\ResultKartoffelrennenPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ResultSacklaufenPage.xaml">
+    <EmbeddedResource Update="Views\Table\ResultSacklaufenPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ResultSlalomPage.xaml">
+    <EmbeddedResource Update="Views\Table\ResultSlalomPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ResultSteinePage.xaml">
+    <EmbeddedResource Update="Views\Table\ResultSteinePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ResultTablePage.xaml">
+    <EmbeddedResource Update="Views\Table\ResultTablePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Rules.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\TeamAddingPage.xaml">
+    <EmbeddedResource Update="Views\Admin\TeamAddingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\TeamCreationPage.xaml">
+    <EmbeddedResource Update="Views\Admin\TeamCreationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\TeamDeletionPage.xaml">
+    <EmbeddedResource Update="Views\Admin\TeamDeletionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\TeamEditingPage.xaml">
+    <EmbeddedResource Update="Views\Admin\TeamEditingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\TeamsPage.xaml">
+    <EmbeddedResource Update="Views\Admin\TeamsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Test.xaml">
@@ -139,13 +142,13 @@
     <EmbeddedResource Update="Views\StopWatchPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\UserDeletionPage.xaml">
+    <EmbeddedResource Update="Views\Admin\UserDeletionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\UserEditingPage.xaml">
+    <EmbeddedResource Update="Views\Admin\UserEditingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\UserPage.xaml">
+    <EmbeddedResource Update="Views\Admin\UserPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\UserTablePage.xaml">
