@@ -25,7 +25,7 @@ namespace Ponyliga.ViewModels
 
         // Event handler for binding the time
         public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName)
+        public virtual void OnPropertyChanged(string propertyName)
         {
             var changed = PropertyChanged;
             if (changed != null)
