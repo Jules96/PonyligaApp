@@ -4,16 +4,17 @@ using System.Linq;
 using NUnit.Framework;
 using Xamarin.UITest;
 using Xamarin.UITest.Queries;
-using Ponyliga.Views;
 
-namespace PonyLiga.Test
+using Ponyliga.ViewModels;
+
+namespace Ponyliga.Test
 {
     [TestFixture(Platform.Android)]
-    
+    [TestFixture(Platform.iOS)]
     public class Tests
     {
-       IApp app;
-        Platform platform;
+        IApp app;
+     Platform platform;
 
         public Tests(Platform platform)
         {
@@ -27,19 +28,19 @@ namespace PonyLiga.Test
         }
 
         [Test]
-        public void UserPageFillList()
+
+        public void WelcomeTextIsDisplayed()
         {
-            //Arrange
+            //ARRANGE
+            
 
-            //Act
-            UserPage userPage = new UserPage();
-            userPage.FillUserList();
-            //Assert
-            //AppResult[] results = app.WaitForElement(c => c.Marked("Welcome to Xamarin.Forms!"));
-            //AppResult[] results = app.
-            app.Screenshot("Filled User Table");
+            //ACT
+            //StopWatch stopWatch = new StopWatch();
 
-            //Assert.IsTrue(results.Any());
+            // AppResult[] results = app.WaitForElement(c => c.Marked("Welcome to Xamarin.Forms!"));
+
+            //ASSERT
+
         }
     }
 }

@@ -2,7 +2,9 @@
 using Xamarin.UITest;
 using Xamarin.UITest.Queries;
 
-namespace PonyLiga.Test
+
+namespace Ponyliga.Test
+
 {
     public class AppInitializer
     {

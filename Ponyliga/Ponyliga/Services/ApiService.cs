@@ -31,6 +31,7 @@ namespace Ponyliga.Services
         }
 
         //URL für POST, GET
+
         public string GetUrl(string ext)
         {
             return (apiEndpoint + ext);
