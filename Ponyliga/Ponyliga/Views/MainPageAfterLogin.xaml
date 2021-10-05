@@ -67,6 +67,7 @@
             <Button 
                 Text="Tabelle bearbeiten"
                 BackgroundColor="LightBlue"
+                Clicked="btn_EditTable_Clicked"
                 HorizontalOptions="Center"
                 HeightRequest="60"
                 WidthRequest="200"

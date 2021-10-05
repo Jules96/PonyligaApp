@@ -70,7 +70,7 @@ namespace Ponyliga.Views
                             //int penaltyTimeInt = Int16.Parse(resultSums.penaltyTime);
                             if (String.IsNullOrEmpty(resultSums.penaltyTime))
                             {
-                                TeamResult team = new TeamResult();
+                                //TeamResult team = new TeamResult();
                                 resultSums.penaltyTime = "0";
                             }
                             randomizeSortList.Add(new TeamResult { position = resultSums.position.ToString(), name = resultSum.name, score = resultSums.score, time = resultSums.time, penaltyTime = resultSums.penaltyTime + " sek." });
@@ -92,32 +92,38 @@ namespace Ponyliga.Views
         private void btn_Kartoffelrennen_Clicked(object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new ResultKartoffelrennenPage());
+            Navigation.PopAsync();
         }
 
         private void btn_Flaggenrennen_Clicked(object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new ResultFlaggenrennenPage());
+            Navigation.PopAsync();
         }
 
         private void btn_Sacklaufen_Clicked(object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new ResultSacklaufenPage());
+            Navigation.PopAsync();
         }
 
         private void btn_Steine_Clicked(object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new ResultSteinePage());
+            Navigation.PopAsync();
         }
 
 
         private void btn_Slalom_Clicked(object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new ResultSlalomPage());
+            Navigation.PopAsync();
         }
 
         private void btn_sumTable_Clicked(object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new ResultTablePage());
+            Navigation.PopAsync();
         }
 
         private void btn_aktualisieren_Clicked(object sender, System.EventArgs e)

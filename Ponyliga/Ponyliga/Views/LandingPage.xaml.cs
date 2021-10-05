@@ -37,5 +37,10 @@ namespace Ponyliga.Views
             Navigation.PushAsync(new GameStructure());
         }
 
+        private void btn_QrCode_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new QRCodePage());
+        }
+
     }
 }

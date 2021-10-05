@@ -46,7 +46,7 @@ namespace Ponyliga.Views
             User user = taskUser.Find(u => u.loginName == loginName);
             userFirstName.Text = user.firstName;
             userLastName.Text = user.surName;
-           userRightsPicker.SelectedIndex = user.userPrivileges;
+            userRightsPicker.SelectedIndex = user.userPrivileges;
         }
 
         private void btn_editUser_Clicked(object sender, EventArgs e)
