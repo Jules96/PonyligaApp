@@ -5,6 +5,7 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
             <Image Source="QRCodeWebsite"
+                   x:Name="QRCode"
                     HorizontalOptions="Center" />
         </StackLayout>             
     </ContentPage.Content>

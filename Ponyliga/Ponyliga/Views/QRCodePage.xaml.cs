@@ -18,6 +18,7 @@ namespace Ponyliga.Views
         public QRCodePage()
         {
             InitializeComponent();
+            QRCode.Source = (Device.RuntimePlatform == Device.Android) ? ImageSource.FromFile("QRCodeWebsite.jpg") : ImageSource.FromFile("QRCodeWebsite.jpg");
         }
 
     }

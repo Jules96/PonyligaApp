@@ -42,5 +42,14 @@ namespace Ponyliga.Views
             Navigation.PushAsync(new QRCodePage());
         }
 
+        private void btn_Impressum_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_DateSave_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

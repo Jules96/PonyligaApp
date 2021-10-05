@@ -11797,31 +11797,34 @@ namespace Ponyliga.Droid
 			public const int notify_panel_notification_icon_bg = 2131165330;
 			
 			// aapt resource value: 0x7F070093
-			public const int structure1 = 2131165331;
+			public const int qrcodewebsite = 2131165331;
 			
 			// aapt resource value: 0x7F070094
-			public const int structure2 = 2131165332;
+			public const int structure1 = 2131165332;
 			
 			// aapt resource value: 0x7F070095
-			public const int structure3 = 2131165333;
+			public const int structure2 = 2131165333;
 			
 			// aapt resource value: 0x7F070096
-			public const int structure4 = 2131165334;
+			public const int structure3 = 2131165334;
 			
 			// aapt resource value: 0x7F070097
-			public const int structure5 = 2131165335;
+			public const int structure4 = 2131165335;
 			
 			// aapt resource value: 0x7F070098
-			public const int structure6 = 2131165336;
+			public const int structure5 = 2131165336;
 			
 			// aapt resource value: 0x7F070099
-			public const int test_custom_background = 2131165337;
+			public const int structure6 = 2131165337;
 			
 			// aapt resource value: 0x7F07009A
-			public const int tooltip_frame_dark = 2131165338;
+			public const int test_custom_background = 2131165338;
 			
 			// aapt resource value: 0x7F07009B
-			public const int tooltip_frame_light = 2131165339;
+			public const int tooltip_frame_dark = 2131165339;
+			
+			// aapt resource value: 0x7F07009C
+			public const int tooltip_frame_light = 2131165340;
 			
 			static Drawable()
 			{
