@@ -14,6 +14,8 @@ namespace Ponyliga.Services
 {
     public class ApiService
     {
+        public HttpClient httpClient;
+        private string apiEndpoint = "https://ponyliga.azurewebsites.net/api/";
         //URL für POST, GET
 
         public string GetUrl(string ext)

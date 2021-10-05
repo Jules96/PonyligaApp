@@ -15,8 +15,8 @@ namespace Ponyliga.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TableDeleteEditPage : ContentPage
     {
-         TeamResult teamResult;
-         StopWatch stopWatch;
+        TeamResult teamResult;
+        StopWatch stopWatch;
 
         private string labelName;
         public string LabelName
@@ -35,7 +35,7 @@ namespace Ponyliga.Views
             get { return labelGame; }
             set
             {
-                labelName = value;
+                labelGame = value;
                 OnPropertyChanged(nameof(LabelGame));
             }
         }
@@ -68,8 +68,7 @@ namespace Ponyliga.Views
                 {
                     double pentime = Convert.ToDouble(penTime);
 
-                    // shows the calculated Time incl. penalty
-                    timeIncPenalty.Text = stopWatch.AddPenaltyTime(stoppedTime, pentime).ToString();
+                   
 
                     if ( stoppedTime != null)
                     {                        
@@ -127,6 +126,11 @@ namespace Ponyliga.Views
                     }
                 }
             }
+        }
+        private void delelte_Clicked(object sender, EventArgs e)
+        {
+            ApiService apiService = new ApiService();
+            apiService.DeleteResult();
         }
 
         public class MaxHourAmountEntryBehavior : Behavior<Entry>
@@ -287,6 +291,8 @@ namespace Ponyliga.Views
                     AdditionalCheck?.Invoke(((Entry)sender), args.OldTextValue);
             }
         }
+
+        
     }
 }
     

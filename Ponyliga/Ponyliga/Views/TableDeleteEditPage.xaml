@@ -1,74 +1,80 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Ponyliga.Views"
              x:Class="Ponyliga.Views.TableDeleteEditPage">
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout>
+            <StackLayout HorizontalOptions="Fill" Orientation="Horizontal">
                 <Frame>
                     <Label
-                        Text="Name_ ">
+                        Text="Name:"
+                        FontSize="Medium"
+                        WidthRequest="60">
                     </Label>
                 </Frame>
 
                 <Frame>
                     <Label 
-            x:Name="LabelName"
+            x:Name="nameLabel"
             Text="{Binding LabelName}" 
             TextColor="DeepPink"
-            FontAttributes="Bold"/>
+            FontAttributes="Bold"
+            FontSize="Medium"/>
 
                 </Frame>
             </StackLayout>
 
-            <StackLayout>
+            <StackLayout HorizontalOptions="Fill" Orientation="Horizontal">
                 <Frame>
                     <Label
-                        Text="Spiel: ">
+                        Text="Spiel: "
+                        FontSize="Medium"
+                        WidthRequest="60">
                     </Label>
                 </Frame>
 
                 <Frame>
                     <Label 
-            x:Name="LabelGame"
+            x:Name="gameLabel"
             Text="{Binding LabelGame}" 
             TextColor="DeepPink"
-            FontAttributes="Bold"/>
+            FontAttributes="Bold"
+            FontSize="Medium"/>
 
                 </Frame>
             </StackLayout>
 
-            <StackLayout>
-                <Button
-                  Text ="Bearbeiten"
-                  x:Name =" Editbtn"
-                  Clicked="edit_Clicked">
 
-                </Button>
 
-            </StackLayout>
-            <Frame
-                HasShadow="True"
-                Margin="10,-10,10,10"
-                CornerRadius="20"
-                BorderColor="Black">
 
                 <!--manual time input-->
+            <StackLayout  HorizontalOptions="Fill" Orientation="Horizontal">
+                <Frame>
+                    <Label
+                        Text="Zeit:"
+                        FontSize="Medium"
+                        WidthRequest="60"
+                        HorizontalOptions="Center"
+                        >
+                    </Label>
+                </Frame>
+
+                <Frame>
                 <StackLayout
                     Orientation="Horizontal"
-                    HorizontalOptions="Center">
-                    <button></button>
+                    HorizontalOptions="Center"
+                    >
                     
-
                     <Entry
                         x:Name="timeInputHour"
                         Placeholder="hh"
                         Keyboard="Numeric"
                         MaxLength="2"
-                        FontSize="30"
-                        WidthRequest="65"
+                        FontSize="20"
+                        WidthRequest="50"
                         HorizontalTextAlignment="Center"
-                        ClearButtonVisibility="WhileEditing">                        
+                        ClearButtonVisibility="WhileEditing">
                         <Entry.Behaviors>
                             <local:MaxHourAmountEntryBehavior/>
                         </Entry.Behaviors>
@@ -86,8 +92,8 @@
                         Placeholder="mm"
                         Keyboard="Numeric"
                         MaxLength="2"
-                        FontSize="30"
-                        WidthRequest="65"
+                        FontSize="20"
+                        WidthRequest="50"
                         HorizontalTextAlignment="Center"
                         ClearButtonVisibility="WhileEditing">
                         <Entry.Behaviors>
@@ -108,8 +114,8 @@
                         Placeholder="ss"
                         Keyboard="Numeric"
                         MaxLength="2"
-                        FontSize="30"
-                        WidthRequest="65"
+                        FontSize="20"
+                        WidthRequest="50"
                         HorizontalTextAlignment="Center"
                         ClearButtonVisibility="WhileEditing">
                         <Entry.Behaviors>
@@ -129,24 +135,30 @@
                         Placeholder="ms"
                         Keyboard="Numeric"
                         MaxLength="2"
-                        FontSize="30"
-                        WidthRequest="65"
+                        FontSize="20"
+                        WidthRequest="50"
                         HorizontalTextAlignment="Start"
                         ClearButtonVisibility="WhileEditing">
                         <Entry.Behaviors>
                             <local:MaxMsecAmountEntryBehavior/>
                         </Entry.Behaviors>
                     </Entry>
+                
+            </StackLayout>
+                </Frame>
 
-                </StackLayout>
-            </Frame>
+            </StackLayout>
 
-            <Frame
-                    HasShadow="True"
-                    Margin="10,10,10,10"
-                    CornerRadius="20"
-                    BorderColor="Black"
-                    HorizontalOptions="Center">
+            <StackLayout HorizontalOptions="Fill" Orientation="Horizontal">
+                <Frame>
+                    <Label
+                        Text="Strafsekuden:"
+                        FontSize="Medium"
+                        WidthRequest="60">
+                    </Label>
+                </Frame>
+            
+                <Frame>
 
                 <Entry
                         x:Name="penaltyTime"
@@ -160,8 +172,23 @@
                         VerticalOptions="Center">
                 </Entry>
 
-            </Frame>
+                </Frame>
+            </StackLayout>
+            <StackLayout HorizontalOptions="Fill" Orientation="Horizontal">
+                <Button
+                  Text ="Bearbeiten"
+                  x:Name =" Editbtn"
+                  Clicked="edit_Clicked">
+                </Button>
 
+                <Button
+                  Text ="Löschen"
+                  x:Name =" Deletebtn"
+                  Clicked="delelte_Clicked">
+                </Button>
+
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
+

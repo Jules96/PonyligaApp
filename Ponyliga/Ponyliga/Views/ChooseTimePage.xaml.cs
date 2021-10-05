@@ -14,8 +14,8 @@ using Xamarin.Forms.Xaml;
 namespace Ponyliga.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class TableDeleteEdete : ContentPage
-	{
+    public partial class ChooseTimePage : ContentPage
+    {
         public List<Team> taskTable;
         public List<User> taskUser;
         public TeamResult result;
@@ -26,32 +26,42 @@ namespace Ponyliga.Views
 
         bool isGamePickerPicked;
         bool isTeamPickerPicked;
-        public TableDeleteEdete (TeamResult teamResults)
-		{
-            
-            InitializeComponent ();
+
+        public ChooseTimePage()
+        {
+
+            InitializeComponent();
+            FillTeamList();
+            GetAllUserNameAsync();
+            //GetAllUserName();
+
+        }
+        public ChooseTimePage(TeamResult teamResults)
+        {
+
+            InitializeComponent();
             FillTeamList();
             GetAllUserNameAsync();
             //GetAllUserName();
 
         }
 
-        public async Task  GetAllUserNameAsync()
+        public async Task GetAllUserNameAsync()
         {
-            taskTable = await apiService.GetResultSummary();                
-                      
-           
+            taskTable = await apiService.GetResultSummary();
+
+
             if (taskTable != null)
             {
                 foreach (var table in taskTable)
-                {                    
+                {
                     if (table.game == GamePicker.SelectedItem.ToString() && table.name == TeamPicker.SelectedItem.ToString())
                     {
-                        
+
                         foreach (var tables in table.results)
                         {
                             result = new TeamResult() { id = tables.id, penaltyTime = tables.penaltyTime, score = tables.score, time = tables.time, gameDate = tables.gameDate };
-                           
+
                         }
 
                     }
@@ -79,14 +89,10 @@ namespace Ponyliga.Views
 
         public void TeamPicker_OnSelectedIndexChanged(object sender, EventArgs e)
         {
-            //int teamID = TeamPicker.SelectedIndex;
-            
             string team = TeamPicker.Items[TeamPicker.SelectedIndex];
-            
-            isTeamPickerPicked = true;
-            //Item.Clear();
+            isTeamPickerPicked = true;            
             FillResultTable();
-            //DisplayAlert(team, "wurde als Team ausgewählt", "OK");
+           
         }
 
         public void GamePicker_OnSelectedIndexChanged(object sender, EventArgs e)
@@ -108,20 +114,22 @@ namespace Ponyliga.Views
                 User listUser = taskUser.Find(u => u.loginName == loginName);
                 StopWatch stopWatch = new StopWatch();
 
-                if (TeamPicker.SelectedIndex != -1 && GamePicker.SelectedIndex != -1 )
+                if (TeamPicker.SelectedIndex != -1 && GamePicker.SelectedIndex != -1)
                 {
 
                     Result teamresult = new Result();
                     teamresult.id = listUser.id;
                     teamresult.gameDate = result.gameDate;
                     teamresult.game = GamePicker.SelectedItem.ToString();
-                    teamresult.time = result.time;
+                                       teamresult.time = result.time;
                     teamresult.penaltyTime = result.penaltyTime;
                     teamresult.score = result.score;
                     
 
-                    ApiService apiService = new ApiService();
-                    apiService.UpdateResult(listUser.id.ToString(), teamresult);
+
+
+                    //ApiService apiService = new ApiService();
+                    //apiService.UpdateResult(listUser.id.ToString(), teamresult);
 
                     Navigation.PushAsync(new MainPageAfterLogin());
                 }
@@ -134,15 +142,15 @@ namespace Ponyliga.Views
 
         public async void FillResultTable()
         {
-                        ApiService apiService = new ApiService();
+            ApiService apiService = new ApiService();
             System.Collections.Generic.List<Models.Team> taskResultSum = await apiService.GetResultSummary();
 
 
             listViewTable.ItemsSource = MyItems;
             string teamString;
             string gameString;
-            
-            if(isTeamPickerPicked)
+
+            if (isTeamPickerPicked)
             {
                 teamString = TeamPicker.SelectedItem.ToString();
             }
@@ -170,7 +178,7 @@ namespace Ponyliga.Views
 
                     foreach (var resultSums in resultSum.results)
                     {
-                        if (resultSums.game == gameString || resultSum.name == teamString)
+                        if (resultSums.game == gameString && resultSum.name == teamString)
                         {
                             //int penaltyTimeInt = Int16.Parse(resultSums.penaltyTime);
                             if (String.IsNullOrEmpty(resultSums.penaltyTime))
@@ -178,7 +186,7 @@ namespace Ponyliga.Views
                                 TeamResult team = new TeamResult();
                                 resultSums.penaltyTime = "0";
                             }
-                            randomizeSortList.Add(new TeamResult { id = resultSums.id, name = resultSum.name, score = resultSums.score, time = resultSums.time, penaltyTime = resultSums.penaltyTime + " sek." });
+                            randomizeSortList.Add(new TeamResult { id = resultSums.id, name = resultSum.name, score = resultSums.score, time = resultSums.time, penaltyTime = resultSums.penaltyTime + " sek." , game=resultSums.game});
                         }
                     }
                 }
@@ -187,23 +195,21 @@ namespace Ponyliga.Views
                 foreach (var item in SortedListByNumberNr)
                 {
                     MyItems.Add(item);
-
-
                 }
             }
         }
 
-  
-    
+
+
 
         private void Handle_SelectedItem(object sender, SelectedItemChangedEventArgs e)
         {
-            if(e.SelectedItem != null)
+            if (e.SelectedItem != null)
             {
                 var item = (TeamResult)e.SelectedItem;
                 DisplayAlert("ItemSelected", item.name, "Ok");
 
-                
+
                 TeamResult teamResults = new TeamResult();
                 teamResults.time = item.time;
                 teamResults.penaltyTime = item.penaltyTime;
@@ -214,16 +220,12 @@ namespace Ponyliga.Views
                 teamResults.teamId = item.teamId;
 
                 Navigation.PushAsync(new TableDeleteEditPage(teamResults));
-                    
+
             }
-            
-      
+
+
 
         }
-       
 
-
-
-
-}
+    }
 }
