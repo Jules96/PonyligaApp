@@ -15,6 +15,7 @@ namespace Ponyliga.Services
     public class ApiService
     {
         //URL für POST, GET
+
         public string GetUrl(string ext)
         {
             return (apiEndpoint + ext);

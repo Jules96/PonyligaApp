@@ -18,6 +18,9 @@ namespace Ponyliga.Models
         public String loginName { get; set; }
         public String passwordHash { get; set; }
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+
+        // 0= Admin
+        // 1= User
         public int userPrivileges { get; set; }
 
 
