@@ -14,22 +14,6 @@ namespace Ponyliga.Services
 {
     public class ApiService
     {
-        public HttpClient httpClient;
-        private string apiEndpoint = "https://ponyliga.azurewebsites.net/api/";
-
-
-        public ApiService()
-        {
-            Instance = this;
-        }
-
-        public static ApiService Instance { get; private set; }
-        public void APIClient()
-        {
-            httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
-        }
-
         //URL für POST, GET
 
         public string GetUrl(string ext)
@@ -60,7 +44,7 @@ namespace Ponyliga.Services
             if (data.IsSuccessStatusCode)
             {
                 var respContent = await data.Content.ReadAsStringAsync();
-                var settings = new JsonSerializerSettings
+                var settings = new JsonSerializerSettings()
                 {
                     Formatting = Formatting.Indented
                 };
@@ -81,7 +65,7 @@ namespace Ponyliga.Services
             if (data.IsSuccessStatusCode)
             {
                 string respContent = await data.Content.ReadAsStringAsync();
-                var settings = new JsonSerializerSettings
+                var settings = new JsonSerializerSettings()
                 {
                     Formatting = Formatting.Indented
                 };
@@ -145,14 +129,12 @@ namespace Ponyliga.Services
 
         public async Task UpdateUser(string id, User user)
         {
-            //List<User> users = new List<User>();
-            //users.Add(new User { firstName = "Homer", surName = "Simpson", loginName = "HOSIM", passwordHash = "123123", userPrivileges = 1 });
-
+           
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
             string uri = GetUrlID("user", id);
 
-            var json = JsonConvert.SerializeObject(user);
+            string json = JsonConvert.SerializeObject(user);
             StringContent content = new StringContent(json.ToString(), Encoding.UTF8, "application/json");
             var response = await httpClient.PutAsync(uri, content);
 
@@ -247,8 +229,6 @@ namespace Ponyliga.Services
 
         public async Task UpdateGroup(int id, Group group)
         {
-            //List<User> users = new List<User>();
-            //users.Add(new User { firstName = "Homer", surName = "Simpson", loginName = "HOSIM", passwordHash = "123123", userPrivileges = 1 });
 
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
@@ -256,8 +236,6 @@ namespace Ponyliga.Services
 
             var json = JsonConvert.SerializeObject(group);
             StringContent content = new StringContent(json.ToString(), Encoding.UTF8, "application/json");
-
-
         }
 
         public async Task DeleteGroup(string id)
@@ -268,8 +246,6 @@ namespace Ponyliga.Services
             string uri = GetUrlID("group", id);
 
             var response = await httpClient.DeleteAsync(uri);
-
-
         }
 
         #endregion Group
@@ -347,9 +323,6 @@ namespace Ponyliga.Services
         public async Task<bool> UpdateTeam(string id, Team team)
 
         {
-            //List<User> users = new List<User>();
-            //users.Add(new User { firstName = "Homer", surName = "Simpson", loginName = "HOSIM", passwordHash = "123123", userPrivileges = 1 });
-
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
             string uri = GetUrlID("team", id.ToString());
@@ -364,7 +337,6 @@ namespace Ponyliga.Services
             }
 
             return false;
-
         }
 
         public async Task DeleteTeam(string id)
@@ -375,8 +347,6 @@ namespace Ponyliga.Services
             string uri = GetUrlID("team", id);
 
             var response = await httpClient.DeleteAsync(uri);
-
-
         }
 
 
@@ -454,8 +424,6 @@ namespace Ponyliga.Services
 
         public async Task UpdatePony(string id, Pony pony)
         {
-            //List<User> users = new List<User>();
-            //users.Add(new User { firstName = "Homer", surName = "Simpson", loginName = "HOSIM", passwordHash = "123123", userPrivileges = 1 });
 
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
@@ -463,8 +431,6 @@ namespace Ponyliga.Services
 
             var json = JsonConvert.SerializeObject(pony);
             StringContent content = new StringContent(json.ToString(), Encoding.UTF8, "application/json");
-
-
         }
 
         public async Task DeletePony(string id)
@@ -475,8 +441,6 @@ namespace Ponyliga.Services
             string uri = GetUrlID("team", id);
 
             var response = await httpClient.DeleteAsync(uri);
-
-
         }
 
         #endregion Pony
@@ -575,17 +539,12 @@ namespace Ponyliga.Services
 
         public async Task UpdateResult(string id, Result result)
         {
-            //List<User> users = new List<User>();
-            //users.Add(new User { firstName = "Homer", surName = "Simpson", loginName = "HOSIM", passwordHash = "123123", userPrivileges = 1 });
-
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
             string uri = GetUrlID("team", id);
 
             var json = JsonConvert.SerializeObject(result);
             StringContent content = new StringContent(json.ToString(), Encoding.UTF8, "application/json");
-
-
         }
 
         public async Task DeleteResult(string id)
@@ -596,8 +555,6 @@ namespace Ponyliga.Services
             string uri = GetUrlID("result", id);
 
             var response = await httpClient.DeleteAsync(uri);
-
-
         }
 
         #endregion Result
@@ -694,17 +651,12 @@ namespace Ponyliga.Services
 
         public async Task UpdateTeamMember(string id, TeamMember teamMember)
         {
-            //List<User> users = new List<User>();
-            //users.Add(new User { firstName = "Homer", surName = "Simpson", loginName = "HOSIM", passwordHash = "123123", userPrivileges = 1 });
-
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
             string uri = GetUrlByOtherID("team", id, "teammember");
 
             var json = JsonConvert.SerializeObject(teamMember);
             StringContent content = new StringContent(json.ToString(), Encoding.UTF8, "application/json");
-
-
         }
 
         public async Task DeleteTeammeber(string id)
@@ -715,8 +667,6 @@ namespace Ponyliga.Services
             string uri = GetUrlID("teammember", id);
 
             var response = await httpClient.DeleteAsync(uri);
-
-
         }
 
         #endregion TeamMember

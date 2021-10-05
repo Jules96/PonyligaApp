@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ponyliga.Views.TableDeleteEditPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Frame>
+                    <Label
+                        Text="Name_ ">
+                    </Label>
+                </Frame>
+
+                <Frame>
+                    <Label 
+            x:Name="LabelName"
+            Text="{Binding LabelName}" 
+            TextColor="DeepPink"
+            FontAttributes="Bold"/>
+
+                </Frame>
+            </StackLayout>
+
+            <StackLayout>
+                <Frame>
+                    <Label
+                        Text="Spiel: ">
+                    </Label>
+                </Frame>
+
+                <Frame>
+                    <Label 
+            x:Name="LabelGame"
+            Text="{Binding LabelGame}" 
+            TextColor="DeepPink"
+            FontAttributes="Bold"/>
+
+                </Frame>
+            </StackLayout>
+
+            <StackLayout>
+                <Button
+                  Text ="Bearbeiten"
+                  x:Name =" Editbtn"
+                  Clicked="edit_Clicked">
+
+                </Button>
+
+            </StackLayout>
+            <Frame
+                HasShadow="True"
+                Margin="10,-10,10,10"
+                CornerRadius="20"
+                BorderColor="Black">
+
+                <!--manual time input-->
+                <StackLayout
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center">
+                    <button></button>
+                    
+
+                    <Entry
+                        x:Name="timeInputHour"
+                        Placeholder="hh"
+                        Keyboard="Numeric"
+                        MaxLength="2"
+                        FontSize="30"
+                        WidthRequest="65"
+                        HorizontalTextAlignment="Center"
+                        ClearButtonVisibility="WhileEditing">                        
+                        <Entry.Behaviors>
+                            <local:MaxHourAmountEntryBehavior/>
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <Label
+                        VerticalOptions="Center"
+                        Text=":"
+                        FontSize="40"
+                        Margin="-5,0">
+                    </Label>
+
+                    <Entry
+                        x:Name="timeInputMin"
+                        Placeholder="mm"
+                        Keyboard="Numeric"
+                        MaxLength="2"
+                        FontSize="30"
+                        WidthRequest="65"
+                        HorizontalTextAlignment="Center"
+                        ClearButtonVisibility="WhileEditing">
+                        <Entry.Behaviors>
+                            <local:MaxMinuteAmountEntryBehavior/>
+                        </Entry.Behaviors>
+
+                    </Entry>
+
+                    <Label
+                        VerticalOptions="Center"
+                        Text=":"
+                        FontSize="40"
+                        Margin="-5,0">
+                    </Label>
+
+                    <Entry
+                        x:Name="timeInputSec"
+                        Placeholder="ss"
+                        Keyboard="Numeric"
+                        MaxLength="2"
+                        FontSize="30"
+                        WidthRequest="65"
+                        HorizontalTextAlignment="Center"
+                        ClearButtonVisibility="WhileEditing">
+                        <Entry.Behaviors>
+                            <local:MaxSecAmountEntryBehavior/>
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <Label
+                        VerticalOptions="Center"
+                        Text="."
+                        FontSize="40"
+                        Margin="-5,0">
+                    </Label>
+
+                    <Entry
+                        x:Name="timeInputMsec"
+                        Placeholder="ms"
+                        Keyboard="Numeric"
+                        MaxLength="2"
+                        FontSize="30"
+                        WidthRequest="65"
+                        HorizontalTextAlignment="Start"
+                        ClearButtonVisibility="WhileEditing">
+                        <Entry.Behaviors>
+                            <local:MaxMsecAmountEntryBehavior/>
+                        </Entry.Behaviors>
+                    </Entry>
+
+                </StackLayout>
+            </Frame>
+
+            <Frame
+                    HasShadow="True"
+                    Margin="10,10,10,10"
+                    CornerRadius="20"
+                    BorderColor="Black"
+                    HorizontalOptions="Center">
+
+                <Entry
+                        x:Name="penaltyTime"
+                        Placeholder="Strafsekunden"
+                        FontAttributes="Italic"
+                        PlaceholderColor="Black"
+                        FontSize="Large"
+                        Keyboard="Numeric"
+                        ClearButtonVisibility="WhileEditing"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                </Entry>
+
+            </Frame>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

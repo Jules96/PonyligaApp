@@ -73,5 +73,10 @@ namespace Ponyliga.Views
         {
             Navigation.PushAsync(new CreateGroup());
         }
+
+        private void btn_EditTable_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new TableDeleteEdete());
+        }
     }
 }

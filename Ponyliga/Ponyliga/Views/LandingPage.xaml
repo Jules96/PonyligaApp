@@ -53,6 +53,7 @@
                     Text="QR-Code" 
                     BackgroundColor="LightBlue"
                     HorizontalOptions="Center"
+                    Clicked="btn_QrCode_Clicked"
                     HeightRequest="60"
                     WidthRequest="200"
                     CornerRadius="10"/>
@@ -89,13 +90,15 @@
                     Text="Impressum"
                     BackgroundColor="LightBlue"
                     HorizontalOptions="StartAndExpand"
+                    Clicked="btn_Impressum_Clicked"
                     HeightRequest="60"
                     WidthRequest="120"
                     CornerRadius="10"/>
 
                 <Button 
-                    Text="Rechte" 
+                    Text="Datenschutzerklärung" 
                     BackgroundColor="LightBlue"
+                    Clicked="btn_DateSave_Clicked"
                     HorizontalOptions="End"
                     HeightRequest="60"
                     WidthRequest="120"

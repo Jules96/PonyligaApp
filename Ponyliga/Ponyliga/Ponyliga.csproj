@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
   </PropertyGroup>
 
@@ -67,7 +67,13 @@
     <Compile Update="Views\Table\ResultSacklaufenPage.xaml.cs">
       <DependentUpon>ResultSacklaufenPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Admin\TeamsPage.xaml.cs">
+    <Compile Update="Views\ChooseTimePage.xaml.cs">
+      <DependentUpon>ChooseTimePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\TeamEditDeletePage.xaml.cs">
+      <DependentUpon>TeamEditDeletePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\TeamsPage.xaml.cs">
       <DependentUpon>TeamsPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\StopWatchPage.xaml.cs">
@@ -97,7 +103,10 @@
     <EmbeddedResource Update="Views\Admin\MainPageAfterLogin.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Table\ResultBecherrennenPage.xaml">
+    <EmbeddedResource Update="Views\QRCodePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ResultBecherrennenPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Table\ResultFlaggenrennenPage.xaml">
@@ -121,7 +130,13 @@
     <EmbeddedResource Update="Views\Rules.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Admin\TeamAddingPage.xaml">
+    <EmbeddedResource Update="Views\ChooseTimePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TableDeleteEditPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TeamAddingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Admin\TeamCreationPage.xaml">
@@ -133,7 +148,10 @@
     <EmbeddedResource Update="Views\Admin\TeamEditingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Admin\TeamsPage.xaml">
+    <EmbeddedResource Update="Views\TeamEditDeletePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TeamsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Test.xaml">
