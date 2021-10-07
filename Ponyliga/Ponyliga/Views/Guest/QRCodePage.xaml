@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ponyliga.Views.QRCodePage">
     <ContentPage.Content>
+        <StackLayout>
         <Label
             Text="Dieser QR-Code führt zur Website"
             FontSize="Large">
@@ -12,6 +13,7 @@
             <Image Source="QRCodeWebsite"
                    x:Name="QRCode"
                     HorizontalOptions="Center" />
-        </StackLayout>             
+        </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
