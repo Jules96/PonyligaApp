@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ponyliga.Views.Users.TimeInputPage" 
+             xmlns:local="clr-namespace:Ponyliga.Views.Users">
+
+    <NavigationPage.TitleView>
+        <StackLayout>
+
+            <Label
+                x:Name="label_manual_result_title"
+                Text="Manuelle Zeiteingabe"
+                FontSize="25"
+                FontAttributes="Bold"
+                TextColor="#FFFF">
+            </Label>
+            
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Resources>
+        <x:String x:Key="formatdecimaltwoplaces">{00:00:00.00}</x:String>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+
+            <!--manual result-->
+            <Label
+                Text="Gemessene Zeit eingeben"
+                TextDecorations="Underline"
+                TextColor="Black"
+                FontSize="25"
+                FontAttributes="Bold"
+                Padding="25"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"/>
+
+            <Picker
+                x:Name="TeamPicker"
+                Title="Team auswählen*"
+                FontAttributes="Italic"
+                FontSize="20"
+                VerticalOptions="Start"
+                SelectedIndexChanged="TeamPicker_OnSelectedIndexChanged">
+            </Picker>
+
+            <Picker
+                x:Name="GamePicker"
+                Title="Spiel auswählen*" 
+                FontAttributes="Italic"
+                FontSize="20"
+                VerticalOptions="Start"
+                SelectedIndexChanged="GamePicker_OnSelectedIndexChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Slalom</x:String>
+                        <x:String>Becherrennen</x:String>
+                        <x:String>Steine</x:String>
+                        <x:String>Sacklaufen</x:String>
+                        <x:String>Flaggenrennen</x:String>
+                        <x:String>Kartoffelrennen</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Label 
+                Text="* Pflichtfelder"
+                FontSize="Micro"
+                Margin="10,-10,0,0"/>
+            
+            <!--shows the measured result for testing-->
+            <Label
+                x:Name="label_manual_result"
+                Text=""
+                HorizontalOptions="Center">                
+            </Label>
+
+            <Frame
+                HasShadow="True"
+                Margin="10,-10,10,10"
+                CornerRadius="20"
+                BorderColor="Black">
+
+                <!--manual time input-->
+                <StackLayout
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center">
+
+                    <Entry
+                        x:Name="timeInputHour"
+                        Placeholder="hh"
+                        Keyboard="Numeric"
+                        MaxLength="2"
+                        FontSize="30"
+                        WidthRequest="65"
+                        HorizontalTextAlignment="Center"
+                        ClearButtonVisibility="WhileEditing">
+                        <Entry.Behaviors>
+                            <local:MaxHourAmountEntryBehavior/>
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <Label
+                        VerticalOptions="Center"
+                        Text=":"
+                        FontSize="40"
+                        Margin="-5,0">
+                    </Label>
+
+                    <Entry
+                        x:Name="timeInputMin"
+                        Placeholder="mm"
+                        Keyboard="Numeric"
+                        MaxLength="2"
+                        FontSize="30"
+                        WidthRequest="65"
+                        HorizontalTextAlignment="Center"
+                        ClearButtonVisibility="WhileEditing">
+                        <Entry.Behaviors>
+                            <local:MaxMinuteAmountEntryBehavior/>
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <Label
+                        VerticalOptions="Center"
+                        Text=":"
+                        FontSize="40"
+                        Margin="-5,0">
+                    </Label>
+
+                    <Entry
+                        x:Name="timeInputSec"
+                        Placeholder="ss"
+                        Keyboard="Numeric"
+                        MaxLength="2"
+                        FontSize="30"
+                        WidthRequest="65"
+                        HorizontalTextAlignment="Center"
+                        ClearButtonVisibility="WhileEditing">
+                        <Entry.Behaviors>
+                            <local:MaxSecAmountEntryBehavior/>
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <Label
+                        VerticalOptions="Center"
+                        Text="."
+                        FontSize="40"
+                        Margin="-5,0">
+                    </Label>
+
+                    <Entry
+                        x:Name="timeInputMsec"
+                        Placeholder="ms"
+                        Keyboard="Numeric"
+                        MaxLength="2"
+                        FontSize="30"
+                        WidthRequest="65"
+                        HorizontalTextAlignment="Start"
+                        ClearButtonVisibility="WhileEditing">
+                        <Entry.Behaviors>
+                            <local:MaxMsecAmountEntryBehavior/>
+                        </Entry.Behaviors>
+                    </Entry>
+
+                </StackLayout>
+            </Frame>
+
+            <Frame
+                    HasShadow="True"
+                    Margin="10,10,10,10"
+                    CornerRadius="20"
+                    BorderColor="Black"
+                    HorizontalOptions="Center">
+
+                <Entry
+                        x:Name="penaltyTime"
+                        Placeholder="Strafsekunden"
+                        FontAttributes="Italic"
+                        PlaceholderColor="Black"
+                        FontSize="Large"
+                        Keyboard="Numeric"
+                        ClearButtonVisibility="WhileEditing"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                </Entry>
+
+            </Frame>
+
+            <Label
+                x:Name="timeIncPenalty">
+            </Label>
+
+            <Button
+                x:Name="btn_AcceptResult"
+                Text="Übermitteln"
+                BackgroundColor="LightBlue"
+                FontAttributes="Bold"
+                TextTransform="None"
+                HorizontalOptions="Center"
+                HeightRequest="50"
+                WidthRequest="150"
+                CornerRadius="100"
+                Clicked="btn_TransmitResults_Clicked">
+            </Button>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

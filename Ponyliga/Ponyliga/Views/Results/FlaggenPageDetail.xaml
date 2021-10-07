@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ponyliga.Views.Results.FlaggenPageDetail"
+             Title="Flaggenrennen">
+    <ContentPage.Content>
+        <StackLayout >
+            <ListView 
+                x:Name="listViewFlaggen"
+                ItemsSource="{Binding Item}"
+                CachingStrategy="RecycleElement">
+
+                <!--Built in Cells-->
+
+                <ListView.Header>
+                    <Grid BackgroundColor="Black">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+
+                        </Grid.ColumnDefinitions>
+                        <Label Text="#" HorizontalOptions="Fill"  Grid.Column="0"   FontSize="Medium" FontAttributes="Bold" BackgroundColor="DimGray" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label Text="Verein" HorizontalOptions="Fill"  Grid.Column="1"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="DimGray" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label Text="Pkt" HorizontalOptions="Fill"  Grid.Column="2"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="DimGray" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label Text="Zeit" HorizontalOptions="Fill"  Grid.Column="3"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="DimGray" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label Text="StrafSek" HorizontalOptions="Fill"  Grid.Column="4"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="DimGray" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                    </Grid>
+                </ListView.Header>
+
+                <!--Custom View Cells-->
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid BackgroundColor="Black">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                                    <ColumnDefinition Width="2*"></ColumnDefinition>
+
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text ="{Binding position}" HorizontalOptions="Fill" BackgroundColor="LightGray" HorizontalTextAlignment="Center" Margin="1" FontSize="Medium"></Label>
+                                <Label Grid.Column="1" Text ="{Binding name}" HorizontalOptions="Fill" BackgroundColor="LightGray" HorizontalTextAlignment="Center" Margin="1" FontSize="Medium"></Label>
+                                <Label Grid.Column="2" Text ="{Binding score}" HorizontalOptions="Fill" BackgroundColor="LightGray" HorizontalTextAlignment="Center" Margin="1" FontSize="Medium"></Label>
+                                <Label Grid.Column="3" Text ="{Binding time}" HorizontalOptions="Fill" BackgroundColor="LightGray" HorizontalTextAlignment="Center" Margin="1" FontSize="Medium"></Label>
+                                <Label Grid.Column="4" Text ="{Binding penaltyTime}" HorizontalOptions="Fill" BackgroundColor="LightGray" HorizontalTextAlignment="Center" Margin="1" FontSize="Medium"></Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button
+                Text="aktualisieren"
+                BackgroundColor="#ffb6c1"
+                Clicked="btn_aktualisieren_Clicked">
+            </Button>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

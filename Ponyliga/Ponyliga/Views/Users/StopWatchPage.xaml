@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:viewmodels="clr-namespace:Ponyliga.ViewModels" 
+             x:DataType="viewmodels:StopWatch"
+             x:Class="Ponyliga.Views.Users.StopWatchPage" 
+             Title="Stoppuhr" >
+
+    <NavigationPage.TitleView>
+        <StackLayout>
+
+            <Label
+                x:Name="Stoppuhr"
+                Text="Stoppuhr"
+                FontSize="25"
+                FontAttributes="Bold"
+                TextColor="#FFFF">
+            </Label>
+            
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <StackLayout
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand">
+
+            <StackLayout
+                VerticalOptions="Start">
+
+                <Label 
+                    x:Name="label_Logged_as" />
+
+                <Picker
+                    x:Name="TeamPicker"
+                    Title="Team auswählen*"
+                    FontAttributes="Italic"
+                    FontSize="20"
+                    VerticalOptions="Start"
+                    SelectedIndexChanged="TeamPicker_OnSelectedIndexChanged">
+                </Picker>
+
+                <Picker
+                    x:Name="GamePicker"
+                    Title="Spiel auswählen*" 
+                    FontAttributes="Italic"
+                    FontSize="20"
+                    VerticalOptions="Start"
+                    SelectedIndexChanged="GamePicker_OnSelectedIndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Slalom</x:String>
+                            <x:String>Becherrennen</x:String>
+                            <x:String>Steine</x:String>
+                            <x:String>Sacklaufen</x:String>
+                            <x:String>Flaggenrennen</x:String>
+                            <x:String>Kartoffelrennen</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+
+                <Label 
+                    Text="* Pflichtfelder"
+                    FontSize="Micro"
+                    Margin="10,-10,0,0"/>
+                
+            </StackLayout>
+
+            <StackLayout
+                VerticalOptions="Center">
+
+                <Frame
+                    HasShadow="True"
+                    Margin="10,10,10,10"
+                    CornerRadius="10"
+                    BorderColor="Black">
+
+                    <Label
+                        x:Name="label_result"
+                        Text="" 
+                        TextColor="Black"
+                        FontSize="50"
+                        HorizontalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding Time}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    
+                </Frame>
+
+                <StackLayout 
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand">
+
+                    <Button 
+                        x:Name="btn_Start"
+                        Text="Start"
+                        BackgroundColor="LightBlue"
+                        TextTransform="None"
+                        Clicked="btn_Start_Clicked"
+                        Pressed="btn_Start_Clicked"/>
+
+                    <Button 
+                        x:Name="btn_Continue"
+                        Text="Weiter"
+                        BackgroundColor="LightBlue"
+                        TextTransform="None"
+                        Clicked="btn_Continue_Clicked" />
+
+                    <Button 
+                        x:Name="btn_Stop"
+                        Text="Stopp" 
+                        BackgroundColor="LightBlue"
+                        TextTransform="None"
+                        Clicked="btn_Stop_Clicked" />
+
+                    <Button 
+                        x:Name="btn_Reset" 
+                        Text="Reset"
+                        BackgroundColor="LightBlue"
+                        TextTransform="None"
+                        Clicked="btn_Reset_Clicked" />
+                    
+                </StackLayout>
+
+                <Frame
+                    HasShadow="True"
+                    Margin="10,10,10,10"
+                    CornerRadius="20"
+                    BorderColor="Black"
+                    HorizontalOptions="Center">
+
+                    <Entry
+                        x:Name="penaltyTime"
+                        Placeholder="Strafsekunden"
+                        FontAttributes="Italic"
+                        PlaceholderColor="Black"
+                        FontSize="Large"
+                        Keyboard="Numeric"
+                        ClearButtonVisibility="WhileEditing"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                    </Entry>
+                    
+                </Frame>
+
+                <Label
+                    x:Name="timeIncPenalty">
+                    
+                </Label>
+                
+                <Button 
+                    x:Name="btn_TransmitResults"
+                    Text="Zeit Übermitteln"
+                    BackgroundColor="LightBlue"
+                    TextTransform="None"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    HeightRequest="50"
+                    WidthRequest="150"
+                    CornerRadius="20"
+                    Clicked="btn_TransmitResults_Clicked"/>
+                
+            </StackLayout>
+
+            <StackLayout
+                VerticalOptions="CenterAndExpand">
+            </StackLayout>
+            
+            <Button 
+                x:Name="btn_LinkToTimeInputPage"
+                Text="Manuelle Zeiteingabe"
+                BackgroundColor="LightBlue"
+                TextTransform="None"
+                FontSize="20"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                HeightRequest="60"
+                WidthRequest="250"
+                CornerRadius="100"
+                VerticalOptions="End"
+                Clicked="btn_TimeInputPage_Clicked"/>
+
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

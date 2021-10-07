@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ponyliga.Views.CreateGroup"
+             Title="Gruppen erstellen">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <!--<Label 
+                Text="Geben Sie die Gruppengröße an."/>
+            
+            <Entry 
+                x:Name="groupSize"
+                AutomationId="groupSize"
+                Placeholder="3*"/>-->
+
+
+            
+                        <ListView x:Name="listViewRandomTeam"
+            ItemsSource="{Binding Users}"
+            CachingStrategy="RecycleElement">
+
+
+                <!--Built in Cells-->
+
+                <ListView.Header>
+                    <Grid BackgroundColor="Black">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                                     
+                        </Grid.ColumnDefinitions>
+                        <Label Text="GruppenNr" HorizontalOptions="Fill"  Grid.Column="0"   FontSize="Large" FontAttributes="Bold" BackgroundColor="DimGray" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label Text="TeamName" HorizontalOptions="Fill"  Grid.Column="1"  FontSize="Large" FontAttributes="Bold" BackgroundColor="DimGray" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                                             
+                    </Grid>
+                </ListView.Header>
+
+                <!--Custom View Cells-->
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid 
+                                BackgroundColor="Black">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                  
+                                
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text ="{Binding groupNr}" HorizontalOptions="Fill" BackgroundColor="{Binding BackColour}" TextColor="White" HorizontalTextAlignment="Center" Margin="1" FontSize="Medium"></Label>
+                                <Label Grid.Column="1" Text ="{Binding groupName}" HorizontalOptions="Fill" BackgroundColor="LightGray" TextColor="White" HorizontalTextAlignment="Center" Margin="1" FontSize="Medium"></Label>
+                                                               
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button Text="Gruppen erstellen" 
+                    BackgroundColor="DimGray"
+                    Clicked="btn_Randomize_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

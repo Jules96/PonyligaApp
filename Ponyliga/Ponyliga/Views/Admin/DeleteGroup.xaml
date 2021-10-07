@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ponyliga.Views.Admin.DeleteGroup"
+             Title="Gruppeinteilung löschen">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Hier können Sie die aktuelle Gruppeneinteiling löschen"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <StackLayout>
+                <ListView x:Name="listViewRandomTeam"
+            ItemsSource="{Binding Users}"
+            CachingStrategy="RecycleElement">
+
+
+                    <!--Built in Cells-->
+
+                    <ListView.Header>
+                        <Grid BackgroundColor="Black">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+
+                            </Grid.ColumnDefinitions>
+                            <Label Text="GruppenNr" HorizontalOptions="Fill"  Grid.Column="0"   FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                            <Label Text="TeamName" HorizontalOptions="Fill"  Grid.Column="1"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                            <Label Text="Bande" HorizontalOptions="Fill"  Grid.Column="2"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+
+                        </Grid>
+                    </ListView.Header>
+
+                    <!--Custom View Cells-->
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid 
+                                BackgroundColor="Black">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+
+
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text ="{Binding groupNr}" HorizontalOptions="Fill" BackgroundColor="{Binding BackColour}" TextColor="White" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                    <Label Grid.Column="1" Text ="{Binding groupName}" HorizontalOptions="Fill" BackgroundColor="LightBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                    <Label Grid.Column="2" Text ="{Binding startingPosition}" HorizontalOptions="Fill" BackgroundColor="LightBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"></Label>
+
+
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Button
+                    Text="Gruppeneinteilung löschen"
+                    Clicked="click_groupdelete_btn">
+                    
+                </Button>
+            </StackLayout>
+        </StackLayout>
+
+
+    </ContentPage.Content>
+</ContentPage>
