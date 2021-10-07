@@ -62,7 +62,11 @@ namespace Ponyliga.Views.Users
                             p = 0;
                             c++;
                         }
-                        p++;
+                        else
+                        {
+                            p++;
+                        }
+                        
                     }
                 }
 
