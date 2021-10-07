@@ -9,6 +9,7 @@ namespace Ponyliga.Models
         public int? groupNr { get; set; }
         public string groupName { get; set; }
         public string BackColour { get; set; }
+        public string startingPosition { get; set; }
 
     }
 }
