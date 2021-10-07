@@ -11,12 +11,22 @@ namespace Ponyliga.Test
     {
         [Fact]
 
+        public async void GetAllGroups()
+        {
+            ApiService apiService = new ApiService();
+            //var = System.Threading.Tasks.Task<System.Collections.Generic.List<Models.User>>
+            var result = await apiService.GetAllGroups();
+
+            Assert.NotEmpty(result);
+
+        }
         public string AddGroup()
         {
             Random rnd = new Random();
             int month = rnd.Next(10000, 100000000);  // creates a number between 1 and 12
 
             Group group = new Group();
+            group.id = default;
             group.name = "ponyGroup" + month;
             group.rule = 1;
             group.groupSize = 4;
@@ -27,6 +37,27 @@ namespace Ponyliga.Test
             var result = apiService.AddGroup(group);
 
             Assert.NotNull(result);
+            return group.name;
+
+        }
+
+        public string AddGroup_False()
+        {
+            Random rnd = new Random();
+            int month = rnd.Next(10000, 100000000);  // creates a number between 1 and 12
+
+            Group group = new Group();
+            group.id = 1;
+            group.name = "ponyGroup" + month;
+            group.rule = 1;
+            group.groupSize = 4;
+            group.participants = "Merle, Jonas";
+
+
+            ApiService apiService = new ApiService();
+            var result = apiService.AddGroup(group);
+
+            Assert.Null(result);
             return group.name;
 
         }

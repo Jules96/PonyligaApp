@@ -48,5 +48,24 @@ namespace Ponyliga.Views.Users
             Navigation.PopAsync();
         }
 
+        private void btn_QrCode_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new QRCodePage());
+        }
+
+        private void btn_Rules_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Rules());
+        }
+
+        private void btn_GameStructure_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new GameStructure());
+        }
+
+        private void btn_Grouping_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new groupingPage());
+        }
     }
 }

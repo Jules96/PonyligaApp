@@ -102,29 +102,34 @@ namespace Ponyliga.Views.Admin
 
         private void btn_deleteUser_Clicked(object sender, EventArgs e)
         {
+            if(UserPicker.SelectedIndex != -1)
+            {
+                string loginName = UserPicker.Items[UserPicker.SelectedIndex];
 
-            string loginName = UserPicker.Items[UserPicker.SelectedIndex];
+                User user = new User();
 
-            User user = new User();
+                int userId = taskUser.Find(u => u.loginName == loginName).id;
+                user.id = userId;
 
-            int userId = taskUser.Find(u => u.loginName == loginName).id;
-            user.id = userId;
-
-            ApiService apiService = new ApiService();
-            LogInPage logInPage = new LogInPage();
+                ApiService apiService = new ApiService();
+                LogInPage logInPage = new LogInPage();
 
 
-            apiService.DeleteUser(user.id.ToString());
-            DisplayAlert("Warnung", "User wird gelöscht!", "OK");
+                apiService.DeleteUser(user.id.ToString());
+                DisplayAlert("Warnung", "User wird gelöscht!", "OK");
+
+
+                FillUserList();
+                UserPicker.SelectedIndex = -1;
+            }
+           
           
 
             
 
            
 
-            
-            FillUserList();
-            UserPicker.SelectedIndex = -1;
+
         }
     }
 }

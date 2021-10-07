@@ -447,7 +447,7 @@ namespace Ponyliga.Services
             return false;
         }
 
-        public async Task UpdatePony(string id, Pony pony)
+        public async Task<bool> UpdatePony(string id, Pony pony)
         {
 
             httpClient = new HttpClient();
@@ -456,9 +456,15 @@ namespace Ponyliga.Services
 
             var json = JsonConvert.SerializeObject(pony);
             StringContent content = new StringContent(json.ToString(), Encoding.UTF8, "application/json");
+            var response = await httpClient.PutAsync(uri, content);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
         }
 
-        public async Task DeletePony(string id)
+        public async Task<bool> DeletePony(string id)
         {
             // wird später gelöscht
             httpClient = new HttpClient();
@@ -466,6 +472,11 @@ namespace Ponyliga.Services
             string uri = GetUrlID("team", id);
 
             var response = await httpClient.DeleteAsync(uri);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
         }
 
         #endregion Pony

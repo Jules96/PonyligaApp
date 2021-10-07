@@ -39,8 +39,7 @@ namespace Ponyliga.Views
                 {
                     await DisplayAlert("Vorsicht", "Gruppeneinteilung wurden bereits erstellt. Falls Sie eine neue Gruppeneinteilung erstellen möchten, löschen Sie die aktuelle Gruppen", "OK");
                     
-                }
-                
+                }              
                 
                     await GetGroupListAsync();
                 
@@ -73,8 +72,6 @@ namespace Ponyliga.Views
 
             List<RandomizeGroup> listSorted = new List<RandomizeGroup>();
             int teamCount = teamList.Count;
-
-
 
             var shuffledcards = teamList.OrderBy(a => Guid.NewGuid()).ToList();
 

@@ -7,6 +7,9 @@ namespace Ponyliga.Models
     public class RandomizeGroup
     {
         public int? groupNr { get; set; }
+
+        public string namegroup{ get; set; }
+
         public string groupName { get; set; }
         public string BackColour { get; set; }
         public string startingPosition { get; set; }
