@@ -25,42 +25,8 @@
                 Margin="60,0,0,0"
                 CornerRadius="100">
             </Button>
-            <Button 
-                    Text="QR-Code" 
-                    BackgroundColor="LightBlue"
-                    HorizontalOptions="Center"
-                    Clicked="btn_QrCode_Clicked"
-                    HeightRequest="60"
-                    WidthRequest="200"
-                    CornerRadius="10"/>
-
-            <Button 
-                    Text="Regeln" 
-                    BackgroundColor="LightBlue"
-                    Clicked="btn_Rules_Clicked"
-                    HorizontalOptions="Center"
-                    HeightRequest="60"
-                    WidthRequest="200"
-                    CornerRadius="10"/>
-
-            <Button 
-                    Text="Spielaufbau" 
-                    BackgroundColor="LightBlue"
-                    Clicked="btn_GameStructure_Clicked"
-                    HorizontalOptions="Center"
-                    HeightRequest="60"
-                    WidthRequest="200"
-                    CornerRadius="10"/>
-
-            <Button 
-                    Text="Gruppeneinteilung"
-                    BackgroundColor="LightBlue"
-                    Clicked="btn_Grouping_Clicked"
-                    HorizontalOptions="Center"
-                    HeightRequest="60"
-                    WidthRequest="200"
-                    CornerRadius="10"/>
-
+          
+          
         </StackLayout>
     </NavigationPage.TitleView>
 
@@ -100,6 +66,43 @@
                 HeightRequest="60"
                 WidthRequest="200"
                 CornerRadius="10"/>
+
+            <Button 
+                    Text="QR-Code" 
+                    BackgroundColor="LightBlue"
+                    HorizontalOptions="Center"
+                    Clicked="btn_QrCode_Clicked"
+                    HeightRequest="60"
+                    WidthRequest="200"
+                    CornerRadius="10"/>
+
+            <Button 
+                    Text="Regeln" 
+                    BackgroundColor="LightBlue"
+                    Clicked="btn_Rules_Clicked"
+                    HorizontalOptions="Center"
+                    HeightRequest="60"
+                    WidthRequest="200"
+                    CornerRadius="10"/>
+
+            <Button 
+                    Text="Spielaufbau" 
+                    BackgroundColor="LightBlue"
+                    Clicked="btn_GameStructure_Clicked"
+                    HorizontalOptions="Center"
+                    HeightRequest="60"
+                    WidthRequest="200"
+                    CornerRadius="10"/>
+
+            <Button 
+                    Text="Gruppeneinteilung"
+                    BackgroundColor="LightBlue"
+                    Clicked="btn_Grouping_Clicked"
+                    HorizontalOptions="Center"
+                    HeightRequest="60"
+                    WidthRequest="200"
+                    CornerRadius="10"/>
+
 
         </StackLayout>
 
