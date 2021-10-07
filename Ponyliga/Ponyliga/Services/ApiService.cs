@@ -56,26 +56,30 @@ namespace Ponyliga.Services
             return null;
         }
 
-        public async Task<List<User>> GetUserByID(string id)
+       /* public async Task<List<User>> GetUserByID(string id)
         {
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
             string uri = GetUrlID("user", id);
             var data = await httpClient.GetAsync(uri);
 
-            if (data.IsSuccessStatusCode)
+            if (data != null)
             {
-                string respContent = await data.Content.ReadAsStringAsync();
-                var settings = new JsonSerializerSettings()
+                if (data.IsSuccessStatusCode)
                 {
-                    Formatting = Formatting.Indented
-                };
+                    string respContent = await data.Content.ReadAsStringAsync();
+                    var settings = new JsonSerializerSettings()
+                    {
+                        Formatting = Formatting.Indented
+                    };
 
-                return await Task.Run(() => JsonConvert.DeserializeObject<List<User>>(respContent, settings));
-
+                    return await Task.Run(() => JsonConvert.DeserializeObject<List<User>>(respContent, settings));
+                    
+                }
+                return null;
             }
             return null;
-        }
+        }*/
 
         public async Task<bool> AddUser(User user)
         {
@@ -128,7 +132,7 @@ namespace Ponyliga.Services
             return false;
         }
 
-        public async Task UpdateUser(string id, User user)
+        public async Task<bool> UpdateUser(string id, User user)
         {
            
             httpClient = new HttpClient();
@@ -138,10 +142,14 @@ namespace Ponyliga.Services
             string json = JsonConvert.SerializeObject(user);
             StringContent content = new StringContent(json.ToString(), Encoding.UTF8, "application/json");
             var response = await httpClient.PutAsync(uri, content);
-
+            if(response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
         }
 
-        public async Task DeleteUser(string id)
+        public async Task<bool> DeleteUser(string id)
         {
             // wird später gelöscht
             httpClient = new HttpClient();
@@ -149,6 +157,11 @@ namespace Ponyliga.Services
             string uri = GetUrlID("user", id);
 
             var response = await httpClient.DeleteAsync(uri);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
 
 
         }
@@ -177,7 +190,7 @@ namespace Ponyliga.Services
             return null;
         }
 
-        public async Task<List<Group>> GetGroupByID(string id)
+        /*public async Task<List<Group>> GetGroupByID(string id)
         {
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
@@ -196,7 +209,7 @@ namespace Ponyliga.Services
 
             }
             return null;
-        }
+        }*/
 
         public async Task<Group> AddGroup(Group group)
         {
@@ -228,7 +241,7 @@ namespace Ponyliga.Services
             return null;
         }
 
-        public async Task UpdateGroup(int id, Group group)
+        public async Task<bool> UpdateGroup(int id, Group group)
         {
 
             httpClient = new HttpClient();
@@ -237,16 +250,27 @@ namespace Ponyliga.Services
 
             var json = JsonConvert.SerializeObject(group);
             StringContent content = new StringContent(json.ToString(), Encoding.UTF8, "application/json");
+            var response = await httpClient.PutAsync(uri, content);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
         }
 
-        public async Task DeleteGroup(string id)
+        public async Task<bool> DeleteGroup(string id)
         {
             // wird später gelöscht
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
             string uri = GetUrlID("group", id);
 
-            var response = await httpClient.DeleteAsync(uri);
+            var response = await httpClient.DeleteAsync(uri);                    
+            if(response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
         }
 
         #endregion Group
