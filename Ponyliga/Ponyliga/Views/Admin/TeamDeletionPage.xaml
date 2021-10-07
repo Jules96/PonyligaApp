@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ponyliga.Views.Admin.TeamDeletionPage"
+             Title="Team löschen">
+    
+    <ContentPage.Content>
+        <StackLayout>
+           <Picker 
+               x:Name="TeamPicker"
+               Title="Team auswählen*" 
+               FontSize="30" 
+               SelectedIndexChanged="TeamPicker_OnSelectedIndexChanged"/>
+
+            <Button 
+                Text="Team löschen"
+                BackgroundColor="LightBlue"
+                Clicked="btn_deleteTeam_Clicked"/>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

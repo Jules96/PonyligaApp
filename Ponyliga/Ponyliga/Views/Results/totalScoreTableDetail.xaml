@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ponyliga.Views.totalScoreTableDetail"
+             Title="Punktetabelle">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <ListView 
+                x:Name="listViewm"
+                ItemsSource="{Binding Item}"
+                CachingStrategy="RecycleElement">
+                <!--Built in Cells-->
+
+                <ListView.Header>
+                    <Grid BackgroundColor="Black">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+
+                        </Grid.ColumnDefinitions>
+                        <Label Text="#" HorizontalOptions="Fill"  Grid.Column="0"   FontSize="Large" FontAttributes="Bold" BackgroundColor="DimGray" TextColor="White" HorizontalTextAlignment="Center" Margin="1" />
+                        <Label Text="Verein" HorizontalOptions="Fill"  Grid.Column="1"  FontSize="Large" FontAttributes="Bold" BackgroundColor="DimGray" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label Text="Punkte" HorizontalOptions="Fill"  Grid.Column="2"  FontSize="Large" FontAttributes="Bold" BackgroundColor="DimGray" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+
+                    </Grid>
+                </ListView.Header>
+
+                <!--Custom View Cells-->
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid BackgroundColor="Black" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text ="{Binding place}" HorizontalOptions="Fill" BackgroundColor="LightGray" HorizontalTextAlignment="Center" Margin="1" FontSize="Medium"></Label>
+                                <Label Grid.Column="1" Text ="{Binding name}" HorizontalOptions="Fill" BackgroundColor="LightGray" HorizontalTextAlignment="Center" Margin="1" FontSize="Medium"></Label>
+                                <Label Grid.Column="2" Text ="{Binding score}" HorizontalOptions="Fill" BackgroundColor="LightGray" HorizontalTextAlignment="Center" Margin="1" FontSize="Medium"></Label>
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button
+                Text="aktualisieren"
+                BackgroundColor="#ffb6c1"
+                Clicked="btn_aktualisieren_Clicked">
+            </Button>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

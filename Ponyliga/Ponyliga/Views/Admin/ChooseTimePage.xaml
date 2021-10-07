@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ponyliga.Views.ChooseTimePage"
+             xmlns:local="clr-namespace:Ponyliga.Views">
+
+    <NavigationPage.TitleView>
+        <StackLayout>
+
+            <Label
+                x:Name="TableEdeting"
+                Text="Tabelle bearbeiten"
+                FontSize="25"
+                FontAttributes="Bold"
+                TextColor="#FFFF">
+            </Label>
+
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Resources>
+        <x:String x:Key="formatdecimaltwoplaces">{00:00:00.00}</x:String>
+    </ContentPage.Resources>
+
+
+    <ContentPage.Content>
+
+        <StackLayout
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand">
+
+            <StackLayout
+                VerticalOptions="Start">
+
+                <Label 
+                    x:Name="label_Logged_as" />
+
+                <Picker
+                    x:Name="TeamPicker"
+                    Title="Team auswählen*"
+                    FontAttributes="Italic"
+                    FontSize="20"
+                    VerticalOptions="Start"
+                    SelectedIndexChanged="TeamPicker_OnSelectedIndexChanged">
+                </Picker>
+
+                <Picker
+                    x:Name="GamePicker"
+                    Title="Spiel auswählen*" 
+                    FontAttributes="Italic"
+                    FontSize="20"
+                    VerticalOptions="Start"
+                    SelectedIndexChanged="GamePicker_OnSelectedIndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Slalom</x:String>
+                            <x:String>Becherrennen</x:String>
+                            <x:String>Steine</x:String>
+                            <x:String>Sacklaufen</x:String>
+                            <x:String>Flaggenrennen</x:String>
+                            <x:String>Kartoffelrennen</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+
+                <Label 
+                    Text="* Pflichtfelder"
+                    FontSize="Micro"
+                    Margin="10,-10,0,0"/>
+
+            </StackLayout>
+
+            <ListView 
+                x:Name="listViewTable"
+                ItemsSource="{Binding Item}"
+                CachingStrategy="RecycleElement"
+                ItemSelected="Handle_SelectedItem">
+
+                <!--Built in Cells-->
+
+                <ListView.Header>
+                    <Grid BackgroundColor="Black">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+
+                        </Grid.ColumnDefinitions>
+                        <Label Text="ID" HorizontalOptions="Fill"  Grid.Column="0"   FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label Text="Verein" HorizontalOptions="Fill"  Grid.Column="1"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label Text="Pkt" HorizontalOptions="Fill"  Grid.Column="2"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label Text="Zeit" HorizontalOptions="Fill"  Grid.Column="3"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label Text="StrafSek" HorizontalOptions="Fill"  Grid.Column="4"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                    </Grid>
+                </ListView.Header>
+
+                <!--Custom View Cells-->
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid BackgroundColor="Black">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                                    <ColumnDefinition Width="2*"></ColumnDefinition>
+
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text ="{Binding id}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                <Label Grid.Column="1" Text ="{Binding name}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                <Label Grid.Column="2" Text ="{Binding score}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                <Label Grid.Column="3" Text ="{Binding time}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                <Label Grid.Column="4" Text ="{Binding penaltyTime}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+
+</ContentPage>
