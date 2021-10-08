@@ -72,7 +72,7 @@ namespace Ponyliga.Test
             var result = await apiService.UpdateGroup(group.id, group);
 
             Assert.NotNull(result);
-            apiService.DeleteGroup(group.id.ToString());
+            await apiService.DeleteGroup(group.id.ToString());
 
 
         }
