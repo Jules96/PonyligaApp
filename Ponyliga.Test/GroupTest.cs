@@ -20,7 +20,8 @@ namespace Ponyliga.Test
             Assert.NotEmpty(result);
 
         }
-        public string AddGroup()
+        [Fact]
+        public async Task<int> AddGroupAsync()
         {
             Random rnd = new Random();
             int month = rnd.Next(10000, 100000000);  // creates a number between 1 and 12
@@ -34,21 +35,18 @@ namespace Ponyliga.Test
 
 
             ApiService apiService = new ApiService();
-            var result = apiService.AddGroup(group);
+            var result = await apiService.AddGroup(group);
 
             Assert.NotNull(result);
-            return group.name;
+            return result.id;
 
         }
-
+        [Fact]
         public string AddGroup_False()
         {
-            Random rnd = new Random();
-            int month = rnd.Next(10000, 100000000);  // creates a number between 1 and 12
-
             Group group = new Group();
             group.id = 1;
-            group.name = "ponyGroup" + month;
+            group.name = "ponyGroup" ;
             group.rule = 1;
             group.groupSize = 4;
             group.participants = "Merle, Jonas";
@@ -57,7 +55,7 @@ namespace Ponyliga.Test
             ApiService apiService = new ApiService();
             var result = apiService.AddGroup(group);
 
-            Assert.Null(result);
+            Assert.Contains("WaitingForActivation", result.Status.ToString());
             return group.name;
 
         }
@@ -66,61 +64,40 @@ namespace Ponyliga.Test
         [Fact]
         public async void UpdateGroup()
         {
-            string name = AddGroup();
+            int id = await AddGroupAsync();
             ApiService apiService = new ApiService();
-            var allGroup = await apiService.GetAllGroups();
 
-            Random rnd = new Random();
-            int month = rnd.Next(10000, 100000000);  // creates a number between 1 and 12
+            Group group = new Group { id = id,name="Timons"};         
 
-            var group = allGroup.Find(f => f.name == name);
-            group.id = 2;
-            group.name = "ponyGroup" + month;
-            group.rule = 1;
-            group.groupSize = 4;
-            group.participants = "Merle, Jonas";
+            var result = await apiService.UpdateGroup(group.id, group);
 
-
-            var result = apiService.UpdateGroup(group.id, group);
-
-            Assert.True(result.Result);
-            apiService.DeleteUser(group.id.ToString());
+            Assert.NotNull(result);
+            apiService.DeleteGroup(group.id.ToString());
 
 
         }
 
-        [Fact, Priority(25)]
-        public async Task UpdateGroup_FalseAsync()
-        {
-            string name = AddGroup();
-            ApiService apiService = new ApiService();
-            var allGroup = await apiService.GetAllGroups();
 
-            var group = allGroup.Find(f => f.name == name);
-
-            group.name = group.name;
-            group.rule = 0;
-            group.groupSize = 4;
-            group.participants = "Merle, Jonas";
-
-
-            var result = apiService.UpdateGroup(group.id, group);
-
-            Assert.True(result.Result);
-            apiService.DeleteUser(group.id.ToString());
-        }
 
         [Fact]
         public async void DeleteGroup()
         {
-            string userName = AddGroup();
             ApiService apiService = new ApiService();
-            var allGroups = await apiService.GetAllGroups();
+            var groups = await apiService.GetAllGroups();
+            var result = false;
 
-            var group = allGroups.Find(f => f.name == userName);
+            foreach (var group in groups)
+            {
+                foreach (var team in group.teams)
+                {
+                    team.groupId = null;
 
-            var result = apiService.DeleteGroup(group.id.ToString());
-            Assert.True(result.Result);
+                     await apiService.UpdateTeam(team.id.ToString(), team);
+                }
+                result = await apiService.DeleteGroup(group.id.ToString());
+
+            }
+            Assert.True(result);
 
         }
 

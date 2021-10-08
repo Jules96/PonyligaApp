@@ -53,7 +53,7 @@
                                   
                                 
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text ="{Binding groupNr}" HorizontalOptions="Fill" BackgroundColor="{Binding BackColour}" TextColor="White" HorizontalTextAlignment="Center" Margin="1" FontSize="Medium"></Label>
+                                <Label Grid.Column="0" Text ="{Binding namegroup}" HorizontalOptions="Fill" BackgroundColor="{Binding BackColour}" TextColor="White" HorizontalTextAlignment="Center" Margin="1" FontSize="Medium"></Label>
                                 <Label Grid.Column="1" Text ="{Binding groupName}" HorizontalOptions="Fill" BackgroundColor="LightGray" TextColor="White" HorizontalTextAlignment="Center" Margin="1" FontSize="Medium"></Label>
                                                                
 

@@ -21,7 +21,7 @@ namespace Ponyliga.Test
 
         }
         [Fact]
-        public string AddPony()
+        public async System.Threading.Tasks.Task<int> AddPonyAsync()
         {
             Random rnd = new Random();
             int month = rnd.Next(1, 1000);
@@ -32,64 +32,35 @@ namespace Ponyliga.Test
             pony.race = "Schetty";
             
             ApiService apiService = new ApiService();
-            var result = apiService.AddPony(pony);
+            var result = await apiService.AddPony(pony);
 
             Assert.NotNull(result);
-            return pony.name;
-        }
-
-        [Fact]
-        public void AddPony_False()
-        {
-            Random rnd = new Random();
-            int month = rnd.Next(1, 1000);
-
-            Pony pony = new Pony();
-            pony.id = 1;
-            pony.name = "HelmutKohl" + month;
-            pony.race = "Schetty";
-
-            ApiService apiService = new ApiService();
-            var result = apiService.AddPony(pony);
-
-            Assert.False(result.Result);
+            return result.id;
         }
 
         [Fact]
         public async void UpdatePony()
         {
-            string name = AddPony();
+            int id = await AddPonyAsync();
             ApiService apiService = new ApiService();
-            var allPonies = await apiService.GetAllPonies();
-            Random rnd = new Random();
-            int month = rnd.Next(10000, 100000000);  // creates a number between 1 and 12
 
-            var pony = allPonies.Find(f => f.name == name);
-            pony.name = "HelmutKohl" + month;
-            pony.race = "Schetty";
-            pony.age = "30";
+            Pony pony = new Pony { id = id, name = "HelmutKohl"};
 
-            var result = apiService.UpdatePony(pony.id.ToString(), pony);
-            Assert.True(result.Result);
-            apiService.DeleteUser(pony.id.ToString());
+            var result = await apiService.UpdatePony(pony.id.ToString(), pony);
+            Assert.True(result);
+            apiService.DeletePony(pony.id.ToString());
 
         }
         [Fact]
         public async void UpdatePony_False()
         {
-            string name = AddPony();
+
             ApiService apiService = new ApiService();
-            var allPonies = await apiService.GetAllPonies();
-            Random rnd = new Random();
-            int month = rnd.Next(10000, 100000000);  // creates a number between 1 and 12
 
-            var pony = allPonies.Find(f => f.name == name);
-            pony.id = 100;
-            pony.name = "HelmutKohl" + month;
-            pony.race = "Schetty";
+            Pony pony = new Pony { id = 1000, name = "HelmutKohl"};
 
-            var result = apiService.UpdatePony(pony.id.ToString(), pony);
-            Assert.False(result.Result);
+            var result = await apiService.UpdatePony(pony.id.ToString(), pony);
+            Assert.False(result);
             
 
         }
@@ -97,25 +68,20 @@ namespace Ponyliga.Test
         [Fact]
         public async void DeletePony()
         {
-            string userName = AddPony();
+            int id = await AddPonyAsync();
             ApiService apiService = new ApiService();
-            var allponies = await apiService.GetAllPonies();
-
-            var pony = allponies.Find(f => f.name == userName);
-
-            var result = apiService.DeleteUser(pony.id.ToString());
-            Assert.True(result.Result);
+            var result = await apiService.DeletePony(id.ToString());
+            Assert.True(result);
         }
 
         [Fact]
         public async void DeletePony_False()
         {
             
-            ApiService apiService = new ApiService();        
+            ApiService apiService = new ApiService();  
                       
-
-            var result = apiService.DeleteUser("100000");
-            Assert.True(result.Result);
+            var result = await apiService.DeletePony("100000");
+            Assert.False(result);
         }
 
     }

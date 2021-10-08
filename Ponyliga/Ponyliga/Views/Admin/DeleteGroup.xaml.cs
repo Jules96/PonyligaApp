@@ -20,10 +20,10 @@ namespace Ponyliga.Views.Admin
         public DeleteGroup()
         {
             InitializeComponent();
-            FillUserList();
+            FillGroupList();
         }
 
-        public async void FillUserList()
+        public async void FillGroupList()
         {
             ApiService apiService = new ApiService();
             //Task<List<User>> task = apiService.GetAllUser(); 
@@ -54,7 +54,10 @@ namespace Ponyliga.Views.Admin
                 {
                     foreach (var groups in group.teams)
                     {
-                        Groups.Add(new RandomizeGroup() { groupNr = group.id, groupName = groups.name, startingPosition = position[p], BackColour = BackgroundList[c] });
+                        Groups.Add(new RandomizeGroup() { namegroup = "Gruppe " + c, 
+                                                          groupName = groups.name,
+                                                          startingPosition = position[p],
+                                                          BackColour = BackgroundList[c] });
 
                         if (p >= 2)
                         {
@@ -66,6 +69,7 @@ namespace Ponyliga.Views.Admin
                 }
 
             }
+
             /* else
              {
                  DisplayAlert("Achtung!", "Es sind keine Teams vorhanden!", "OK");
@@ -93,7 +97,7 @@ namespace Ponyliga.Views.Admin
 
             }
             Groups.Clear();
-            FillUserList();
+            FillGroupList();
 
         }
     }

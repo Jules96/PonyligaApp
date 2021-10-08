@@ -31,7 +31,7 @@ namespace Ponyliga.Views
         {
 
             InitializeComponent();
-            FillTeamList();
+            FillTeamPicker();
             GetAllUserNameAsync();
             //GetAllUserName();
 
@@ -40,7 +40,7 @@ namespace Ponyliga.Views
         {
 
             InitializeComponent();
-            FillTeamList();
+            FillTeamPicker();
             GetAllUserNameAsync();
             //GetAllUserName();
 
@@ -71,7 +71,7 @@ namespace Ponyliga.Views
 
         }
 
-        public async void FillTeamList()
+        public async void FillTeamPicker()
         {
             ApiService apiService = new ApiService();
             var taskTeam = await apiService.GetAllTeams();
@@ -102,7 +102,6 @@ namespace Ponyliga.Views
             Item.Clear();
             FillResultTable();
 
-            //DisplayAlert(game, "wurde als Spiel ausgewählt", "OK");
         }
 
 
@@ -138,26 +137,55 @@ namespace Ponyliga.Views
 
             if (taskResultSum != null)
             {
-
+                List<TeamResult> SortedListByNumberNr = new List<TeamResult>(); 
                 List<TeamResult> randomizeSortList = new List<TeamResult>();
                 foreach (var resultSum in taskResultSum)
                 {
 
                     foreach (var resultSums in resultSum.results)
                     {
-                        if (resultSums.game == gameString && resultSum.name == teamString)
+                        if (resultSums.game == gameString && resultSum.name == teamString  )
                         {
-                            //int penaltyTimeInt = Int16.Parse(resultSums.penaltyTime);
+                            MyItems.Clear();
                             if (String.IsNullOrEmpty(resultSums.penaltyTime))
                             {
                                 TeamResult team = new TeamResult();
                                 resultSums.penaltyTime = "0";
                             }
-                            randomizeSortList.Add(new TeamResult { id = resultSums.id, name = resultSum.name, score = resultSums.score, time = resultSums.time, penaltyTime = resultSums.penaltyTime + " sek." , game=resultSums.game});
+                            randomizeSortList.Add(new TeamResult { id = resultSums.id, name = resultSum.name, 
+                                                                   score = resultSums.score, time = resultSums.time, 
+                                                                   penaltyTime = resultSums.penaltyTime + " sek." , game=resultSums.game});
+                        }
+                        else if(resultSum.name == teamString &&  gameString =="")
+                        {
+                            MyItems.Clear();
+
+                            if (String.IsNullOrEmpty(resultSums.penaltyTime))
+                            {
+                                TeamResult team = new TeamResult();
+                                resultSums.penaltyTime = "0";
+                            }
+                            randomizeSortList.Add(new TeamResult { id = resultSums.id, name = resultSum.name, 
+                                                                   score = resultSums.score, time = resultSums.time, 
+                                                                   penaltyTime = resultSums.penaltyTime + " sek.", game = resultSums.game });
+
+                        }
+                        else if (resultSums.game == gameString && teamString == "")
+                        {
+                            MyItems.Clear();
+                            if (String.IsNullOrEmpty(resultSums.penaltyTime))
+                            {
+                                TeamResult team = new TeamResult();
+                                resultSums.penaltyTime = "0";
+                            }
+                            randomizeSortList.Add(new TeamResult { id = resultSums.id, name = resultSum.name,
+                                                                   score = resultSums.score, time = resultSums.time,
+                                                                   penaltyTime = resultSums.penaltyTime + " sek.", game = resultSums.game });
+
                         }
                     }
                 }
-                List<TeamResult> SortedListByNumberNr = randomizeSortList.OrderBy(randomizeList => randomizeList.position).ToList();
+                       SortedListByNumberNr = randomizeSortList.OrderBy(randomizeList => randomizeList.position).ToList();
 
                 foreach (var item in SortedListByNumberNr)
                 {
@@ -171,26 +199,25 @@ namespace Ponyliga.Views
 
         private void Handle_SelectedItem(object sender, SelectedItemChangedEventArgs e)
         {
-            if (e.SelectedItem != null)
+
+            if (e.SelectedItem != null )
             {
                 var item = (TeamResult)e.SelectedItem;
-                DisplayAlert("ItemSelected", item.name, "Ok");
+                
+                {
+                    TeamResult teamResults = new TeamResult();
+                    teamResults.time = item.time;
+                    teamResults.penaltyTime = item.penaltyTime;
+                    teamResults.gameDate = item.gameDate;
+                    teamResults.game = item.game;
+                    teamResults.name = item.name;
+                    teamResults.id = item.id;
+                    teamResults.teamId = item.teamId;
 
+                    Navigation.PushAsync(new TableDeleteEditPage(teamResults));
+                }
 
-                TeamResult teamResults = new TeamResult();
-                teamResults.time = item.time;
-                teamResults.penaltyTime = item.penaltyTime;
-                teamResults.gameDate = item.gameDate;
-                teamResults.game = item.game;
-                teamResults.name = item.name;
-                teamResults.id = item.id;
-                teamResults.teamId = item.teamId;
-
-                Navigation.PushAsync(new TableDeleteEditPage(teamResults));
-
-            }
-
-
+            }     
 
         }
 

@@ -54,9 +54,9 @@
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Label Text="Teamname" HorizontalOptions="Fill"  Grid.Column="0"   FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
-                    <Label Text="Teilnehmer #" HorizontalOptions="Fill"  Grid.Column="1"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
-                    <Label Text="Ansprechpartner" HorizontalOptions="Fill"  Grid.Column="2"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label Text="Teamname" HorizontalOptions="Fill"  Grid.Column="0"   FontSize="Medium" FontAttributes="Bold" BackgroundColor="DimGray" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label Text="Teilnehmer #" HorizontalOptions="Fill"  Grid.Column="1"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="DimGray" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label Text="Ansprechpartner" HorizontalOptions="Fill"  Grid.Column="2"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="DimGray" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
                 </Grid>
             </ListView.Header>
 
@@ -70,9 +70,9 @@
                                 <ColumnDefinition Width="1*"></ColumnDefinition>
                                 <ColumnDefinition Width="1*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text ="{Binding name}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
-                                <Label Grid.Column="1" Text ="{Binding teamSize}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
-                                <Label Grid.Column="2" Text ="{Binding consultor}" HorizontalOptions="Fill" BackgroundColor="LightBlue" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                <Label Grid.Column="0" Text ="{Binding name}" HorizontalOptions="Fill" BackgroundColor="LightGray" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                <Label Grid.Column="1" Text ="{Binding teamSize}" HorizontalOptions="Fill" BackgroundColor="LightGray" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                <Label Grid.Column="2" Text ="{Binding consultor}" HorizontalOptions="Fill" BackgroundColor="LightGray" HorizontalTextAlignment="Center" Margin="1"></Label>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

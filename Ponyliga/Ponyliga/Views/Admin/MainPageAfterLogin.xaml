@@ -50,7 +50,7 @@
 
             <Button 
                 Text="Tabelle"
-                BackgroundColor="LightGray"
+                BackgroundColor="LightBlue"
                 Clicked="btn_Table_Clicked"
                 HorizontalOptions="Center"
                 HeightRequest="60"
@@ -59,7 +59,7 @@
             
             <Button 
                 Text="Teams" 
-                BackgroundColor="LightGray"
+                BackgroundColor="LightBlue"
                 Clicked="btn_EditTeams_Clicked"
                 HorizontalOptions="Center"
                 HeightRequest="60"
@@ -68,7 +68,7 @@
             
             <Button 
                 Text="Tabelle bearbeiten"
-                BackgroundColor="LightGray"
+                BackgroundColor="LightBlue"
                 Clicked="btn_EditTable_Clicked"
                 HorizontalOptions="Center"
                 HeightRequest="60"
@@ -77,7 +77,7 @@
             
             <Button 
                 Text="Stoppuhr" 
-                BackgroundColor="LightGray"
+                BackgroundColor="LightBlue"
                 Clicked="btn_StopWatch_Clicked"
                 HorizontalOptions="Center"
                 HeightRequest="60"
@@ -86,7 +86,7 @@
             
             <Button 
                 Text="Gruppen" 
-                BackgroundColor="LightGray"
+                BackgroundColor="LightBlue"
                 Clicked="btn_Group_Clicked"
                 HorizontalOptions="Center"
                 HeightRequest="60"
@@ -95,7 +95,7 @@
             
             <Button 
                 Text="User" 
-                BackgroundColor="LightGray"
+                BackgroundColor="LightBlue"
                 Clicked="btn_User_Clicked"
                 HorizontalOptions="Center"
                 HeightRequest="60"

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:local="clr-namespace:Ponyliga.Views.Users"
-             x:Class="Ponyliga.Views.Admin.TableDeleteEditPage">
+             x:Class="Ponyliga.Views.Admin.TableDeleteEditPage"
+             xmlns:local="clr-namespace:Ponyliga.Views.Admin">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout HorizontalOptions="Fill" Orientation="Horizontal">
@@ -44,10 +44,7 @@
 
                 </Frame>
             </StackLayout>
-
-
-
-
+            
                 <!--manual time input-->
             <StackLayout  HorizontalOptions="Fill" Orientation="Horizontal">
                 <Frame>
@@ -61,93 +58,92 @@
                 </Frame>
 
                 <Frame>
-                <StackLayout
+                    <StackLayout
                     Orientation="Horizontal"
-                    HorizontalOptions="Center"
-                    >
-                    
-                    <Entry
+                    HorizontalOptions="Center">
+
+                        <Entry
                         x:Name="timeInputHour"
                         Placeholder="hh"
                         Keyboard="Numeric"
                         MaxLength="2"
-                        FontSize="20"
-                        WidthRequest="50"
+                        FontSize="30"
+                        WidthRequest="65"
                         HorizontalTextAlignment="Center"
                         ClearButtonVisibility="WhileEditing">
-                        <Entry.Behaviors>
-                            <local:MaxHourAmountEntryBehavior/>
-                        </Entry.Behaviors>
-                    </Entry>
+                            <Entry.Behaviors>
+                                <local:MaxHourAmountEntryBehavior/>
+                            </Entry.Behaviors>
+                        </Entry>
 
-                    <Label
+                        <Label
                         VerticalOptions="Center"
                         Text=":"
                         FontSize="40"
                         Margin="-5,0">
-                    </Label>
+                        </Label>
 
-                    <Entry
+                        <Entry
                         x:Name="timeInputMin"
                         Placeholder="mm"
                         Keyboard="Numeric"
                         MaxLength="2"
-                        FontSize="20"
-                        WidthRequest="50"
+                        FontSize="30"
+                        WidthRequest="65"
                         HorizontalTextAlignment="Center"
                         ClearButtonVisibility="WhileEditing">
-                        <Entry.Behaviors>
-                            <local:MaxMinuteAmountEntryBehavior/>
-                        </Entry.Behaviors>
+                            <Entry.Behaviors>
+                                <local:MaxMinuteAmountEntryBehavior/>
+                            </Entry.Behaviors>
+                        </Entry>
 
-                    </Entry>
-
-                    <Label
+                        <Label
                         VerticalOptions="Center"
                         Text=":"
                         FontSize="40"
                         Margin="-5,0">
-                    </Label>
+                        </Label>
 
-                    <Entry
+                        <Entry
                         x:Name="timeInputSec"
                         Placeholder="ss"
                         Keyboard="Numeric"
                         MaxLength="2"
-                        FontSize="20"
-                        WidthRequest="50"
+                        FontSize="30"
+                        WidthRequest="65"
                         HorizontalTextAlignment="Center"
                         ClearButtonVisibility="WhileEditing">
-                        <Entry.Behaviors>
-                            <local:MaxSecAmountEntryBehavior/>
-                        </Entry.Behaviors>
-                    </Entry>
+                            <Entry.Behaviors>
+                                <local:MaxSecAmountEntryBehavior/>
+                            </Entry.Behaviors>
+                        </Entry>
 
-                    <Label
+                        <Label
                         VerticalOptions="Center"
                         Text="."
                         FontSize="40"
                         Margin="-5,0">
-                    </Label>
+                        </Label>
 
-                    <Entry
+                        <Entry
                         x:Name="timeInputMsec"
                         Placeholder="ms"
                         Keyboard="Numeric"
                         MaxLength="2"
-                        FontSize="20"
-                        WidthRequest="50"
+                        FontSize="30"
+                        WidthRequest="65"
                         HorizontalTextAlignment="Start"
                         ClearButtonVisibility="WhileEditing">
-                        <Entry.Behaviors>
-                            <local:MaxMsecAmountEntryBehavior/>
-                        </Entry.Behaviors>
-                    </Entry>
-                
-            </StackLayout>
-                </Frame>
+                            <Entry.Behaviors>
+                                <local:MaxMsecAmountEntryBehavior/>
+                            </Entry.Behaviors>
+                        </Entry>
 
+                    </StackLayout>
+                </Frame>
             </StackLayout>
+
+
 
             <StackLayout HorizontalOptions="Fill" Orientation="Horizontal">
                 <Frame>
@@ -178,13 +174,13 @@
                 <Button
                   Text ="Bearbeiten"
                   x:Name =" Editbtn"
-                  Clicked="edit_Clicked">
+                  Clicked="btn_edit_Clicked">
                 </Button>
 
                 <Button
                   Text ="Löschen"
                   x:Name =" Deletebtn"
-                  Clicked="delelte_Clicked">
+                  Clicked="btn_delelte_Clicked">
                 </Button>
 
             </StackLayout>

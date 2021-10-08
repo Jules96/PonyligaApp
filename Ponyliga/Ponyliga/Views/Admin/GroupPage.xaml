@@ -36,9 +36,9 @@
                             <ColumnDefinition Width="1*"></ColumnDefinition>
 
                         </Grid.ColumnDefinitions>
-                        <Label Text="GruppenNr" HorizontalOptions="Fill"  Grid.Column="0"   FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
-                        <Label Text="TeamName" HorizontalOptions="Fill"  Grid.Column="1"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
-                        <Label Text="Bande" HorizontalOptions="Fill"  Grid.Column="2"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label Text="GruppenNr" HorizontalOptions="Fill"  Grid.Column="0"   FontSize="Medium" FontAttributes="Bold" BackgroundColor="DimGray" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label Text="TeamName" HorizontalOptions="Fill"  Grid.Column="1"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="DimGray" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label Text="Bande" HorizontalOptions="Fill"  Grid.Column="2"  FontSize="Medium" FontAttributes="Bold" BackgroundColor="DimGray" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
 
                     </Grid>
                 </ListView.Header>
@@ -62,8 +62,8 @@
 
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Column="0" Text ="{Binding namegroup}" HorizontalOptions="Fill" BackgroundColor="{Binding BackColour}" TextColor="White" HorizontalTextAlignment="Center" Margin="1"></Label>
-                                <Label Grid.Column="1" Text ="{Binding groupName}" HorizontalOptions="Fill" BackgroundColor="LightBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"></Label>
-                                <Label Grid.Column="2" Text ="{Binding startingPosition}" HorizontalOptions="Fill" BackgroundColor="LightBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                <Label Grid.Column="1" Text ="{Binding groupName}" HorizontalOptions="Fill" BackgroundColor="LightGray" TextColor="White" HorizontalTextAlignment="Center" Margin="1"></Label>
+                                <Label Grid.Column="2" Text ="{Binding startingPosition}" HorizontalOptions="Fill" BackgroundColor="LightGray" TextColor="White" HorizontalTextAlignment="Center" Margin="1"></Label>
 
 
                             </Grid>

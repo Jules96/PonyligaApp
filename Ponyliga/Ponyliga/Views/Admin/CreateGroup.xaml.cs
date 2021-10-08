@@ -33,17 +33,21 @@ namespace Ponyliga.Views
         }
         private async void btn_Randomize_Clicked(object sender, EventArgs e)
         {
-            
 
-                if (Users.Count != 0)
+            ApiService apiService = new ApiService();
+
+                /*if (await apiService.GetAllGroups() != null)
                 {
-                    await DisplayAlert("Vorsicht", "Gruppeneinteilung wurden bereits erstellt. Falls Sie eine neue Gruppeneinteilung erstellen möchten, löschen Sie die aktuelle Gruppen", "OK");
+                   DisplayAlert("Vorsicht", "Gruppeneinteilung wurden bereits erstellt. Falls Sie eine neue Gruppeneinteilung erstellen möchten, " +
+                                 "löschen Sie die aktuelle Gruppen", "OK");
                     
-                }              
+                }
+                else
+                {
                 
-                    await GetGroupListAsync();
-                
-            
+                }*/
+            await GetGroupListAsync();
+
         }
 
 
@@ -73,11 +77,11 @@ namespace Ponyliga.Views
             List<RandomizeGroup> listSorted = new List<RandomizeGroup>();
             int teamCount = teamList.Count;
 
-            var shuffledcards = teamList.OrderBy(a => Guid.NewGuid()).ToList();
+            var shuffledteams = teamList.OrderBy(a => Guid.NewGuid()).ToList();
 
             int num_groups = 3;
-            decimal g = Convert.ToDecimal(teamCount) / Convert.ToDecimal(num_groups);
-            int totalGroups = Convert.ToInt32(Math.Ceiling(g));
+            decimal tg = Convert.ToDecimal(teamCount) / Convert.ToDecimal(num_groups);
+            int totalGroups = Convert.ToInt32(Math.Ceiling(tg));
             int moduloGroup = teamCount % num_groups;
             ApiService apiService = new ApiService();
             List<Group> groupIds = new List<Group>();
@@ -105,14 +109,14 @@ namespace Ponyliga.Views
             for (int i = 0; i < teamCount; i++)
             {
 
-                randomizeSortList.Add(new RandomizeGroup { groupNr = group_num + 1, groupName = shuffledcards[i], BackColour = BackgroundList[group_num] });
+                randomizeSortList.Add(new RandomizeGroup { groupNr = group_num + 1, namegroup = "Gruppe " + (group_num +1).ToString(), groupName = shuffledteams[i], BackColour = BackgroundList[group_num] });
                 group_num = ++group_num % totalGroups;
 
 
             }
 
 
-            List<RandomizeGroup> SortedListByNumberNr = randomizeSortList.OrderBy(randomizeGroup => randomizeGroup.groupNr).ToList();
+            List<RandomizeGroup> SortedListByNumberNr = randomizeSortList.OrderBy(randomizeGroup => randomizeGroup.namegroup).ToList();
 
             foreach (var item in SortedListByNumberNr)
             {
@@ -124,6 +128,7 @@ namespace Ponyliga.Views
 
             }
             listViewRandomTeam.ItemsSource = Users;
+            
 
         }
 

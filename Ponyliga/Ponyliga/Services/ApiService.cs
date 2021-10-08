@@ -251,8 +251,14 @@ namespace Ponyliga.Services
             var json = JsonConvert.SerializeObject(group);
             StringContent content = new StringContent(json.ToString(), Encoding.UTF8, "application/json");
             var response = await httpClient.PutAsync(uri, content);
+            var settings = new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented
+            };
+
             if (response.IsSuccessStatusCode)
             {
+                string respContent = await response.Content.ReadAsStringAsync();
                 return true;
             }
             return false;
@@ -319,7 +325,7 @@ namespace Ponyliga.Services
             return null;
         }
         
-        public async Task<bool> AddTeam(Team team)
+        public async Task<Team> AddTeam(Team team)
         {
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
@@ -335,13 +341,18 @@ namespace Ponyliga.Services
 
             StringContent content = new StringContent(UserSerializer.ToString(), Encoding.UTF8, "application/json");
             var response = await httpClient.PostAsync(uri, content);
+            var settings = new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented
+            };
 
             if (response.IsSuccessStatusCode)
             {
-                return true;
+                string respContent = await response.Content.ReadAsStringAsync();
+                return await Task.Run(() => JsonConvert.DeserializeObject<Team>(respContent, settings));
             }
 
-            return false;
+            return null;
         }
 
 
@@ -364,7 +375,7 @@ namespace Ponyliga.Services
             return false;
         }
 
-        public async Task DeleteTeam(string id)
+        public async Task<bool> DeleteTeam(string id)
         {
             // wird später gelöscht
             httpClient = new HttpClient();
@@ -372,6 +383,13 @@ namespace Ponyliga.Services
             string uri = GetUrlID("team", id);
 
             var response = await httpClient.DeleteAsync(uri);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+
+            return false;
         }
 
 
@@ -422,7 +440,7 @@ namespace Ponyliga.Services
             return null;
         }
 
-        public async Task<bool> AddPony(Pony pony)
+        public async Task<Group> AddPony(Pony pony)
         {
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
@@ -439,12 +457,18 @@ namespace Ponyliga.Services
             StringContent content = new StringContent(UserSerializer.ToString(), Encoding.UTF8, "application/json");
             var response = await httpClient.PostAsync(uri, content);
 
+            var settings = new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented
+            };
+
             if (response.IsSuccessStatusCode)
             {
-                return true;
+                string respContent = await response.Content.ReadAsStringAsync();
+                return await Task.Run(() => JsonConvert.DeserializeObject<Group>(respContent, settings));
             }
 
-            return false;
+            return null;
         }
 
         public async Task<bool> UpdatePony(string id, Pony pony)
@@ -452,7 +476,7 @@ namespace Ponyliga.Services
 
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
-            string uri = GetUrlID("team", id);
+            string uri = GetUrlID("pony", id);
 
             var json = JsonConvert.SerializeObject(pony);
             StringContent content = new StringContent(json.ToString(), Encoding.UTF8, "application/json");
@@ -469,7 +493,7 @@ namespace Ponyliga.Services
             // wird später gelöscht
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
-            string uri = GetUrlID("team", id);
+            string uri = GetUrlID("pony", id);
 
             var response = await httpClient.DeleteAsync(uri);
             if (response.IsSuccessStatusCode)
@@ -573,7 +597,7 @@ namespace Ponyliga.Services
             return false;
         }
 
-        public async Task UpdateResult(string id, Result result)
+        public async Task<bool> UpdateResult(string id, Result result)
         {
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
@@ -581,9 +605,15 @@ namespace Ponyliga.Services
 
             var json = JsonConvert.SerializeObject(result);
             StringContent content = new StringContent(json.ToString(), Encoding.UTF8, "application/json");
+            var response = await httpClient.PutAsync(uri, content);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
         }
 
-        public async Task DeleteResult(string id)
+        public async Task<bool> DeleteResult(string id)
         {
             // wird später gelöscht
             httpClient = new HttpClient();
@@ -591,6 +621,11 @@ namespace Ponyliga.Services
             string uri = GetUrlID("result", id);
 
             var response = await httpClient.DeleteAsync(uri);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
         }
 
         #endregion Result
@@ -685,7 +720,7 @@ namespace Ponyliga.Services
             return false;
         }
 
-        public async Task UpdateTeamMember(string id, TeamMember teamMember)
+        public async Task<bool> UpdateTeamMember(string id, TeamMember teamMember)
         {
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("APIKey", "df5b0f08-a3ae-4bbc-a26f-42b199de266e");
@@ -693,6 +728,12 @@ namespace Ponyliga.Services
 
             var json = JsonConvert.SerializeObject(teamMember);
             StringContent content = new StringContent(json.ToString(), Encoding.UTF8, "application/json");
+            var response = await httpClient.PutAsync(uri, content);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
         }
 
         public async Task DeleteTeammeber(string id)
