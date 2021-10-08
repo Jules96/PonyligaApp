@@ -45,6 +45,22 @@ namespace Ponyliga.Views.Admin
             BackgroundList.Add("Green");
             BackgroundList.Add("Purple");
             BackgroundList.Add("Pink");
+            BackgroundList.Add("Green");
+            BackgroundList.Add("Yellow");
+            BackgroundList.Add("Red");
+            BackgroundList.Add("Blue");
+            BackgroundList.Add("Green");
+            BackgroundList.Add("Purple");
+            BackgroundList.Add("Pink");
+            BackgroundList.Add("Green");
+            BackgroundList.Add("Yellow");
+            BackgroundList.Add("Red");
+            BackgroundList.Add("Blue");
+            BackgroundList.Add("Green");
+            BackgroundList.Add("Purple");
+            BackgroundList.Add("Pink");
+            BackgroundList.Add("Green");
+            BackgroundList.Add("Yellow");
 
             var taskGroup = await apiService.GetAllGroups();
 
