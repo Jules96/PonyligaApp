@@ -55,7 +55,7 @@ namespace Ponyliga.Views.Admin
                 {
                     foreach (var groups in group.teams)
                     {
-                        Groups.Add(new RandomizeGroup() {    namegroup=group.name, groupName = groups.name, startingPosition = position[p], BackColour = BackgroundList[c] });
+                        Groups.Add(new RandomizeGroup() {    namegroup="Gruppe"+c, groupName = groups.name, startingPosition = position[p], BackColour = BackgroundList[c] });
 
                         if (p >= 2)
                         {
