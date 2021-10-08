@@ -73,6 +73,22 @@ namespace Ponyliga.Views
             BackgroundList.Add("Green");
             BackgroundList.Add("Purple");
             BackgroundList.Add("Pink");
+            BackgroundList.Add("Green");    
+            BackgroundList.Add("Yellow");
+            BackgroundList.Add("Red");
+            BackgroundList.Add("Blue");
+            BackgroundList.Add("Green");
+            BackgroundList.Add("Purple");
+            BackgroundList.Add("Pink");
+            BackgroundList.Add("Green");
+            BackgroundList.Add("Yellow");
+            BackgroundList.Add("Red");
+            BackgroundList.Add("Blue");
+            BackgroundList.Add("Green");
+            BackgroundList.Add("Purple");
+            BackgroundList.Add("Pink");
+            BackgroundList.Add("Green");
+            BackgroundList.Add("Yellow");
 
             List<RandomizeGroup> listSorted = new List<RandomizeGroup>();
             int teamCount = teamList.Count;
