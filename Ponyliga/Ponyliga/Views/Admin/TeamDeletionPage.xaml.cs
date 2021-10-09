@@ -57,25 +57,76 @@ namespace Ponyliga.Views.Admin
             //DisplayAlert(name, "wurde als Team ausgewählt", "OK");
         }
 
-        public void btn_deleteTeam_Clicked(object sender, EventArgs e)
+        public async void btn_deleteTeam_Clicked(object sender, EventArgs e)
         {
-            if(TeamPicker.SelectedIndex != -1)
+            /*   if(TeamPicker.SelectedIndex != -1)
+               {
+                   string name = TeamPicker.Items[TeamPicker.SelectedIndex];
+
+                   Team team = new Team();
+
+                   int teamId = taskTeam.Find(t => t.name == name).id;
+                   team.id = teamId;
+
+                   ApiService apiService = new ApiService();
+                   Team teams = new Team { id = teamId, groupId = null };
+                   await apiService.UpdateTeam(teamId.ToString(), team);
+
+                   var results = await apiService.GetResultSummary();
+
+                       foreach (var group in results)
+                       {
+                           if (group.id == teamId)
+                           {
+                               foreach (var resu in group.results)
+                               {
+                                   await apiService.DeleteResult(resu.id.ToString());
+                               }
+                           }
+
+                       }
+
+
+
+                   var allTeamMember = await apiService.GetAllTeamMembers();
+
+                   foreach(var teammember in allTeamMember)
+                   {
+                       if (teamId == teammember.teamId)
+                       {
+                           await apiService.DeleteTeammeber(teammember.id.ToString());
+                       }
+
+
+
+                   }
+
+
+                   var result = await apiService.DeleteTeam(team.id.ToString());
+                   if (result)
+                   {
+                       DisplayAlert("Warnung", "Team wird gelöscht!", "OK");
+                   }
+
+
+                   FillTeamList();
+                   TeamPicker.SelectedIndex = -1;
+               }*/
+
+            ApiService apiService = new ApiService();
+            var groups = await apiService.GetAllGroups();
+
+            foreach (var group in groups)
             {
-                string name = TeamPicker.Items[TeamPicker.SelectedIndex];
+                foreach (var team in group.teams)
+                {
+                    team.groupId = null;
 
-                Team team = new Team();
+                    await apiService.UpdateTeam(team.id.ToString(), team);
+                }
+                await apiService.DeleteGroup(group.id.ToString());
 
-                int teamId = taskTeam.Find(t => t.name == name).id;
-                team.id = teamId;
-
-                ApiService apiService = new ApiService();
-                apiService.DeleteTeam(team.id.ToString());
-
-                DisplayAlert("Warnung", "Team wird gelöscht!", "OK");
-                FillTeamList();
-                TeamPicker.SelectedIndex = -1;
             }
-            
         }
 
     }

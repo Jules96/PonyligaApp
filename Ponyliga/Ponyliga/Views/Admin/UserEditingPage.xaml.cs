@@ -21,8 +21,8 @@ namespace Ponyliga.Views.Admin
             InitializeComponent();
             FillUserList();
 
-            userRightsPicker.Items.Add("User");
             userRightsPicker.Items.Add("Admin");
+            userRightsPicker.Items.Add("User");
         }
 
         public async void FillUserList()

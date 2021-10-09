@@ -139,7 +139,7 @@ namespace Ponyliga.Views.Admin
         private async void btn_delelte_Clicked(object sender, EventArgs e)
         {
             ApiService apiService = new ApiService();
-            var response = await apiService.DeleteResult(teamResult.id.ToString()); ;
+            var response = await apiService.DeleteResult(teamResult.id.ToString()); 
             if(response)
             {
                 DisplayAlert("Gelöscht!", "Zeit wurde gelöscht", "OK");
