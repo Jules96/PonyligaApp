@@ -112,19 +112,25 @@ namespace Ponyliga.Views.Admin
                    FillTeamList();
                    TeamPicker.SelectedIndex = -1;
                }*/
-
-            ApiService apiService = new ApiService();
-            var groups = await apiService.GetAllGroups();
-
-            foreach (var group in groups)
+            if (TeamPicker.SelectedIndex != -1)
             {
-                foreach (var team in group.teams)
-                {
-                    team.groupId = null;
+                string name = TeamPicker.Items[TeamPicker.SelectedIndex];
 
-                    await apiService.UpdateTeam(team.id.ToString(), team);
+                Team team = new Team();
+
+                int teamId = taskTeam.Find(t => t.name == name).id;
+                team.id = teamId;
+
+                ApiService apiService = new ApiService();             
+                
+
+                var result = await apiService.DeleteTeam(team.id.ToString());
+                TeamPicker.SelectedIndex = -1;
+                if(result)
+                {
+                    DisplayAlert("Achtung", "Team wurd gelöscht", "OK");
                 }
-                await apiService.DeleteGroup(group.id.ToString());
+                
 
             }
         }
