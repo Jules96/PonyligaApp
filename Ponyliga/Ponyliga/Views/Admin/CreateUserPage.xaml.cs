@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Ponyliga.Models;
+using Ponyliga.Services;
+
 namespace Ponyliga.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -46,6 +48,10 @@ namespace Ponyliga.Views
                 user.passwordHash = password;
                 user.userPrivileges = rights;
 
+                ApiService apiService = new ApiService();
+                var result = apiService.AddUser(user);
+
+
                 Navigation.PushAsync(new MainPageAfterLogin());
             }
             else
@@ -53,7 +59,9 @@ namespace Ponyliga.Views
                 DisplayAlert("Fehler", "Es wurden nicht alle Felder ausgefüllt!", "OK");
             }
 
-            
+
+
+
         }
 
 
